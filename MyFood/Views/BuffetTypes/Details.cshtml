@@ -1,0 +1,26 @@
+﻿@model MyFood.Models.BuffetType
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>التفاصيل</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.buffet_type_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.buffet_type_name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("تعديل", "Edit", new { id = Model.buffet_type_id }) |
+    @Html.ActionLink("الرجوع إلى القائمة", "Index")
+</p>

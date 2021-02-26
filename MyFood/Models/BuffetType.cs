@@ -14,6 +14,7 @@ namespace MyFood.Models
         public int buffet_type_id { get; set; }
 
         [StringLength(30)]
+        [Display(Name = "نوع الضيافة")]
         public string buffet_type_name { get; set; }
     }
 }
