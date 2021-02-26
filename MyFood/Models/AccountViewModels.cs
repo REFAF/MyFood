@@ -64,6 +64,19 @@ namespace MyFood.Models
 
     public class RegisterViewModel
     {
+        public byte? city_id { get; set; }
+
+        public string org_location { get; set; }
+
+        public byte? orgType_id { get; set; }
+
+        public City City { get; set; }
+
+        public OrgType OrgType { get; set; }
+
+        [StringLength(50)]
+        public string Name { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

@@ -14,6 +14,7 @@ namespace MyFood.Models
         public byte orgType_id { get; set; }
 
         [StringLength(50)]
+        [Display(Name ="اسم الجهة")]
         public string orgType_name { get; set; }
     }
 }
