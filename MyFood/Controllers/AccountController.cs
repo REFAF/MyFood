@@ -137,7 +137,7 @@ namespace MyFood.Controllers
         //trrrrrrrrrrrry
         //get
         [AllowAnonymous]
-        public ActionResult ChooseRegistrationMethod()
+        public ActionResult RegisterOptions()
         {
             return View();
         }

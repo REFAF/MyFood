@@ -372,13 +372,13 @@
     <Content Include="Views\BuffetTypes\Edit.cshtml" />
     <Content Include="Views\BuffetTypes\Index.cshtml" />
     <Content Include="Views\Account\View.cshtml" />
-    <Content Include="Views\Account\ChooseRegistrationMethod.cshtml" />
-    <Content Include="Views\Account\ChooseIndvOrOrg.cshtml" />
+    <Content Include="Views\Account\RegisterOptions.cshtml" />
     <Content Include="Views\OrgTypes\Create.cshtml" />
     <Content Include="Views\OrgTypes\Delete.cshtml" />
     <Content Include="Views\OrgTypes\Details.cshtml" />
     <Content Include="Views\OrgTypes\Edit.cshtml" />
     <Content Include="Views\OrgTypes\Index.cshtml" />
+    <Content Include="Views\Account\ChooseIndvOrOrg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

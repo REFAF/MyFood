@@ -3,12 +3,13 @@
     ViewBag.Title = "Register";
 }
 
-<h2>@ViewBag.Title.</h2>
+<h2>التسجيل في جمعية طعامي</h2>
 
 @using (Html.BeginForm("OrgRegister", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
+    <br />
+    <h4>تسجيل مستخدم جديد</h4>
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
