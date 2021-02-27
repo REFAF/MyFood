@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyFood.Models
 {
@@ -62,21 +63,100 @@ namespace MyFood.Models
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class OrgRegisterViewModel
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int org_id { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "اسم الجهة")]
+        public string org_name { get; set; }
+
+        [Display(Name = "المدينة")]
         public byte? city_id { get; set; }
 
+        [Display(Name = "رقم الجوال")]
+        public int? phone_num { get; set; }
+
+        [Display(Name = "الموقع")]
         public string org_location { get; set; }
 
+        [Display(Name = "نوع الجهة")]
         public byte? orgType_id { get; set; }
 
+        [Display(Name = "المدينة")]
         public City City { get; set; }
 
         public OrgType OrgType { get; set; }
 
-        [StringLength(50)]
-        public string Name { get; set; }
+        [EmailAddress]
+        [Display(Name = "البريد الالكتروني")]
+        public string Email { get; set; }
 
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "كلمة المرور")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "تأكيد كلمة المرور")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+    }
+
+    public class BenRegisterViewModel
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Display(Name = "رقم الهوية")]
+        public long ben_id { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "الاسم الثلاثي")]
+        public string name { get; set; }
+
+        [Display(Name = "رقم الجوال")]
+        public int? mobile { get; set; }
+
+        [Display(Name = "المدينة")]
+        public byte? city_id { get; set; }
+
+        [Display(Name = "العنوان")]
+        public string address { get; set; }
+
+        public byte? sector_id { get; set; }
+
+        [Display(Name = "الموقع")]
+        public string location { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "اسم ولي الأمر")]
+        public string guardian { get; set; }
+
+        [Display(Name = "عدد أفراد الأسرة")]
+        public byte? family_number { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [Display(Name = "البريد الالكتروني")]
+        public string Email { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "كلمة المرور")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "تأكيد كلمة المرور")]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+    }
+    public class RegisterViewModel
+    {
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

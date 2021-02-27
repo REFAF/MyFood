@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -10,18 +11,10 @@ namespace MyFood.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public byte? city_id { get; set; }
+        public UserType UserType { get; set; }
 
-        public string org_location { get; set; }
-
-        public byte? orgType_id { get; set; }
-
-        public City City { get; set; }
-
-        public OrgType OrgType { get; set; }
-
-        [StringLength(50)]
-        public string Name { get; set; }
+        [Display(Name = "نوع المستخدم")]
+        public byte userType_id { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -53,6 +46,7 @@ namespace MyFood.Models
         public DbSet<FamilyDiet> FamilyDiets { get; set; }
         public DbSet<OrderForm1> OrderForms1 { get; set; }
         public DbSet<Organization> Organizations { get; set; }
+        public DbSet<UserType> UserTypes { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

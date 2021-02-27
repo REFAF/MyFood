@@ -17,6 +17,7 @@ namespace MyFood.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public AccountController()
         {
@@ -154,6 +155,7 @@ namespace MyFood.Controllers
         [AllowAnonymous]
         public ActionResult OrgRegister()
         {
+            ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name");
             return View();
         }
 
@@ -161,14 +163,85 @@ namespace MyFood.Controllers
        [HttpPost]
        [AllowAnonymous]
        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> OrgRegister(RegisterViewModel model)
+        public async Task<ActionResult> OrgRegister(OrgRegisterViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Name = model.Name, Email = model.Email, org_location = model.org_location };
+                var user = new ApplicationUser {userType_id = 4, UserName = model.org_name, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    var orgUser = new Organization();
+
+                    orgUser.Id = user.Id;
+                    orgUser.org_name = model.org_name;
+                    orgUser.phone_num = model.phone_num;
+                    orgUser.org_location = model.org_location;
+
+                    db.Organizations.Add(orgUser);
+                    db.SaveChanges();
+
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name", model.orgType_id);
+
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        // GET: /Account/BenRegister
+        [AllowAnonymous]
+        public ActionResult BenRegister()
+        {
+            return View();
+        }
+
+        //POST: /Account/BenRegister
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> BenRegister(BenRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+               
+                var user = new ApplicationUser {userType_id = 6, UserName = model.Email, Email = model.Email};
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                
+
+                if (result.Succeeded)
+                {
+                    var benUser = new Beneficiary();
+
+                    benUser.Id = user.Id;
+                    benUser.ben_id = model.ben_id;
+                    benUser.name = model.name;
+                    benUser.mobile = model.mobile;
+                    benUser.city_id = model.city_id;
+                    benUser.address = model.address;
+                    benUser.sector_id = model.sector_id;
+                    benUser.location = model.location;
+                    benUser.guardian = model.guardian;
+                    benUser.family_number = model.family_number;
+
+
+                    db.Beneficiaries.Add(benUser);
+                    db.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771

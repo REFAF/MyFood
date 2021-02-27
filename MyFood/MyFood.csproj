@@ -270,6 +270,34 @@
     <Compile Include="Migrations\202102261946516_AddNameToIdentityModel.Designer.cs">
       <DependentUpon>202102261946516_AddNameToIdentityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202102271056054_AddUserTypeTable.cs" />
+    <Compile Include="Migrations\202102271056054_AddUserTypeTable.Designer.cs">
+      <DependentUpon>202102271056054_AddUserTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102271149027_AddUserTypeToIdentityModels.cs" />
+    <Compile Include="Migrations\202102271149027_AddUserTypeToIdentityModels.Designer.cs">
+      <DependentUpon>202102271149027_AddUserTypeToIdentityModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102271220564_PupulateUserTypes1.cs" />
+    <Compile Include="Migrations\202102271220564_PupulateUserTypes1.Designer.cs">
+      <DependentUpon>202102271220564_PupulateUserTypes1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.cs" />
+    <Compile Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.Designer.cs">
+      <DependentUpon>202102271840386_AddNavPropertyOfUserToBenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102271934309_TryToFindChanges.cs" />
+    <Compile Include="Migrations\202102271934309_TryToFindChanges.Designer.cs">
+      <DependentUpon>202102271934309_TryToFindChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102272015034_ChangeOrgIdIntoIdentity.cs" />
+    <Compile Include="Migrations\202102272015034_ChangeOrgIdIntoIdentity.Designer.cs">
+      <DependentUpon>202102272015034_ChangeOrgIdIntoIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102272123392_AddNavPropertyOfUserToOrgTable.cs" />
+    <Compile Include="Migrations\202102272123392_AddNavPropertyOfUserToOrgTable.Designer.cs">
+      <DependentUpon>202102272123392_AddNavPropertyOfUserToOrgTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -293,6 +321,7 @@
     <Compile Include="Models\EmpRole.cs" />
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
+    <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -379,6 +408,7 @@
     <Content Include="Views\OrgTypes\Edit.cshtml" />
     <Content Include="Views\OrgTypes\Index.cshtml" />
     <Content Include="Views\Account\ChooseIndvOrOrg.cshtml" />
+    <Content Include="Views\Account\BenRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -466,6 +496,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102261946516_AddNameToIdentityModel.resx">
       <DependentUpon>202102261946516_AddNameToIdentityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271056054_AddUserTypeTable.resx">
+      <DependentUpon>202102271056054_AddUserTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271149027_AddUserTypeToIdentityModels.resx">
+      <DependentUpon>202102271149027_AddUserTypeToIdentityModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271220564_PupulateUserTypes1.resx">
+      <DependentUpon>202102271220564_PupulateUserTypes1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.resx">
+      <DependentUpon>202102271840386_AddNavPropertyOfUserToBenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102271934309_TryToFindChanges.resx">
+      <DependentUpon>202102271934309_TryToFindChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102272015034_ChangeOrgIdIntoIdentity.resx">
+      <DependentUpon>202102272015034_ChangeOrgIdIntoIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102272123392_AddNavPropertyOfUserToOrgTable.resx">
+      <DependentUpon>202102272123392_AddNavPropertyOfUserToOrgTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

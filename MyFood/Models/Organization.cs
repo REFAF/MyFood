@@ -10,7 +10,7 @@ namespace MyFood.Models
     public class Organization
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int org_id { get; set; }
 
         [StringLength(50)]
@@ -27,5 +27,9 @@ namespace MyFood.Models
         public City City { get; set; }
 
         public OrgType OrgType { get; set; }
+
+        //Nav property to enable FK of Table AspNetUser
+        public ApplicationUser ApplicationUser { get; set; }
+        public string Id { get; set; }
     }
 }
