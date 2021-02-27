@@ -180,6 +180,9 @@ namespace MyFood.Controllers
                     orgUser.phone_num = model.phone_num;
                     orgUser.org_location = model.org_location;
 
+                    ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name", model.orgType_id);
+                    orgUser.orgType_id = model.orgType_id;
+
                     db.Organizations.Add(orgUser);
                     db.SaveChanges();
 
@@ -192,7 +195,7 @@ namespace MyFood.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
-                ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name", model.orgType_id);
+                
 
                 AddErrors(result);
             }
