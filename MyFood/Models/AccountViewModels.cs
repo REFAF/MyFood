@@ -49,10 +49,13 @@ namespace MyFood.Models
 
     public class LoginViewModel
     {
-        //[Required]
+        [Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
+
+        //[Required]
+        //public long? national_id { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -65,44 +68,30 @@ namespace MyFood.Models
 
     public class OrgRegisterViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public string UserName { get; set; }
+
+        public string PhoneNumber { get; set; }
+        public Organization Organization { get; set; }
+
         public int org_id { get; set; }
 
-        [StringLength(50)]
-        [Display(Name = "اسم الجهة")]
-        public string org_name { get; set; }
-
-        [Display(Name = "المدينة")]
-        public byte? city_id { get; set; }
-
-        [Display(Name = "رقم الجوال")]
-        public int? phone_num { get; set; }
-
-        [Display(Name = "الموقع")]
-        public string org_location { get; set; }
-
-        [Display(Name = "نوع الجهة")]
-        public byte? orgType_id { get; set; }
-
-        [Display(Name = "المدينة")]
-        public City City { get; set; }
-
-        public OrgType OrgType { get; set; }
+        public IEnumerable<OrgType> orgType { get; set; }
 
         [EmailAddress]
         [Display(Name = "البريد الالكتروني")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "تأكيد كلمة المرور")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "كلمة المرور لا تتطابق")]
         public string ConfirmPassword { get; set; }
 
     }

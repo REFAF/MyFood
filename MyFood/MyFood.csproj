@@ -319,6 +319,10 @@
     <Compile Include="Migrations\202102282224223_RemoveSomePropFromOrgTable.Designer.cs">
       <DependentUpon>202102282224223_RemoveSomePropFromOrgTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103011753464_AddNationalIDPropToIdentityModel.cs" />
+    <Compile Include="Migrations\202103011753464_AddNationalIDPropToIdentityModel.Designer.cs">
+      <DependentUpon>202103011753464_AddNationalIDPropToIdentityModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -556,6 +560,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102282224223_RemoveSomePropFromOrgTable.resx">
       <DependentUpon>202102282224223_RemoveSomePropFromOrgTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103011753464_AddNationalIDPropToIdentityModel.resx">
+      <DependentUpon>202103011753464_AddNationalIDPropToIdentityModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

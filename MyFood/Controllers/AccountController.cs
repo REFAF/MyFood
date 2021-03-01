@@ -53,7 +53,7 @@ namespace MyFood.Controllers
             }
         }
 
-        //
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -92,7 +92,48 @@ namespace MyFood.Controllers
             }
         }
 
+      
+
         //
+        //// GET: /Account/Login
+        //[AllowAnonymous]
+        //public ActionResult Login(string returnUrl)
+        //{
+        //    ViewBag.ReturnUrl = returnUrl;
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Account/Login
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+
+        //    // This doesn't count login failures towards account lockout
+        //    // To enable password failures to trigger account lockout, change to shouldLockout: true
+        //    var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+        //    switch (result)
+        //    {
+        //        case SignInStatus.Success:
+        //            return RedirectToLocal(returnUrl);
+        //        case SignInStatus.LockedOut:
+        //            return View("Lockout");
+        //        case SignInStatus.RequiresVerification:
+        //            return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+        //        case SignInStatus.Failure:
+        //        default:
+        //            ModelState.AddModelError("", "Invalid login attempt.");
+        //            return View(model);
+        //    }
+        //}
+
+        ////
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -155,8 +196,11 @@ namespace MyFood.Controllers
         [AllowAnonymous]
         public ActionResult OrgRegister()
         {
-            ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name");
-            return View();
+            var viewModel = new OrgRegisterViewModel
+            {
+                orgType = db.OrgTypes.ToList()
+            };
+            return View(viewModel);
         }
 
         //POST: /Account/OrgRegister
@@ -167,7 +211,8 @@ namespace MyFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {userType_id = 4, UserName = model.org_name, Email = model.Email};
+                var user = new ApplicationUser {userType_id = 4, UserName = model.UserName, Email = model.Email
+                , PhoneNumber = model.PhoneNumber};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -176,12 +221,8 @@ namespace MyFood.Controllers
                     var orgUser = new Organization();
 
                     orgUser.Id = user.Id;
-                    //orgUser.org_name = model.org_name;
-                    //orgUser.phone_num = model.phone_num;
-                    orgUser.org_location = model.org_location;
-
-                    ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name", model.orgType_id);
-                    orgUser.orgType_id = model.orgType_id;
+                    orgUser.org_location = model.Organization.org_location;
+                    orgUser.orgType_id = model.Organization.orgType_id;
 
                     db.Organizations.Add(orgUser);
                     db.SaveChanges();
