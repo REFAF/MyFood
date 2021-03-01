@@ -211,7 +211,7 @@ namespace MyFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {userType_id = 4, UserName = model.UserName, Email = model.Email
+                var user = new ApplicationUser {userType_id = 4, UserName = model.Email, Email = model.Email
                 , PhoneNumber = model.PhoneNumber};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -261,8 +261,7 @@ namespace MyFood.Controllers
             if (ModelState.IsValid)
             {
 
-               
-                var user = new ApplicationUser {userType_id = 6, UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser {userType_id = 6, UserName = model.national_id, national_id = model.national_id };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
                 
@@ -272,7 +271,6 @@ namespace MyFood.Controllers
                     var benUser = new Beneficiary();
 
                     benUser.Id = user.Id;
-                    benUser.ben_id = model.ben_id;
                     benUser.name = model.name;
                     benUser.mobile = model.mobile;
                     benUser.city_id = model.city_id;

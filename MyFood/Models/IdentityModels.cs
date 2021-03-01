@@ -16,7 +16,7 @@ namespace MyFood.Models
         [Display(Name = "نوع المستخدم")]
         public byte userType_id { get; set; }
 
-        public long? national_id { get; set; }
+        public string national_id { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

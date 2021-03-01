@@ -10,8 +10,7 @@ namespace MyFood.Models
     public class Beneficiary
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Required (ErrorMessage ="هذا الحقل مطلوب")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name ="رقم الهوية")]
         public long ben_id { get; set; }
 

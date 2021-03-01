@@ -49,7 +49,7 @@ namespace MyFood.Models
 
     public class LoginViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -68,7 +68,6 @@ namespace MyFood.Models
 
     public class OrgRegisterViewModel
     {
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string UserName { get; set; }
 
         public string PhoneNumber { get; set; }
@@ -98,10 +97,7 @@ namespace MyFood.Models
 
     public class BenRegisterViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "رقم الهوية")]
-        public long ben_id { get; set; }
+        public string national_id { get; set; }
 
         [StringLength(50)]
         [Display(Name = "الاسم الثلاثي")]
@@ -128,10 +124,7 @@ namespace MyFood.Models
         [Display(Name = "عدد أفراد الأسرة")]
         public byte? family_number { get; set; }
 
-        //[Required]
-        [EmailAddress]
-        [Display(Name = "البريد الالكتروني")]
-        public string Email { get; set; }
+        
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
