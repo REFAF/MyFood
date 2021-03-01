@@ -13,12 +13,7 @@ namespace MyFood.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int org_id { get; set; }
 
-        [StringLength(50)]
-        public string org_name { get; set; }
-
         public byte? city_id { get; set; }
-
-        public int? phone_num { get; set; }
 
         public string org_location { get; set; }
 

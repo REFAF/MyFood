@@ -47,6 +47,7 @@ namespace MyFood.Models
         public DbSet<OrderForm1> OrderForms1 { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
+        public DbSet<UserRegistration> UserRegistrations { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

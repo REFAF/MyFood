@@ -176,8 +176,8 @@ namespace MyFood.Controllers
                     var orgUser = new Organization();
 
                     orgUser.Id = user.Id;
-                    orgUser.org_name = model.org_name;
-                    orgUser.phone_num = model.phone_num;
+                    //orgUser.org_name = model.org_name;
+                    //orgUser.phone_num = model.phone_num;
                     orgUser.org_location = model.org_location;
 
                     ViewBag.orgType_id = new SelectList(db.OrgTypes, "orgType_id", "orgType_name", model.orgType_id);

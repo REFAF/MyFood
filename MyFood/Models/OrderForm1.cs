@@ -31,5 +31,8 @@ namespace MyFood.Models
         public byte? buffet_type_id { get; set; }
 
         public BuffetType BuffetType { get; set; }
+
+        //To access org id
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

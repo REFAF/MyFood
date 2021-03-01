@@ -29,8 +29,12 @@ namespace MyFood.Models
         [StringLength(10)]
         public string note { get; set; }
 
-        public long? leader_id { get; set; }
+        //public long? leader_id { get; set; }
 
-        public long? supervisor { get; set; }
+        //public long? supervisor { get; set; }
+
+        public Employee Employee { get; set; }
+        public long Emp_id { get; set; }
+
     }
 }

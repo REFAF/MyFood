@@ -6,7 +6,7 @@ namespace MyFood.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
@@ -42,14 +42,14 @@ namespace MyFood.Models
 
     public class ForgotViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
 
     public class LoginViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Email")]
         [EmailAddress]
         public string Email { get; set; }
@@ -139,7 +139,7 @@ namespace MyFood.Models
         [Display(Name = "عدد أفراد الأسرة")]
         public byte? family_number { get; set; }
 
-        [Required]
+        //[Required]
         [EmailAddress]
         [Display(Name = "البريد الالكتروني")]
         public string Email { get; set; }
@@ -157,7 +157,7 @@ namespace MyFood.Models
     }
     public class RegisterViewModel
     {
-        [Required]
+        //[Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -176,7 +176,7 @@ namespace MyFood.Models
 
     public class ResetPasswordViewModel
     {
-        [Required]
+        //[Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -197,7 +197,7 @@ namespace MyFood.Models
 
     public class ForgotPasswordViewModel
     {
-        [Required]
+        //[Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
