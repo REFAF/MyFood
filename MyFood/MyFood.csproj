@@ -331,6 +331,10 @@
     <Compile Include="Migrations\202103012121356_AlterNIDPropToStringFromIdentityModel.Designer.cs">
       <DependentUpon>202103012121356_AlterNIDPropToStringFromIdentityModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103021430186_TryToSolveMigrationProb.cs" />
+    <Compile Include="Migrations\202103021430186_TryToSolveMigrationProb.Designer.cs">
+      <DependentUpon>202103021430186_TryToSolveMigrationProb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -577,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103012121356_AlterNIDPropToStringFromIdentityModel.resx">
       <DependentUpon>202103012121356_AlterNIDPropToStringFromIdentityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103021430186_TryToSolveMigrationProb.resx">
+      <DependentUpon>202103021430186_TryToSolveMigrationProb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
