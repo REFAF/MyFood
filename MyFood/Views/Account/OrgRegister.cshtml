@@ -13,16 +13,16 @@
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
 
-    @*<div class="form-group">
-        @Html.LabelFor(model => model.UserName, new { @class = "col-md-2 control-label" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.name, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
         </div>
-    </div>*@
+    </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.org_id, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.orgType, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Organization.orgType_id, new SelectList(Model.orgType, "orgType_id", "orgType_name"), "اختر نوع الجهه...", new { @class = "form-control" })
 

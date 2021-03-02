@@ -50,19 +50,19 @@ namespace MyFood.Models
     public class LoginViewModel
     {
         //[Required]
-        [Display(Name = "Email")]
+        [Display(Name = "البريد الإلكتروني")]
         [EmailAddress]
         public string Email { get; set; }
 
-        //[Required]
-        //public long? national_id { get; set; }
+        [Display(Name = "أدخل البريدالإلكتروني أو رقم الهوية")]
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "تذكرني؟")]
         public bool RememberMe { get; set; }
     }
 
@@ -70,11 +70,18 @@ namespace MyFood.Models
     {
         public string UserName { get; set; }
 
+        [StringLength(50)]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "اسم الجهة")]
+        public string name { get; set; }
+
+        [Display(Name = "رقم الجوال")]
         public string PhoneNumber { get; set; }
         public Organization Organization { get; set; }
 
         public int org_id { get; set; }
 
+        [Display (Name = "نوع الجهة")]
         public IEnumerable<OrgType> orgType { get; set; }
 
         [EmailAddress]
@@ -97,18 +104,21 @@ namespace MyFood.Models
 
     public class BenRegisterViewModel
     {
+        [Display(Name = "رقم الهوية")]
         public string national_id { get; set; }
 
         [StringLength(50)]
         [Display(Name = "الاسم الثلاثي")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string name { get; set; }
 
         [Display(Name = "رقم الجوال")]
-        public int? mobile { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Display(Name = "المدينة")]
         public byte? city_id { get; set; }
 
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "العنوان")]
         public string address { get; set; }
 
@@ -121,20 +131,19 @@ namespace MyFood.Models
         [Display(Name = "اسم ولي الأمر")]
         public string guardian { get; set; }
 
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "عدد أفراد الأسرة")]
         public byte? family_number { get; set; }
 
-        
-
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = " الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "تأكيد كلمة المرور")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "كلمة المرور لا تتطابق")]
         public string ConfirmPassword { get; set; }
     }
     public class RegisterViewModel

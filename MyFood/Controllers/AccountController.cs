@@ -76,7 +76,7 @@ namespace MyFood.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -212,7 +212,7 @@ namespace MyFood.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser {userType_id = 4, UserName = model.Email, Email = model.Email
-                , PhoneNumber = model.PhoneNumber};
+                , PhoneNumber = model.PhoneNumber, name = model.name};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -230,9 +230,9 @@ namespace MyFood.Controllers
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -261,18 +261,16 @@ namespace MyFood.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = new ApplicationUser {userType_id = 6, UserName = model.national_id, national_id = model.national_id };
+                var user = new ApplicationUser {userType_id = 6, UserName = model.national_id, 
+                    national_id = model.national_id, PhoneNumber = model.PhoneNumber, name = model.name };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
-                
 
                 if (result.Succeeded)
                 {
                     var benUser = new Beneficiary();
 
                     benUser.Id = user.Id;
-                    benUser.name = model.name;
-                    benUser.mobile = model.mobile;
                     benUser.city_id = model.city_id;
                     benUser.address = model.address;
                     benUser.sector_id = model.sector_id;

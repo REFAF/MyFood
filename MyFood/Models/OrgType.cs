@@ -11,6 +11,7 @@ namespace MyFood.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required(ErrorMessage = "نوع الجهة")]
         public byte orgType_id { get; set; }
 
         [StringLength(50)]

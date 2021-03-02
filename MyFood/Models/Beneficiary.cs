@@ -14,14 +14,7 @@ namespace MyFood.Models
         [Display(Name ="رقم الهوية")]
         public long ben_id { get; set; }
 
-        [StringLength(50)]
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "الاسم الثلاثي")]
-        public string name { get; set; }
-
-        [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "رقم الجوال")]
-        public int? mobile { get; set; }
+        
 
         [Display(Name = "المدينة")]
         public byte? city_id { get; set; }
