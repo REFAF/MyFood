@@ -66,6 +66,32 @@ namespace MyFood.Models
         public bool RememberMe { get; set; }
     }
 
+    public class IndvRegisterViewModel
+    {
+        public string UserName { get; set; }
+
+        //[Required(ErrorMessage = "هذا الحقل مطلوب")]
+        //[Display(Name = "رقم الجوال")]
+        //public string PhoneNumber { get; set; }
+
+        [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
+        [Display(Name = "البريد الالكتروني")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "كلمة المرور")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "تأكيد كلمة المرور")]
+        [Compare("Password", ErrorMessage = "كلمة المرور لا تتطابق")]
+        public string ConfirmPassword { get; set; }
+
+    }
+
     public class OrgRegisterViewModel
     {
         public string UserName { get; set; }
@@ -84,12 +110,12 @@ namespace MyFood.Models
         [Display (Name = "نوع الجهة")]
         public IEnumerable<OrgType> orgType { get; set; }
 
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
         [Display(Name = "البريد الالكتروني")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
@@ -104,6 +130,7 @@ namespace MyFood.Models
 
     public class BenRegisterViewModel
     {
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الهوية")]
         public string national_id { get; set; }
 
@@ -135,7 +162,7 @@ namespace MyFood.Models
         [Display(Name = "عدد أفراد الأسرة")]
         public byte? family_number { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(100, ErrorMessage = " الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
