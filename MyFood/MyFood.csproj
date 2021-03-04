@@ -469,8 +469,6 @@
     <Content Include="Views\Account\ChooseIndvOrOrg.cshtml" />
     <Content Include="Views\Account\BenRegister.cshtml" />
     <Content Include="Views\RegistrationLogin\OrgRegistration.cshtml" />
-    <Content Include="Views\Account\AddPhoneNumber2.cshtml" />
-    <Content Include="Views\Account\Inv.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
