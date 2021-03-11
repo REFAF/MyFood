@@ -15,11 +15,11 @@ namespace MyFood.Controllers.cp
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
-        public ActionResult Index()
-        {
-            var employees = db.Employees.Include(e => e.EmpRole);
-            return View(employees.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    //var employees = db.Employees.Include(e => e.EmpRole);
+        //   // return View(employees.ToList());
+        //}
 
         // GET: Employees/Details/5
         public ActionResult Details(long? id)
@@ -57,7 +57,7 @@ namespace MyFood.Controllers.cp
                 return RedirectToAction("Index");
             }
 
-            ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
+           // ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
             return View(employee);
         }
 
@@ -73,7 +73,7 @@ namespace MyFood.Controllers.cp
             {
                 return HttpNotFound();
             }
-            ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
+           // ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
             return View(employee);
         }
 
@@ -90,7 +90,7 @@ namespace MyFood.Controllers.cp
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
+           // ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name", employee.role_id);
             return View(employee);
         }
 

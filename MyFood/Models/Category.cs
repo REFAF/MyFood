@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,15 +7,17 @@ using System.Web;
 
 namespace MyFood.Models
 {
-    public class Employee
+    public class Category
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Display(Name = "رقم الهوية")]
+        [Display(Name = "رقم الفئة")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        public long national_id { get; set; }
+        public byte category_id { get; set; }
 
-        public ApplicationUser ApplicationUser { get; set; }
-        public string Id { get; set; }
+        [StringLength(50)]
+        [Display(Name = "اسم الفئة")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public string category_name { get; set; }
     }
 }

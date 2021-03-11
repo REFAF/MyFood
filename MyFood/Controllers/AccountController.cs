@@ -54,6 +54,7 @@ namespace MyFood.Controllers
         }
 
 
+
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -206,7 +207,7 @@ namespace MyFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { userType_id = 5, UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { userType_id = 4, UserName = model.Email, Email = model.Email};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -247,7 +248,7 @@ namespace MyFood.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {userType_id = 4, UserName = model.Email, Email = model.Email
+                var user = new ApplicationUser {userType_id = 3, UserName = model.Email, Email = model.Email
                 , PhoneNumber = model.PhoneNumber, name = model.name};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -257,8 +258,8 @@ namespace MyFood.Controllers
                     var orgUser = new Organization();
 
                     orgUser.Id = user.Id;
-                    orgUser.org_location = model.Organization.org_location;
-                    orgUser.orgType_id = model.Organization.orgType_id;
+                    orgUser.org_location = model.org_location;
+                    orgUser.orgType_id = model.orgType_id;
 
                     db.Organizations.Add(orgUser);
                     db.SaveChanges();
@@ -285,7 +286,12 @@ namespace MyFood.Controllers
         [AllowAnonymous]
         public ActionResult BenRegister()
         {
-            return View();
+            var viewModel = new BenRegisterViewModel
+            {
+                Neighborhood = db.neighborhoods.ToList()
+            };
+            return View(viewModel);
+
         }
 
         //POST: /Account/BenRegister
@@ -297,8 +303,8 @@ namespace MyFood.Controllers
             if (ModelState.IsValid)
             {
 
-                var user = new ApplicationUser {userType_id = 6, UserName = model.national_id, 
-                    national_id = model.national_id, PhoneNumber = model.PhoneNumber, name = model.name };
+                var user = new ApplicationUser {userType_id = 2, UserName = model.Email, Email = model.Email,
+                    PhoneNumber = model.PhoneNumber, name = model.name };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
 
@@ -309,8 +315,7 @@ namespace MyFood.Controllers
                     benUser.Id = user.Id;
                     benUser.city_id = model.city_id;
                     benUser.address = model.address;
-                    benUser.sector_id = model.sector_id;
-                    benUser.location = model.location;
+                    benUser.Neighborhood_id = model.Neighborhood_id;
                     benUser.guardian = model.guardian;
                     benUser.family_number = model.family_number;
 
@@ -334,6 +339,55 @@ namespace MyFood.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+        //POST: /Account/EmpRegister
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EmpRegister(EmpRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var user = new ApplicationUser{
+                    userType_id = 1,
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    name = model.name
+                };
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+
+                if (result.Succeeded)
+                {
+                    var empUser = new Employee();
+
+                    //empUser.Id = user.Id;
+                    empUser.national_id = model.national_id;
+                    
+
+
+                    db.Employees.Add(empUser);
+                    db.SaveChanges();
+
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
 
         //
         //// GET: /Account/Register

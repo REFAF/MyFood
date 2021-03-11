@@ -54,7 +54,7 @@ namespace MyFood.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        [Display(Name = "أدخل البريدالإلكتروني أو رقم الهوية")]
+        [Display(Name = "البريدالإلكتروني")]
         public string UserName { get; set; }
 
         [Required]
@@ -64,6 +64,46 @@ namespace MyFood.Models
 
         [Display(Name = "تذكرني؟")]
         public bool RememberMe { get; set; }
+    }
+
+    public class EmpRegisterViewModel
+    {
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "رقم الهوية")]
+        public long national_id { get; set; }
+
+        public string UserName { get; set; }
+
+        [StringLength(50)]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "اسم المستخدم")]
+        public string name { get; set; }
+
+        [Display(Name = "رقم الجوال")]
+        public string PhoneNumber { get; set; }
+
+        public IEnumerable<EmpRole> EmpRole { get; set; }
+
+        [Display(Name = "الصلاحية")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public byte role_id { get; set; }
+
+        [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
+        [Display(Name = "البريد الالكتروني")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public string Email { get; set; }
+
+
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "كلمة المرور")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "تأكيد كلمة المرور")]
+        [Compare("Password", ErrorMessage = "كلمة المرور لا تتطابق")]
+        public string ConfirmPassword { get; set; }
     }
 
     public class IndvRegisterViewModel
@@ -78,6 +118,7 @@ namespace MyFood.Models
         [Display(Name = "البريد الالكتروني")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string Email { get; set; }
+
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
@@ -103,11 +144,13 @@ namespace MyFood.Models
 
         [Display(Name = "رقم الجوال")]
         public string PhoneNumber { get; set; }
-        public Organization Organization { get; set; }
+        
 
-        public int org_id { get; set; }
+        [Display(Name = "الموقع")]
+        public string org_location { get; set; }
 
-        [Display (Name = "نوع الجهة")]
+        [Display(Name = "نوع الجهة")]
+        public byte? orgType_id { get; set; }
         public IEnumerable<OrgType> orgType { get; set; }
 
         [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
@@ -132,7 +175,7 @@ namespace MyFood.Models
     {
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الهوية")]
-        public string national_id { get; set; }
+        public long national_id { get; set; }
 
         [StringLength(50)]
         [Display(Name = "الاسم الثلاثي")]
@@ -146,13 +189,14 @@ namespace MyFood.Models
         public byte? city_id { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "العنوان")]
+        [Display(Name = "رقم المبنى")]
         public string address { get; set; }
 
-        public byte? sector_id { get; set; }
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [Display(Name = "اسم الحيّ")]
+        public byte Neighborhood_id { get; set; }
 
-        [Display(Name = "الموقع")]
-        public string location { get; set; }
+        public IEnumerable<Neighborhood> Neighborhood { get; set; }
 
         [StringLength(50)]
         [Display(Name = "اسم ولي الأمر")]
@@ -161,6 +205,11 @@ namespace MyFood.Models
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "عدد أفراد الأسرة")]
         public byte? family_number { get; set; }
+
+        [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
+        [Display(Name = "البريد الالكتروني")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(100, ErrorMessage = " الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]

@@ -16,8 +16,6 @@ namespace MyFood.Models
         [Display(Name = "نوع المستخدم")]
         public byte userType_id { get; set; }
 
-        public string national_id { get; set; }
-
         public string name { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
@@ -51,7 +49,10 @@ namespace MyFood.Models
         public DbSet<OrderForm1> OrderForms1 { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
-        public DbSet<UserRegistration> UserRegistrations { get; set; }
+        public DbSet<Direction> Directions{ get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Neighborhood> neighborhoods { get; set; }
+        public DbSet<Unit> Units { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

@@ -7,13 +7,13 @@ namespace MyFood.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PupulateUserTypes1 : IMigrationMetadata
+    public sealed partial class PupulateRole : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PupulateUserTypes1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PupulateRole));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102271220564_PupulateUserTypes1"; }
+            get { return "202103110149111_PupulateRole"; }
         }
         
         string IMigrationMetadata.Source

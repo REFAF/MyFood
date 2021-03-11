@@ -175,7 +175,6 @@
     <Compile Include="Controllers\cp\UserFormViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RegistrationLoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,10 +278,6 @@
     <Compile Include="Migrations\202102271149027_AddUserTypeToIdentityModels.Designer.cs">
       <DependentUpon>202102271149027_AddUserTypeToIdentityModels.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202102271220564_PupulateUserTypes1.cs" />
-    <Compile Include="Migrations\202102271220564_PupulateUserTypes1.Designer.cs">
-      <DependentUpon>202102271220564_PupulateUserTypes1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.cs" />
     <Compile Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.Designer.cs">
       <DependentUpon>202102271840386_AddNavPropertyOfUserToBenTable.cs</DependentUpon>
@@ -331,16 +326,70 @@
     <Compile Include="Migrations\202103012121356_AlterNIDPropToStringFromIdentityModel.Designer.cs">
       <DependentUpon>202103012121356_AlterNIDPropToStringFromIdentityModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103021430186_TryToSolveMigrationProb.cs" />
-    <Compile Include="Migrations\202103021430186_TryToSolveMigrationProb.Designer.cs">
-      <DependentUpon>202103021430186_TryToSolveMigrationProb.cs</DependentUpon>
+    <Compile Include="Migrations\202103101657278_AddDirectionTable.cs" />
+    <Compile Include="Migrations\202103101657278_AddDirectionTable.Designer.cs">
+      <DependentUpon>202103101657278_AddDirectionTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101736361_AddCategoryTable.cs" />
+    <Compile Include="Migrations\202103101736361_AddCategoryTable.Designer.cs">
+      <DependentUpon>202103101736361_AddCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101801586_AddNeighborhoodTable.cs" />
+    <Compile Include="Migrations\202103101801586_AddNeighborhoodTable.Designer.cs">
+      <DependentUpon>202103101801586_AddNeighborhoodTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101809042_AlterPropSectorToNeighborhoodId.cs" />
+    <Compile Include="Migrations\202103101809042_AlterPropSectorToNeighborhoodId.Designer.cs">
+      <DependentUpon>202103101809042_AlterPropSectorToNeighborhoodId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101841172_AddUnitTable.cs" />
+    <Compile Include="Migrations\202103101841172_AddUnitTable.Designer.cs">
+      <DependentUpon>202103101841172_AddUnitTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103101844431_AddNavPropToBenTable.cs" />
+    <Compile Include="Migrations\202103101844431_AddNavPropToBenTable.Designer.cs">
+      <DependentUpon>202103101844431_AddNavPropToBenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102014326_AlterEmpTable.cs" />
+    <Compile Include="Migrations\202103102014326_AlterEmpTable.Designer.cs">
+      <DependentUpon>202103102014326_AlterEmpTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102027237_AlterBenTableAndIdentityTable.cs" />
+    <Compile Include="Migrations\202103102027237_AlterBenTableAndIdentityTable.Designer.cs">
+      <DependentUpon>202103102027237_AlterBenTableAndIdentityTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102130036_RemoveLocationFromBenTable.cs" />
+    <Compile Include="Migrations\202103102130036_RemoveLocationFromBenTable.Designer.cs">
+      <DependentUpon>202103102130036_RemoveLocationFromBenTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102349103_DeleteUserRegistrationTable.cs" />
+    <Compile Include="Migrations\202103102349103_DeleteUserRegistrationTable.Designer.cs">
+      <DependentUpon>202103102349103_DeleteUserRegistrationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102351350_AlterUserTypeTable.cs" />
+    <Compile Include="Migrations\202103102351350_AlterUserTypeTable.Designer.cs">
+      <DependentUpon>202103102351350_AlterUserTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103102353200_PupulateUserType.cs" />
+    <Compile Include="Migrations\202103102353200_PupulateUserType.Designer.cs">
+      <DependentUpon>202103102353200_PupulateUserType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103110149111_PupulateRole.cs" />
+    <Compile Include="Migrations\202103110149111_PupulateRole.Designer.cs">
+      <DependentUpon>202103110149111_PupulateRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103110236097_AlterEmployeeTable.cs" />
+    <Compile Include="Migrations\202103110236097_AlterEmployeeTable.Designer.cs">
+      <DependentUpon>202103110236097_AlterEmployeeTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
     <Compile Include="Models\BuffetType.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Diet.cs" />
+    <Compile Include="Models\Direction.cs" />
     <Compile Include="Models\Donator.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Event.cs" />
@@ -349,6 +398,7 @@
     <Compile Include="Models\FoodType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Neighborhood.cs" />
     <Compile Include="Models\NotHealthy.cs" />
     <Compile Include="Models\OrderForm1.cs" />
     <Compile Include="Models\Organization.cs" />
@@ -359,7 +409,7 @@
     <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
-    <Compile Include="Models\UserRegistration.cs" />
+    <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -448,7 +498,6 @@
     <Content Include="Views\OrgTypes\Index.cshtml" />
     <Content Include="Views\Account\ChooseIndvOrOrg.cshtml" />
     <Content Include="Views\Account\BenRegister.cshtml" />
-    <Content Include="Views\RegistrationLogin\OrgRegistration.cshtml" />
     <Content Include="Views\Account\IndvRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -544,9 +593,6 @@
     <EmbeddedResource Include="Migrations\202102271149027_AddUserTypeToIdentityModels.resx">
       <DependentUpon>202102271149027_AddUserTypeToIdentityModels.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102271220564_PupulateUserTypes1.resx">
-      <DependentUpon>202102271220564_PupulateUserTypes1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202102271840386_AddNavPropertyOfUserToBenTable.resx">
       <DependentUpon>202102271840386_AddNavPropertyOfUserToBenTable.cs</DependentUpon>
     </EmbeddedResource>
@@ -583,8 +629,47 @@
     <EmbeddedResource Include="Migrations\202103012121356_AlterNIDPropToStringFromIdentityModel.resx">
       <DependentUpon>202103012121356_AlterNIDPropToStringFromIdentityModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103021430186_TryToSolveMigrationProb.resx">
-      <DependentUpon>202103021430186_TryToSolveMigrationProb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103101657278_AddDirectionTable.resx">
+      <DependentUpon>202103101657278_AddDirectionTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101736361_AddCategoryTable.resx">
+      <DependentUpon>202103101736361_AddCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101801586_AddNeighborhoodTable.resx">
+      <DependentUpon>202103101801586_AddNeighborhoodTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101809042_AlterPropSectorToNeighborhoodId.resx">
+      <DependentUpon>202103101809042_AlterPropSectorToNeighborhoodId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101841172_AddUnitTable.resx">
+      <DependentUpon>202103101841172_AddUnitTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103101844431_AddNavPropToBenTable.resx">
+      <DependentUpon>202103101844431_AddNavPropToBenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102014326_AlterEmpTable.resx">
+      <DependentUpon>202103102014326_AlterEmpTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102027237_AlterBenTableAndIdentityTable.resx">
+      <DependentUpon>202103102027237_AlterBenTableAndIdentityTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102130036_RemoveLocationFromBenTable.resx">
+      <DependentUpon>202103102130036_RemoveLocationFromBenTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102349103_DeleteUserRegistrationTable.resx">
+      <DependentUpon>202103102349103_DeleteUserRegistrationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102351350_AlterUserTypeTable.resx">
+      <DependentUpon>202103102351350_AlterUserTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103102353200_PupulateUserType.resx">
+      <DependentUpon>202103102353200_PupulateUserType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103110149111_PupulateRole.resx">
+      <DependentUpon>202103110149111_PupulateRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103110236097_AlterEmployeeTable.resx">
+      <DependentUpon>202103110236097_AlterEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

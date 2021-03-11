@@ -10,8 +10,7 @@ namespace MyFood.Models
     public class UserType
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Display(Name = "نوع المستخدم")]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public byte userType_id { get; set; }
 
         [StringLength(50)]

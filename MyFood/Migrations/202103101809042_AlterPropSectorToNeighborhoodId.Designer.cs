@@ -7,13 +7,13 @@ namespace MyFood.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class TryToSolveMigrationProb : IMigrationMetadata
+    public sealed partial class AlterPropSectorToNeighborhoodId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(TryToSolveMigrationProb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterPropSectorToNeighborhoodId));
         
         string IMigrationMetadata.Id
         {
-            get { return "202103021430186_TryToSolveMigrationProb"; }
+            get { return "202103101809042_AlterPropSectorToNeighborhoodId"; }
         }
         
         string IMigrationMetadata.Source

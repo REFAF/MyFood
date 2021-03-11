@@ -21,9 +21,9 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.orgType, new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.orgType_id, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.Organization.orgType_id, new SelectList(Model.orgType, "orgType_id", "orgType_name"), "اختر نوع الجهه...", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.orgType_id, new SelectList(Model.orgType, "orgType_id", "orgType_name"), "اختر نوع الجهه...", new { @class = "form-control" })
 
         </div>
     </div>
@@ -36,9 +36,9 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Organization.org_location, new { @class = "col-md-2 control-label" })
+        @Html.LabelFor(model => model.org_location, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Organization.org_location, new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.org_location, new { @class = "form-control" })
         </div>
     </div>
 
