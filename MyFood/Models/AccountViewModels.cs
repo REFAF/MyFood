@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -66,8 +67,29 @@ namespace MyFood.Models
         public bool RememberMe { get; set; }
     }
 
+    public class UserRoleViewModel
+    {
+        public string UserId { get; set; }
+
+        [Display(Name = "اسم الموظف")]
+        public string Username { get; set; }
+        public string Email { get; set; }
+
+        [Display(Name = "الصلاحية")]
+        public string Role { get; set; }
+    }
+
+
+
     public class EmpRegisterViewModel
     {
+        public EmpRegisterViewModel()
+        {
+            Roles = new List<string>();
+        }
+
+        public IList<string> Roles { get; set; }
+
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الهوية")]
         public long national_id { get; set; }
@@ -76,17 +98,17 @@ namespace MyFood.Models
 
         [StringLength(50)]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [Display(Name = "اسم المستخدم")]
+        [Display(Name = "اسم الموظف")]
         public string name { get; set; }
 
         [Display(Name = "رقم الجوال")]
         public string PhoneNumber { get; set; }
 
-        public IEnumerable<EmpRole> EmpRole { get; set; }
-
         [Display(Name = "الصلاحية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        public byte role_id { get; set; }
+        public string UserRoles { get; set; }
+
+        public string Id { get; set; }
 
         [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
         [Display(Name = "البريد الالكتروني")]

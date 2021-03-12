@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MyFood.Models.UserRoleViewModel>
+
+@{
+    ViewBag.Title = "Users With Roles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>الموظفين</h2>
+<br />
+<p>
+    @Html.ActionLink("إضافة موظف جديد", "EmpRegister")
+</p>
+<table class="table" id="UsersWithRoles">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => user.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => user.Role)
+            </td>
+            <td>
+                @Html.ActionLink("تعديل", "Edit", new { id = user.UserId }) |
+                @Html.ActionLink("تفاصيل", "Details", new { id = user.UserId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+@section scripts{
+    <script>
+
+        $(function () {
+            $('#UsersWithRoles').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+    </script>
+}  

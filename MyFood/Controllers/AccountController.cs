@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MyFood.Models;
@@ -17,16 +21,19 @@ namespace MyFood.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IdentityUserRole<IdentityUserRole> userRoleManager;
         private ApplicationDbContext db = new ApplicationDbContext();
+        
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IdentityUserRole<IdentityUserRole> userRoleManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            this.userRoleManager = userRoleManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -340,6 +347,42 @@ namespace MyFood.Controllers
             return View(model);
         }
 
+
+        // GET: /Account/UsersWithRoles
+        [AllowAnonymous]
+        public ActionResult UsersWithRoles()
+        {
+            var usersWithRoles = (from user in db.Users
+                                  select new
+                                  {
+                                      UserId = user.Id,
+                                      Username = user.name,
+                                      Email = user.Email,
+                                      RoleNames = (from userRole in user.Roles
+                                                   join role in db.Roles on userRole.RoleId
+                                                   equals role.Id
+                                                   select role.Name).ToList()
+                                  }).ToList().Select(p => new UserRoleViewModel()
+
+                                  {
+                                      UserId = p.UserId,
+                                      Username = p.Username,
+                                      Email = p.Email,
+                                      Role = string.Join(",", p.RoleNames)
+                                  });
+            return View(usersWithRoles);
+        }
+
+        // GET: /Account/EmpRegister
+        [AllowAnonymous]
+        public ActionResult EmpRegister()
+        {
+            ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+                                    .ToList(), "Name", "Name");
+            return View();
+
+        }
+
         //POST: /Account/EmpRegister
         [HttpPost]
         [AllowAnonymous]
@@ -356,16 +399,19 @@ namespace MyFood.Controllers
                     PhoneNumber = model.PhoneNumber,
                     name = model.name
                 };
-                var result = await UserManager.CreateAsync(user, model.Password);
+             
 
+                var result = await UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
+
                     var empUser = new Employee();
 
-                    //empUser.Id = user.Id;
+                    empUser.Id = user.Id;
                     empUser.national_id = model.national_id;
-                    
+
+                    var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
 
 
                     db.Employees.Add(empUser);
@@ -381,13 +427,77 @@ namespace MyFood.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+
+                ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+                                  .ToList(), "Name", "Name");
+
+
                 AddErrors(result);
+
             }
 
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
+        ////GET: /Account/EmpEdit
+        //[AllowAnonymous]
+        //public async Task<ActionResult> EmpEdit(string id)
+        //{
+        //    if (!string.IsNullOrEmpty(id))
+        //    {
+        //        ApplicationUser user = await UserManager.FindByIdAsync(id);
+        //        if(user != null)
+        //        {
+        //            EmpRegisterViewModel model = new EmpRegisterViewModel()
+        //            {
+        //                PhoneNumber = user.PhoneNumber
+        //            };
+        //            return View(model);
+        //        }
+
+        //    }
+        //    return RedirectToAction("UsersWithRoles");
+        //    //if (user == null)
+        //    //{
+        //    //    return HttpNotFound();
+        //    //}
+        //    //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+        //    //                        .ToList(), "Name", "Name");
+        //    //return View(users);
+        //}
+
+        //// POST: /Account/EmpEdit/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EmpEdit(EmpRegisterViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = new ApplicationUser
+        //        {
+        //            name = model.name,
+        //            PhoneNumber = model.PhoneNumber,
+        //            Email = model.Email,
+        //        };
+
+        //        //var empUser = new Employee();
+
+        //        //empUser.national_id = model.national_id;
+
+        //        //var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
+
+
+        //        db.Entry(user).State = EntityState.Modified;
+        //        //db.Entry(empUser).State = EntityState.Modified;
+        //        //db.Entry(result1).State = EntityState.Modified;
+        //        db.SaveChanges();
+        //        return RedirectToAction("UsersWithRoles");
+        //    }
+        //    //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+        //    //                      .ToList(), "Name", "Name");
+        //    return View(model);
+        //}
 
         //
         //// GET: /Account/Register

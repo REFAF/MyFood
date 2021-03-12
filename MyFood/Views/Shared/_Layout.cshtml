@@ -6,6 +6,8 @@
     <title>جمعية طعامي</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/public/plugins/datatables/dataTables.bootstrap.css">
+
 
 </head>
 <body>
@@ -30,9 +32,7 @@
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("المدن", "Index", "Cities")</li>
-                            <li>@Html.ActionLink("الصلاحيات", "Index", "EmpRoles")</li>
-                            <li>@Html.ActionLink("الموظفين", "Index", "Employees")</li>
+                            <li>@Html.ActionLink("الموظفين", "UsersWithRoles", "Account")</li>
                             <li>@Html.ActionLink("أنواع الضيافة", "Index", "BuffetTypes")</li>
                             <li>@Html.ActionLink("أنواع الجهات", "Index", "OrgTypes")</li>
                         </ul>
@@ -49,6 +49,8 @@
             <p>جميع الحقوق محفوظة لجمعية طعامي - @DateTime.Now.Year &copy; </p>
         </footer>
     </div>
+    <script src="~/public/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/public/plugins/datatables/dataTables.bootstrap.min.js"></script>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

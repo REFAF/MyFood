@@ -27,6 +27,7 @@
         @Html.LabelFor(model => model.national_id, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(model => model.national_id, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.national_id, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -42,7 +43,7 @@
         @Html.LabelFor(model => model.Neighborhood_id, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.Neighborhood_id, new SelectList(Model.Neighborhood, "Neighborhood_id", "Neighborhood_name"), "اختر اسم الحيّ...", new { @class = "form-control" })
-
+            @Html.ValidationMessageFor(model => model.Neighborhood_id, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -50,6 +51,7 @@
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -57,6 +59,7 @@
         @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -71,6 +74,7 @@
         @Html.LabelFor(m => m.address, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
             @Html.TextBoxFor(m => m.address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
         </div>
     </div>
 
