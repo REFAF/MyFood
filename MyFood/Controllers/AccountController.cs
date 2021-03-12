@@ -442,22 +442,44 @@ namespace MyFood.Controllers
 
         //GET: /Account/EmpEdit
         [AllowAnonymous]
-        public async Task<ActionResult> EmpEdit(string id)
+        public ActionResult EmpEdit(string id)
         {
-            if (!string.IsNullOrEmpty(id))
+            if (id == null)
             {
-                ApplicationUser user = await UserManager.FindByIdAsync(id);
-                if (user != null)
-                {
-                    EmpRegisterViewModel model = new EmpRegisterViewModel()
-                    {
-                        PhoneNumber = user.PhoneNumber
-                    };
-                    return View(model);
-                }
-
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            return RedirectToAction("UsersWithRoles");
+
+            ApplicationUser user = db.Users.Find(id);
+            Employee employee = db.Employees.FirstOrDefault(e => e.Id == id);
+            //IdentityUserRole role = db.UsersRoles.Find(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            EmpRegisterViewModel model = new EmpRegisterViewModel()
+            {
+                name = user.name,
+                national_id = employee.national_id,
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email
+            };
+            return View(model);
+            //if (!string.IsNullOrEmpty(id))
+            //{
+            //    ApplicationUser user = await UserManager.FindByIdAsync(id);
+            //    if (user != null)
+            //    {
+            //        EmpRegisterViewModel model = new EmpRegisterViewModel()
+            //        {
+            //            name =
+            //            PhoneNumber = user.PhoneNumber
+            //        };
+            //        return View(model);
+            //    }
+
+            //}
+            //return RedirectToAction("UsersWithRoles");
             //if (user == null)
             //{
             //    return HttpNotFound();
@@ -467,37 +489,54 @@ namespace MyFood.Controllers
             //return View(users);
         }
 
-        //// POST: /Account/EmpEdit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EmpEdit(EmpRegisterViewModel model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var user = new ApplicationUser
-        //        {
-        //            name = model.name,
-        //            PhoneNumber = model.PhoneNumber,
-        //            Email = model.Email,
-        //        };
-
-        //        //var empUser = new Employee();
-
-        //        //empUser.national_id = model.national_id;
-
-        //        //var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
+        // POST: /Account/EmpEdit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
+        public async Task<ActionResult> EmpEdit(EmpRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new ApplicationUser
+                {
+                    userType_id = 1,
+                    UserName = model.Email,
+                    Email = model.Email,
+                    name = model.name,
+                    PhoneNumber = model.PhoneNumber
+                };
 
 
-        //        db.Entry(user).State = EntityState.Modified;
-        //        //db.Entry(empUser).State = EntityState.Modified;
-        //        //db.Entry(result1).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("UsersWithRoles");
-        //    }
-        //    //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
-        //    //                      .ToList(), "Name", "Name");
-        //    return View(model);
-        //}
+
+                await db.SaveChangesAsync();
+
+                return RedirectToAction("UsersWithRoles");
+                //var empUser = new Employee();
+
+                //empUser.national_id = model.national_id;
+                //var u = db.Employees.Find(model.national_id);
+
+                //db.Employees.Attach(u);
+                //db.Entry(empUser).State = EntityState.Modified;
+                //await db.SaveChangesAsync();
+                //var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
+
+                //var result = await UserManager.UpdateAsync(user);
+                //db.SaveChanges();
+                //if (result.Succeeded)
+                //{
+                //    return RedirectToAction("UsersWithRoles");
+                //}
+                //db.Entry(user).State = EntityState.Modified;
+                //db.Entry(empUser).State = EntityState.Modified;
+                //db.Entry(result1).State = EntityState.Modified;
+
+                //return RedirectToAction("UsersWithRoles");
+            }
+            //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+            //                      .ToList(), "Name", "Name");
+            return View(model);
+        }
 
         //
         //// GET: /Account/Register
