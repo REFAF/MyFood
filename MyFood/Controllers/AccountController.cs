@@ -440,32 +440,32 @@ namespace MyFood.Controllers
             return View(model);
         }
 
-        ////GET: /Account/EmpEdit
-        //[AllowAnonymous]
-        //public async Task<ActionResult> EmpEdit(string id)
-        //{
-        //    if (!string.IsNullOrEmpty(id))
-        //    {
-        //        ApplicationUser user = await UserManager.FindByIdAsync(id);
-        //        if(user != null)
-        //        {
-        //            EmpRegisterViewModel model = new EmpRegisterViewModel()
-        //            {
-        //                PhoneNumber = user.PhoneNumber
-        //            };
-        //            return View(model);
-        //        }
+        //GET: /Account/EmpEdit
+        [AllowAnonymous]
+        public async Task<ActionResult> EmpEdit(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                ApplicationUser user = await UserManager.FindByIdAsync(id);
+                if (user != null)
+                {
+                    EmpRegisterViewModel model = new EmpRegisterViewModel()
+                    {
+                        PhoneNumber = user.PhoneNumber
+                    };
+                    return View(model);
+                }
 
-        //    }
-        //    return RedirectToAction("UsersWithRoles");
-        //    //if (user == null)
-        //    //{
-        //    //    return HttpNotFound();
-        //    //}
-        //    //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
-        //    //                        .ToList(), "Name", "Name");
-        //    //return View(users);
-        //}
+            }
+            return RedirectToAction("UsersWithRoles");
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+            //                        .ToList(), "Name", "Name");
+            //return View(users);
+        }
 
         //// POST: /Account/EmpEdit/5
         //[HttpPost]
