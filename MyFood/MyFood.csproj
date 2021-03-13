@@ -189,8 +189,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\cp\BuffetTypesController.cs" />
+    <Compile Include="Controllers\cp\CategoriesController.cs" />
     <Compile Include="Controllers\cp\EmployeesController.cs" />
+    <Compile Include="Controllers\cp\NeighborhoodsController.cs" />
     <Compile Include="Controllers\cp\OrgTypesController.cs" />
+    <Compile Include="Controllers\cp\UnitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -396,6 +399,42 @@
     <Compile Include="Migrations\202103110236097_AlterEmployeeTable.Designer.cs">
       <DependentUpon>202103110236097_AlterEmployeeTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103122239228_AlterDirectionId.cs" />
+    <Compile Include="Migrations\202103122239228_AlterDirectionId.Designer.cs">
+      <DependentUpon>202103122239228_AlterDirectionId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103122253266_pupulateDirectionValue1.cs" />
+    <Compile Include="Migrations\202103122253266_pupulateDirectionValue1.Designer.cs">
+      <DependentUpon>202103122253266_pupulateDirectionValue1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130010555_AddOrderTable.cs" />
+    <Compile Include="Migrations\202103130010555_AddOrderTable.Designer.cs">
+      <DependentUpon>202103130010555_AddOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130041301_AddDonePropToOrdeTable.cs" />
+    <Compile Include="Migrations\202103130041301_AddDonePropToOrdeTable.Designer.cs">
+      <DependentUpon>202103130041301_AddDonePropToOrdeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130155552_AlterOrderTable.cs" />
+    <Compile Include="Migrations\202103130155552_AlterOrderTable.Designer.cs">
+      <DependentUpon>202103130155552_AlterOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130200395_RemovePropFromOrderTable.cs" />
+    <Compile Include="Migrations\202103130200395_RemovePropFromOrderTable.Designer.cs">
+      <DependentUpon>202103130200395_RemovePropFromOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130203317_AddFKToOrderTable.cs" />
+    <Compile Include="Migrations\202103130203317_AddFKToOrderTable.Designer.cs">
+      <DependentUpon>202103130203317_AddFKToOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130219108_AddToolTable.cs" />
+    <Compile Include="Migrations\202103130219108_AddToolTable.Designer.cs">
+      <DependentUpon>202103130219108_AddToolTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103130225450_AddToolUnitTable.cs" />
+    <Compile Include="Migrations\202103130225450_AddToolUnitTable.Designer.cs">
+      <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -414,6 +453,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Neighborhood.cs" />
     <Compile Include="Models\NotHealthy.cs" />
+    <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderForm1.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\OrgType.cs" />
@@ -423,6 +463,8 @@
     <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
+    <Compile Include="Models\Tool.cs" />
+    <Compile Include="Models\ToolUnit.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -747,6 +789,21 @@
     <Content Include="Views\Account\EmpRegister.cshtml" />
     <Content Include="Views\Account\UsersWithRoles.cshtml" />
     <Content Include="Views\Account\EmpEdit.cshtml" />
+    <Content Include="Views\Neighborhoods\Create.cshtml" />
+    <Content Include="Views\Neighborhoods\Delete.cshtml" />
+    <Content Include="Views\Neighborhoods\Details.cshtml" />
+    <Content Include="Views\Neighborhoods\Edit.cshtml" />
+    <Content Include="Views\Neighborhoods\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Units\Create.cshtml" />
+    <Content Include="Views\Units\Delete.cshtml" />
+    <Content Include="Views\Units\Details.cshtml" />
+    <Content Include="Views\Units\Edit.cshtml" />
+    <Content Include="Views\Units\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -915,6 +972,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103110236097_AlterEmployeeTable.resx">
       <DependentUpon>202103110236097_AlterEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103122239228_AlterDirectionId.resx">
+      <DependentUpon>202103122239228_AlterDirectionId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103122253266_pupulateDirectionValue1.resx">
+      <DependentUpon>202103122253266_pupulateDirectionValue1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130010555_AddOrderTable.resx">
+      <DependentUpon>202103130010555_AddOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130041301_AddDonePropToOrdeTable.resx">
+      <DependentUpon>202103130041301_AddDonePropToOrdeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130155552_AlterOrderTable.resx">
+      <DependentUpon>202103130155552_AlterOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130200395_RemovePropFromOrderTable.resx">
+      <DependentUpon>202103130200395_RemovePropFromOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130203317_AddFKToOrderTable.resx">
+      <DependentUpon>202103130203317_AddFKToOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130219108_AddToolTable.resx">
+      <DependentUpon>202103130219108_AddToolTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103130225450_AddToolUnitTable.resx">
+      <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

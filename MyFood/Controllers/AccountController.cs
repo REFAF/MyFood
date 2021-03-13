@@ -417,7 +417,7 @@ namespace MyFood.Controllers
                     db.Employees.Add(empUser);
                     db.SaveChanges();
 
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -425,7 +425,7 @@ namespace MyFood.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("UsersWithRoles");
                 }
 
                 ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))

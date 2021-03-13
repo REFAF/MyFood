@@ -51,6 +51,15 @@ namespace MyFood
             }
 
             // creating Creating Manager role     
+            if (!roleManager.RoleExists("مدير الجمعية"))
+            {
+                var role = new IdentityRole();
+                role.Name = "مدير الجمعية";
+                roleManager.Create(role);
+
+            }
+
+            // creating Creating Employee role     
             if (!roleManager.RoleExists("رئيس فريق"))
             {
                 var role = new IdentityRole();
@@ -67,6 +76,8 @@ namespace MyFood
                 roleManager.Create(role);
 
             }
+
+            
         }
     }
 }

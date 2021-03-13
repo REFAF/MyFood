@@ -10,7 +10,7 @@ namespace MyFood.Models
     public class Direction
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public byte direction_id { get; set; }
 
         [StringLength(50)]

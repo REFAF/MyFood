@@ -53,6 +53,9 @@ namespace MyFood.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Neighborhood> neighborhoods { get; set; }
         public DbSet<Unit> Units { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Tool> Tools { get; set; }
+        public DbSet<ToolUnit> ToolUnits { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

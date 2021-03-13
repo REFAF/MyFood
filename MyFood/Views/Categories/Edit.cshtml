@@ -1,4 +1,4 @@
-﻿@model MyFood.Models.BuffetType
+﻿@model MyFood.Models.Category
 
 @{
     ViewBag.Title = "Edit";
@@ -7,22 +7,19 @@
 
 <h2>تعديل</h2>
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <br />
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.buffet_type_id)
+        @Html.HiddenFor(model => model.category_id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.buffet_type_name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.category_name,  new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.buffet_type_name, new { @class = "form-control" } )
-                @Html.ValidationMessageFor(model => model.buffet_type_name, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.category_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.category_name, "", new { @class = "text-danger" })
             </div>
         </div>
 

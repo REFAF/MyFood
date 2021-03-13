@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MyFood.Models.Unit>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>الوحدات</h2>
+
+<p>
+    @Html.ActionLink("إضافة وحدة جديدة", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.unit_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.category_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.unit_name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Category.category_name)
+    </td>
+    <td>
+        @Html.ActionLink("تعديل", "Edit", new { id = item.unit_id }) @*|
+            @Html.ActionLink("Details", "Details", new { id=item.unit_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.unit_id })*@
+    </td>
+</tr>
+}
+
+</table>
