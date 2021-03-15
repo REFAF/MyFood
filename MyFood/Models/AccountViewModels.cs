@@ -83,12 +83,12 @@ namespace MyFood.Models
 
     public class EmpRegisterViewModel
     {
-        public EmpRegisterViewModel()
-        {
-            Roles = new List<string>();
-        }
+        //public EmpRegisterViewModel()
+        //{
+        //    Roles = new List<string>();
+        //}
 
-        public IList<string> Roles { get; set; }
+        //public IList<string> Roles { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم الهوية")]
@@ -126,6 +126,37 @@ namespace MyFood.Models
         [Display(Name = "تأكيد كلمة المرور")]
         [Compare("Password", ErrorMessage = "كلمة المرور لا تتطابق")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class EditEmpViewModel
+    {
+        [Display(Name = "رقم الهوية")]
+        public long national_id { get; set; }
+
+        public string UserName { get; set; }
+
+        [StringLength(50)]
+        [Display(Name = "اسم الموظف")]
+        public string name { get; set; }
+
+        [Display(Name = "رقم الجوال")]
+        public string PhoneNumber { get; set; }
+
+        [Display(Name = "الصلاحية")]
+        public string UserRoles { get; set; }
+
+        public string Id { get; set; }
+
+        [EmailAddress(ErrorMessage = "صيغة البريد الالكتروني غير صحيحة")]
+        [Display(Name = "البريد الالكتروني")]
+        public string Email { get; set; }
+        public string UserId { get; set; }
+
+        [Display(Name = "اسم الموظف")]
+        public string Username { get; set; }
+
+        [Display(Name = "الصلاحية")]
+        public string Role { get; set; }
     }
 
     public class IndvRegisterViewModel

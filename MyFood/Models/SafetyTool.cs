@@ -10,15 +10,12 @@ namespace MyFood.Models
     public class SafetyTool
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int safetyTool_id { get; set; }
 
-        public int? order_report_id { get; set; }
+        public string staff_name { get; set; }
 
-        public long? Emp_id { get; set; }
-
-        [StringLength(10)]
-        public string clothing { get; set; }
+        public bool? clothing { get; set; }
 
         public bool? hair { get; set; }
 
@@ -33,6 +30,6 @@ namespace MyFood.Models
         public int? gloves { get; set; }
 
         public string note { get; set; }
-        public Employee Employee { get; set; }
+
     }
 }

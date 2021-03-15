@@ -357,7 +357,6 @@ namespace MyFood.Controllers
                                   {
                                       UserId = user.Id,
                                       Username = user.name,
-                                      Email = user.Email,
                                       RoleNames = (from userRole in user.Roles
                                                    join role in db.Roles on userRole.RoleId
                                                    equals role.Id
@@ -367,7 +366,6 @@ namespace MyFood.Controllers
                                   {
                                       UserId = p.UserId,
                                       Username = p.Username,
-                                      Email = p.Email,
                                       Role = string.Join(",", p.RoleNames)
                                   });
             return View(usersWithRoles);
@@ -450,19 +448,39 @@ namespace MyFood.Controllers
             }
 
             ApplicationUser user = db.Users.Find(id);
-            Employee employee = db.Employees.FirstOrDefault(e => e.Id == id);
-            //IdentityUserRole role = db.UsersRoles.Find(id);
+            //Employee employee = db.Employees.FirstOrDefault(e => e.Id == id);
+            //IdentityUserRole role = db.u.Find(id);
+
+            //var usersWithRoles = (from u in db.Users
+            //                      select new
+            //                      {
+            //                          UserId = id,
+            //                          Username = u.name,
+            //                          RoleNames = (from userRole in u.Roles
+            //                                       join role in db.Roles on userRole.RoleId
+            //                                       equals role.Id
+            //                                       select role.Name).ToList()
+            //                      }).ToList().Select(p => new EditEmpViewModel()
+
+            //                      {
+            //                          UserId = id,
+            //                          Username = p.Username,
+            //                          Role = string.Join(",", p.RoleNames)
+            //                      });
+            ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+                                  .ToList(), "Name", "Name");
 
             if (user == null)
             {
                 return HttpNotFound();
             }
-            EmpRegisterViewModel model = new EmpRegisterViewModel()
+            EditEmpViewModel model = new EditEmpViewModel()
             {
+                Id = id,
                 name = user.name,
-                national_id = employee.national_id,
                 PhoneNumber = user.PhoneNumber,
-                Email = user.Email
+                Email = user.Email,
+                UserName = user.UserName
             };
             return View(model);
             //if (!string.IsNullOrEmpty(id))
@@ -493,22 +511,35 @@ namespace MyFood.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<ActionResult> EmpEdit(EmpRegisterViewModel model)
+        public  ActionResult EmpEdit(EditEmpViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser
-                {
-                    userType_id = 1,
-                    UserName = model.Email,
-                    Email = model.Email,
-                    name = model.name,
-                    PhoneNumber = model.PhoneNumber
-                };
+                var user = db.Users.Find(model.Id);
 
+                user.name = model.name;
+                user.PhoneNumber = model.PhoneNumber;
+                user.Email = model.Email;
+                user.UserName = model.Email;
 
+                //var usersWithRoles = (from u in db.Users
+                //                      select new
+                //                      {
+                //                          UserId = model.Id,
+                //                          Username = u.name,
+                //                          RoleNames = (from userRole in u.Roles
+                //                                       join role in db.Roles on userRole.RoleId
+                //                                       equals role.Id
+                //                                       select role.Name).ToList()
+                //                      }).ToList().Select(p => new EditEmpViewModel()
 
-                await db.SaveChangesAsync();
+                //                      {
+                //                          UserId = model.Id,
+                //                          Username = p.Username,
+                //                          Role = string.Join(",", p.RoleNames)
+                //                      });
+
+                db.SaveChanges();
 
                 return RedirectToAction("UsersWithRoles");
                 //var empUser = new Employee();
@@ -533,8 +564,8 @@ namespace MyFood.Controllers
 
                 //return RedirectToAction("UsersWithRoles");
             }
-            //ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
-            //                      .ToList(), "Name", "Name");
+            ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
+                                 .ToList(), "Name", "Name");
             return View(model);
         }
 
@@ -615,10 +646,10 @@ namespace MyFood.Controllers
 
                 // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                 // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
 
             // If we got this far, something failed, redisplay form

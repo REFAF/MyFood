@@ -193,9 +193,12 @@
     <Compile Include="Controllers\cp\EmployeesController.cs" />
     <Compile Include="Controllers\cp\NeighborhoodsController.cs" />
     <Compile Include="Controllers\cp\OrgTypesController.cs" />
+    <Compile Include="Controllers\cp\ToolsController.cs" />
     <Compile Include="Controllers\cp\UnitsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ToolDetailForm2Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -435,18 +438,63 @@
     <Compile Include="Migrations\202103130225450_AddToolUnitTable.Designer.cs">
       <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.cs" />
-    <Compile Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.Designer.cs">
-      <DependentUpon>202103131817290_RemoveSomePropFromEmployeeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202103140115410_AddCarToolForm2Table.cs" />
+    <Compile Include="Migrations\202103140115410_AddCarToolForm2Table.Designer.cs">
+      <DependentUpon>202103140115410_AddCarToolForm2Table.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103131818319_AddIdToEmployeeTable.cs" />
-    <Compile Include="Migrations\202103131818319_AddIdToEmployeeTable.Designer.cs">
-      <DependentUpon>202103131818319_AddIdToEmployeeTable.cs</DependentUpon>
+    <Compile Include="Migrations\202103140132039_AddToolDetailForm2Table.cs" />
+    <Compile Include="Migrations\202103140132039_AddToolDetailForm2Table.Designer.cs">
+      <DependentUpon>202103140132039_AddToolDetailForm2Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103142226151_AlterFoodReceiptForm3.cs" />
+    <Compile Include="Migrations\202103142226151_AlterFoodReceiptForm3.Designer.cs">
+      <DependentUpon>202103142226151_AlterFoodReceiptForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103142235189_AlterNotHealthyAndForm3Tables.cs" />
+    <Compile Include="Migrations\202103142235189_AlterNotHealthyAndForm3Tables.Designer.cs">
+      <DependentUpon>202103142235189_AlterNotHealthyAndForm3Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103142244430_AlterSafetyToolAndForm3Tables.cs" />
+    <Compile Include="Migrations\202103142244430_AlterSafetyToolAndForm3Tables.Designer.cs">
+      <DependentUpon>202103142244430_AlterSafetyToolAndForm3Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103142306322_AlterFoodTypeAndForm3Tables.cs" />
+    <Compile Include="Migrations\202103142306322_AlterFoodTypeAndForm3Tables.Designer.cs">
+      <DependentUpon>202103142306322_AlterFoodTypeAndForm3Tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103142329077_AlterOrderTable1.cs" />
+    <Compile Include="Migrations\202103142329077_AlterOrderTable1.Designer.cs">
+      <DependentUpon>202103142329077_AlterOrderTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150008421_CheckMigration.cs" />
+    <Compile Include="Migrations\202103150008421_CheckMigration.Designer.cs">
+      <DependentUpon>202103150008421_CheckMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150104005_AlterOrderTable2.cs" />
+    <Compile Include="Migrations\202103150104005_AlterOrderTable2.Designer.cs">
+      <DependentUpon>202103150104005_AlterOrderTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150147059_AlterEventDateFromOrderTable.cs" />
+    <Compile Include="Migrations\202103150147059_AlterEventDateFromOrderTable.Designer.cs">
+      <DependentUpon>202103150147059_AlterEventDateFromOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150149276_AlterEventDateFromOrderTable2.cs" />
+    <Compile Include="Migrations\202103150149276_AlterEventDateFromOrderTable2.Designer.cs">
+      <DependentUpon>202103150149276_AlterEventDateFromOrderTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150223178_AlterEventDateFromOrderTable3.cs" />
+    <Compile Include="Migrations\202103150223178_AlterEventDateFromOrderTable3.Designer.cs">
+      <DependentUpon>202103150223178_AlterEventDateFromOrderTable3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103150234327_AlterEventDateFromOrderTable4.cs" />
+    <Compile Include="Migrations\202103150234327_AlterEventDateFromOrderTable4.Designer.cs">
+      <DependentUpon>202103150234327_AlterEventDateFromOrderTable4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
     <Compile Include="Models\BuffetType.cs" />
+    <Compile Include="Models\CarToolForm2.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\City.cs" />
     <Compile Include="Models\Diet.cs" />
@@ -463,6 +511,7 @@
     <Compile Include="Models\NotHealthy.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderForm1.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\OrgType.cs" />
     <Compile Include="Models\PackagingFollowUp.cs" />
@@ -472,6 +521,7 @@
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="Models\Tool.cs" />
+    <Compile Include="Models\ToolDetailForm2.cs" />
     <Compile Include="Models\ToolUnit.cs" />
     <Compile Include="Models\Unit.cs" />
     <Compile Include="Models\UserType.cs" />
@@ -644,6 +694,47 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\themes\base\accordion.css" />
+    <Content Include="Content\themes\base\all.css" />
+    <Content Include="Content\themes\base\autocomplete.css" />
+    <Content Include="Content\themes\base\base.css" />
+    <Content Include="Content\themes\base\button.css" />
+    <Content Include="Content\themes\base\core.css" />
+    <Content Include="Content\themes\base\datepicker.css" />
+    <Content Include="Content\themes\base\dialog.css" />
+    <Content Include="Content\themes\base\draggable.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\menu.css" />
+    <Content Include="Content\themes\base\progressbar.css" />
+    <Content Include="Content\themes\base\resizable.css" />
+    <Content Include="Content\themes\base\selectable.css" />
+    <Content Include="Content\themes\base\selectmenu.css" />
+    <Content Include="Content\themes\base\slider.css" />
+    <Content Include="Content\themes\base\sortable.css" />
+    <Content Include="Content\themes\base\spinner.css" />
+    <Content Include="Content\themes\base\tabs.css" />
+    <Content Include="Content\themes\base\theme.css" />
+    <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -735,6 +826,8 @@
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.js" />
+    <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -812,6 +905,13 @@
     <Content Include="Views\Units\Details.cshtml" />
     <Content Include="Views\Units\Edit.cshtml" />
     <Content Include="Views\Units\Index.cshtml" />
+    <Content Include="Views\Tools\Create.cshtml" />
+    <Content Include="Views\Tools\Delete.cshtml" />
+    <Content Include="Views\Tools\Details.cshtml" />
+    <Content Include="Views\Tools\Edit.cshtml" />
+    <Content Include="Views\Tools\Index.cshtml" />
+    <Content Include="Views\ToolDetailForm2\Tools.cshtml" />
+    <Content Include="Views\Order\OrderForm1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1008,11 +1108,44 @@
     <EmbeddedResource Include="Migrations\202103130225450_AddToolUnitTable.resx">
       <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.resx">
-      <DependentUpon>202103131817290_RemoveSomePropFromEmployeeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103140115410_AddCarToolForm2Table.resx">
+      <DependentUpon>202103140115410_AddCarToolForm2Table.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202103131818319_AddIdToEmployeeTable.resx">
-      <DependentUpon>202103131818319_AddIdToEmployeeTable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103140132039_AddToolDetailForm2Table.resx">
+      <DependentUpon>202103140132039_AddToolDetailForm2Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103142226151_AlterFoodReceiptForm3.resx">
+      <DependentUpon>202103142226151_AlterFoodReceiptForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103142235189_AlterNotHealthyAndForm3Tables.resx">
+      <DependentUpon>202103142235189_AlterNotHealthyAndForm3Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103142244430_AlterSafetyToolAndForm3Tables.resx">
+      <DependentUpon>202103142244430_AlterSafetyToolAndForm3Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103142306322_AlterFoodTypeAndForm3Tables.resx">
+      <DependentUpon>202103142306322_AlterFoodTypeAndForm3Tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103142329077_AlterOrderTable1.resx">
+      <DependentUpon>202103142329077_AlterOrderTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150008421_CheckMigration.resx">
+      <DependentUpon>202103150008421_CheckMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150104005_AlterOrderTable2.resx">
+      <DependentUpon>202103150104005_AlterOrderTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150147059_AlterEventDateFromOrderTable.resx">
+      <DependentUpon>202103150147059_AlterEventDateFromOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150149276_AlterEventDateFromOrderTable2.resx">
+      <DependentUpon>202103150149276_AlterEventDateFromOrderTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150223178_AlterEventDateFromOrderTable3.resx">
+      <DependentUpon>202103150223178_AlterEventDateFromOrderTable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103150234327_AlterEventDateFromOrderTable4.resx">
+      <DependentUpon>202103150234327_AlterEventDateFromOrderTable4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
