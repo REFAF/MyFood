@@ -14,5 +14,14 @@ namespace MyFood.Models
         public byte nothealthy_type_id { get; set; }
 
         public string nothealthy_type_name { get; set; }
+
+        [Display(Name = "اسم العامل")]
+        public string Employee1_name { get; set; }
+
+        [Display(Name = "اسم العامل")]
+        public string Employee2_name { get; set; }
+
+        [Display(Name = "ملاحظات")]
+        public string note { get; set; }
     }
 }

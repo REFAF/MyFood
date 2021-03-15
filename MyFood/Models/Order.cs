@@ -17,6 +17,7 @@ namespace MyFood.Models
         public string phone_number { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         [Display(Name = "تاريخ المناسبة")]
         public DateTime? event_date { get; set; }
 
@@ -25,13 +26,12 @@ namespace MyFood.Models
 
         public DateTime? reservation_date { get; set; }
 
-        [Display(Name = "نوع المكان")]
-        public byte category_id { get; set; }
-        public Category Category { get; set; }
-
         [Display(Name = "اسم المكان")]
         public byte? unit_id { get; set; }
         public Unit Unit { get; set; }
+
+        [Display(Name = "أخرى")]
+        public string unit_name { get; set; }
 
         [Display(Name = " العنوان")]
         public string address { get; set; }
@@ -60,8 +60,11 @@ namespace MyFood.Models
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
 
-        [Display(Name = "تم")]
-        public bool? Done { get; set; }
+        [Display(Name = "قبول")]
+        public bool? Accept { get; set; }
+
+        [Display(Name = "رفض")]
+        public bool? Deny { get; set; }
 
     }
 }
