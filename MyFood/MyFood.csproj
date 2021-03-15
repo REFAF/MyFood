@@ -435,6 +435,14 @@
     <Compile Include="Migrations\202103130225450_AddToolUnitTable.Designer.cs">
       <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.cs" />
+    <Compile Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.Designer.cs">
+      <DependentUpon>202103131817290_RemoveSomePropFromEmployeeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103131818319_AddIdToEmployeeTable.cs" />
+    <Compile Include="Migrations\202103131818319_AddIdToEmployeeTable.Designer.cs">
+      <DependentUpon>202103131818319_AddIdToEmployeeTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -999,6 +1007,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103130225450_AddToolUnitTable.resx">
       <DependentUpon>202103130225450_AddToolUnitTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103131817290_RemoveSomePropFromEmployeeTable.resx">
+      <DependentUpon>202103131817290_RemoveSomePropFromEmployeeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103131818319_AddIdToEmployeeTable.resx">
+      <DependentUpon>202103131818319_AddIdToEmployeeTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
