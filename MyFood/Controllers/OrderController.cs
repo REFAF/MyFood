@@ -70,7 +70,7 @@ namespace MyFood.Controllers
             {
                 order_id = id,
                 phone_number = order.phone_number,
-                buffet_type_id = order.BuffetType.Wher,
+                buffet_type_id = order.buffet_type_id,
                 plate_num = order.plate_num,
                 persons_num = order.persons_num,
                 event_date = order.event_date,
