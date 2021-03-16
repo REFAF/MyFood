@@ -11,9 +11,7 @@
 {
     @Html.AntiForgeryToken()
     <br />
-    <h4> تسجيل طلب جديد</h4>
     <hr />
-
     <div class="form-group">
         @Html.LabelFor(model => model.phone_number, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
@@ -22,20 +20,47 @@
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.buffet_type_id, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.buffet_type_id, new SelectList(Model.BuffetType, "buffet_type_id", "buffet_type_name"), "اختر نوع الضيافة...", new { @class = "form-control" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.plate_num, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.plate_num, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.plate_num, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.persons_num, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.persons_num, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.persons_num, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10" id="datepicker">
-            @*@Html.EditorFor(m => m.event_date, "{0: dd/mm/yyyy}",
-        new { htmlAttributes = new { @class = "form-control", @type = "date" } })*@
-            @Html.EditorFor(m => m.event_date, 
-                new { htmlAttributes = new { @class = "form-control"} })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.event_date,
+                new { htmlAttributes = new { @class = "form-control", @type="date" ,data_val_date = "صيغة التاريخ غير صحيحة" } })
             @Html.ValidationMessageFor(model => model.event_date, "", new { @class = "text-danger" })
         </div>
     </div>
-    //placeholder = "1/2/2021",
 
-
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_time, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.EditorFor(m => m.event_time,
+                new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+            @Html.ValidationMessageFor(model => model.event_time, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.unit_id, new { @class = "control-label col-md-2" })
@@ -45,7 +70,14 @@
         </div>
     </div>
 
-
+    <div class="form-group">
+        @Html.Label("      ", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayName("في حال عدم وجود اسم مكان المناسبة الرجاء كتابته هنا أو كتابة رقم المبنى")
+            @Html.TextBoxFor(model => model.unit_name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.unit_name, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -57,20 +89,38 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    @Scripts.Render("~/bundles/jqueryui")
-    @Styles.Render("~/Content/cssjqryUi")
+    @*@Scripts.Render("~/Scripts/jquery-3.1.1.js")
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
+    @Scripts.Render("~/Scripts/moment.js")
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('input[type=datetime]').datepicker({
-                dateFormat: "dd/mm/yy",
-                changeMonth: true,
-                changeYear: true,
-                yearRange: "-60:+0"
-            });
-
+    <script>
+        $(function () {
+            $.validator.methods.date = function (value, element) {
+                return this.optional(element) || moment(value, "DD/MM/YYYY", true).isValid();
+            }
         });
-    </script>
+    </script>*@
+
+
+
+    @*@Scripts.Render("~/bundles/jqueryui")
+        @Styles.Render("~/Content/cssjqryUi")*@
+
+    @*<script type="text/javascript">
+            $(document).ready(function () {
+                $('input[type=datetime]').datepicker({
+                    dateFormat: "dd/mm/yy",
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+                $(":input[time-picker]").timepicker({
+                    timeFormat: "HH:mm:ss"
+                });
+
+            });
+        </script>*@
 
 }
 

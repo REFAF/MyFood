@@ -490,6 +490,22 @@
     <Compile Include="Migrations\202103150234327_AlterEventDateFromOrderTable4.Designer.cs">
       <DependentUpon>202103150234327_AlterEventDateFromOrderTable4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103151923484_AlterEventDaterfromOrder.cs" />
+    <Compile Include="Migrations\202103151923484_AlterEventDaterfromOrder.Designer.cs">
+      <DependentUpon>202103151923484_AlterEventDaterfromOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103152011428_AlterEventDaterfromOrder2.cs" />
+    <Compile Include="Migrations\202103152011428_AlterEventDaterfromOrder2.Designer.cs">
+      <DependentUpon>202103152011428_AlterEventDaterfromOrder2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103160007432_AlterOrderTable21.cs" />
+    <Compile Include="Migrations\202103160007432_AlterOrderTable21.Designer.cs">
+      <DependentUpon>202103160007432_AlterOrderTable21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103160009104_AlterOrderTable3.cs" />
+    <Compile Include="Migrations\202103160009104_AlterOrderTable3.Designer.cs">
+      <DependentUpon>202103160009104_AlterOrderTable3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -833,6 +849,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -912,6 +932,10 @@
     <Content Include="Views\Tools\Index.cshtml" />
     <Content Include="Views\ToolDetailForm2\Tools.cshtml" />
     <Content Include="Views\Order\OrderForm1.cshtml" />
+    <Content Include="Scripts\moment.min.js.map" />
+    <Content Include="Scripts\moment-with-locales.min.js.map" />
+    <Content Include="Views\Order\viewOrder.cshtml" />
+    <Content Include="Views\Order\acceptOrder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1146,6 +1170,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103150234327_AlterEventDateFromOrderTable4.resx">
       <DependentUpon>202103150234327_AlterEventDateFromOrderTable4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103151923484_AlterEventDaterfromOrder.resx">
+      <DependentUpon>202103151923484_AlterEventDaterfromOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103152011428_AlterEventDaterfromOrder2.resx">
+      <DependentUpon>202103152011428_AlterEventDaterfromOrder2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103160007432_AlterOrderTable21.resx">
+      <DependentUpon>202103160007432_AlterOrderTable21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103160009104_AlterOrderTable3.resx">
+      <DependentUpon>202103160009104_AlterOrderTable3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
