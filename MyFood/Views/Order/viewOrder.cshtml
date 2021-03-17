@@ -29,7 +29,7 @@
                 @Html.DisplayFor(modelItem => item.event_date)
             </td>
             <td>
-                @Html.ActionLink("عرض الطلب", "acceptOrder", new { id = item.order_id })
+                @Html.ActionLink("عرض الطلب", "orderDetails", new { id = item.order_id })
             </td>
         </tr>
     }

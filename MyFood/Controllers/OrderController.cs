@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace MyFood.Controllers
 {
@@ -12,6 +13,7 @@ namespace MyFood.Controllers
     {
 
         private ApplicationDbContext db = new ApplicationDbContext();
+
         // GET: Order/OrderForm1
         public ActionResult OrderForm1()
         {
@@ -39,6 +41,7 @@ namespace MyFood.Controllers
             orderObj.reservation_date = DateTime.Now;
             //orderObj.address = order.address;
             orderObj.unit_id = order.unit_id;
+            orderObj.unit_name = order.unit_name;
             
             db.Orders.Add(orderObj);
             db.SaveChanges();
@@ -50,36 +53,40 @@ namespace MyFood.Controllers
         //Get: Order/viewOrder
         public ActionResult viewOrder()
         {
-            var order = db.Orders.ToList();
+            var order = db.Orders.Where(o => o.Accept == false && o.Deny == false).ToList();
             
             return View(order);
         }
 
 
         //authorize sup
-        //Get: Order/editOrder
-        public ActionResult acceptOrder(long id)
+        //Get: Order/orderDetails
+        public ActionResult orderDetails(long id)
         {
-            Order order = db.Orders.Find(id);
+            var order = db.Orders.Include(c => c.BuffetType)
+                .Include(c => c.Unit).SingleOrDefault(c => c.order_id == id);
+            
             if (order == null)
             {
                 return HttpNotFound();
             }
 
-            ViewOrderViewModel model = new ViewOrderViewModel()
+            return View(order);
+        }
+
+        //authorize sup
+        //POST: Order/orderDetails
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult orderDetails(Order order )
+        {
+            if (ModelState.IsValid)
             {
-                order_id = id,
-                phone_number = order.phone_number,
-                buffet_type_id = order.buffet_type_id,
-                plate_num = order.plate_num,
-                persons_num = order.persons_num,
-                event_date = order.event_date,
-                event_time = order.event_time,
-                unit_id = order.unit_id,
-                unit_name = order.unit_name,
-                reservation_date = order.reservation_date
-            };
-            return View(model);
+                db.Entry(order).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("viewOrder");
+            }
+            return View(order);
         }
     }
 }

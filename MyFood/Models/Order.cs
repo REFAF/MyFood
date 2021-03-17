@@ -21,6 +21,7 @@ namespace MyFood.Models
         [Display(Name = "تاريخ المناسبة")]
         public DateTime? event_date { get; set; }
 
+        
         [Display(Name = "وقت المناسبة")]
         public TimeSpan? event_time { get; set; }
 
@@ -36,8 +37,9 @@ namespace MyFood.Models
         [Display(Name = " العنوان")]
         public string address { get; set; }
 
+        [ForeignKey("BuffetType")]
         [Display(Name = "نوع الضيافة")]
-        public byte? buffet_type_id { get; set; }
+        public int? buffet_type_id { get; set; }
         public BuffetType BuffetType { get; set; }
 
         [Display(Name = "عدد الصحون")]
@@ -61,10 +63,10 @@ namespace MyFood.Models
         public ApplicationUser supId { get; set; }
 
         [Display(Name = "قبول")]
-        public bool? Accept { get; set; }
+        public bool Accept { get; set; }
 
         [Display(Name = "رفض")]
-        public bool? Deny { get; set; }
+        public bool Deny { get; set; }
 
     }
 }

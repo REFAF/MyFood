@@ -1,0 +1,106 @@
+﻿@model MyFood.Models.Order
+@{
+    ViewBag.Title = "orderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>الطلب الوارد</h2>
+
+
+@using (Html.BeginForm("orderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    <hr />
+
+    <div class="form-group">
+        @Html.Label("رقم الطلب", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.order_id, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.phone_number, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.phone_number, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.buffet_type_id, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.BuffetType.buffet_type_name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.plate_num, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.plate_num, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.persons_num, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.persons_num, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.event_date, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_time, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.event_time, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.unit_id, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.Unit.unit_name, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("      ", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DisplayFor(model => model.unit_name, new { @class = "form-control" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+
+        <div class="checkbox">
+            @Html.Label("        ", new { @class = "control-label col-md-2" })
+            <div>
+                @Html.CheckBoxFor(m => m.Accept) قبول
+            </div>
+        </div>
+
+        <div class="checkbox">
+            @Html.Label("        ", new { @class = "control-label col-md-2" })
+            <div>
+                @Html.CheckBoxFor(m => m.Deny) رفض
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="تحديث" class="btn btn-default" />
+            </div>
+        </div>
+
+    </div>
+    
+}
+<div>
+    @Html.ActionLink("الرجوع إلى القائمة", "viewOrder")
+</div>
