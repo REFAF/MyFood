@@ -28,8 +28,11 @@ namespace MyFood.Models
         [StringLength(50)]
         public string day { get; set; }
 
-        [Display(Name = "مدى صحة وسلامة العاملين")]
-        public bool? staff_health { get; set; }
+        [Display(Name = "سليم")]
+        public bool healthy { get; set; }
+
+        [Display(Name = "غير سليم")]
+        public bool not_healthy { get; set; }
 
         [Display(Name = "عدد العربيات")]
         public byte? cart_num { get; set; }
@@ -38,10 +41,10 @@ namespace MyFood.Models
         public byte? pot_num { get; set; }
 
         [Display(Name = "طعام صالح")]
-        public bool? edible { get; set; }
+        public bool edible { get; set; }
 
         [Display(Name = "طعام غير صالح")]
-        public bool? inedible { get; set; }
+        public bool inedible { get; set; }
 
         [Display(Name = "وقت الخروج")]
         public DateTime? exit_time { get; set; }

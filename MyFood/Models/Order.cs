@@ -62,11 +62,6 @@ namespace MyFood.Models
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
 
-        [Display(Name = "قبول")]
-        public bool Accept { get; set; }
-
-        [Display(Name = "رفض")]
-        public bool Deny { get; set; }
-
+        public string order_status { get; set; }
     }
 }

@@ -1,0 +1,369 @@
+﻿@model MyFood.Models.FoodReceiptForm3
+@{
+    ViewBag.Title = "FoodReceiptReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2> تقرير صحة وسلامة استلام الطعام</h2>
+
+@using (Html.BeginForm("FoodReceiptReport", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.car_num, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.car_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.car_num, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.staff_num, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.staff_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.staff_num, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.date, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.date,
+                    new { htmlAttributes = new { @class = "form-control", @type = "date", data_val_date = "صيغة التاريخ غير صحيحة" } })
+                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.day, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    @*<div class="form-group">
+            @Html.Label("مدى صحة وسلامة العاملين:", new { @class = "control-label col-md-2" })
+            <div class="checkbox">
+                @Html.Label("        ", new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.CheckBoxFor(m => m.healthy) سليم
+                </div>
+            </div>
+
+            <div class="checkbox">
+                @Html.Label("        ", new { @class = "control-label col-md-2" })
+                <div>
+                    @Html.CheckBoxFor(m => m.not_healthy) غير سليم
+                </div>
+            </div>
+
+        </div>*@
+    @*<div class="form-group">
+            @Html.Label("الحالة الصحية", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NotHealthy.nothealthy_type_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.nothealthy_type_name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NotHealthy.Employee1_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.Employee1_name, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.NotHealthy.Employee2_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.Employee2_name, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+
+    <table class="table-condensed">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.car_num)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.car_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.car_num, "", new { @class = "text-danger" })
+            </td>
+
+            <td>
+                @Html.LabelFor(model => model.staff_num)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.staff_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.staff_num, "", new { @class = "text-danger" })
+            </td>
+
+            <td>
+                @Html.LabelFor(model => model.date)
+            </td>
+            <td>
+                @Html.EditorFor(m => m.date,
+     new { htmlAttributes = new { @class = "form-control", @type = "date", data_val_date = "صيغة التاريخ غير صحيحة" } })
+                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+            </td>
+
+            <td>
+                @Html.LabelFor(model => model.day)
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+    <hr />
+    <table class="table-condensed">
+        <tr>
+            <td>
+                @Html.Label("مدى صحة وسلامة العاملين:")
+            </td>
+            <td>
+                @Html.CheckBoxFor(m => m.healthy) سليم
+                @Html.CheckBoxFor(m => m.not_healthy) غير سليم
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.NotHealthy.nothealthy_type_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.nothealthy_type_name, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:")
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.NotHealthy.Employee1_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.Employee1_name, "", new { @class = "text-danger" })
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.NotHealthy.Employee2_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.Employee2_name, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Label("ملاحظات")
+                @Html.TextBoxFor(model => model.NotHealthy.note, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NotHealthy.note, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+    </table>
+    <hr />
+
+    <table class="table-condensed">
+        <tr>
+            <td>
+                @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.staff_name)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.clothing)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.hair)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.nails)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.clothing_claean)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.head_cover)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.face_mask)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.gloves)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.SafetyTool.note)
+            </td>
+        </tr>
+
+        @for (var i = 0; i < 3; i++)
+        {
+            <tr>
+                <td>
+                    @Html.TextBoxFor(model => model.SafetyTool.staff_name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SafetyTool.staff_name, "", new { @class = "text-danger" })
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.clothing)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.hair)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.nails)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.clothing_claean)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.head_cover)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.face_mask)
+                </td>
+                <td>
+                    @Html.CheckBoxFor(model => model.SafetyTool.gloves)
+                </td>
+                <td>
+                    @Html.TextBoxFor(model => model.SafetyTool.note, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SafetyTool.note, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <hr />
+
+    <div>
+        @Html.Label("نوع الطعام")
+    </div>
+    <table class="table-condensed">
+
+        <tr>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.rice)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.rice)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.water)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.water)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.chicken)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.chicken)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.soup)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.soup)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.meat)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.meat)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.pies)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.pies)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.dates)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.dates)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.bread)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.bread)
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.fruit)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.fruit)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.dessert)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.dessert)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.gursan)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.gursan)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.groats)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.groats)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.pasta)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.pasta)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.vegetables)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.vegetables)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.buffet)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.buffet)
+            </td>
+            <td>
+                @Html.CheckBoxFor(model => model.FoodType.juices)
+            </td>
+            <td>
+                @Html.LabelFor(model => model.FoodType.juices)
+            </td>
+        </tr>
+
+    </table>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.order_id)
+        @Html.DisplayFor(model => model.Order.Unit.unit_name)
+        @Html.DisplayFor(model => model.Order.unit_name)
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            @Html.Label("           ", new { @class = "control-label col-md-2" })
+
+            @Html.CheckBoxFor(model => model.edible)طعام صالح
+
+            @Html.CheckBoxFor(model => model.inedible) طعام غير صالح
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="حفظ" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

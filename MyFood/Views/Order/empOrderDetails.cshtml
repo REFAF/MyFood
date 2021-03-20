@@ -1,13 +1,14 @@
 ﻿@model MyFood.Models.Order
 @{
-    ViewBag.Title = "orderDetails";
+    ViewBag.Title = "empOrderDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 <h2>الطلب الوارد</h2>
 
 
-@using (Html.BeginForm("orderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("empOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
@@ -21,7 +22,6 @@
             </div>
         </div>
         <br />
-
         <div class="form-group">
             @Html.LabelFor(model => model.phone_number, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
@@ -42,7 +42,6 @@
                 @Html.DisplayFor(model => model.plate_num, new { @class = "form-control" })
             </div>
         </div>
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.persons_num, new { @class = "col-md-2 control-label" })
@@ -79,38 +78,29 @@
             </div>
         </div>
 
-
-        <div class="form-group">
-
-            <div class="col-md-10">
-                @Html.Label("           ", new { @class = "control-label col-md-2" })
-
-                @Html.RadioButtonFor(model => model.order_status, "قبول")
-                قبول
-
-                @Html.RadioButtonFor(model => model.order_status, "رفض")
-                رفض
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.emp_id, new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-                @Html.DropDownList("emp_id", new SelectList(ViewBag.UserName, "Id", "name"), " اختر رئيس الفريق...", new { @class = "form-control" })
+                @Html.DisplayFor(model => model.empId.name, new { @class = "form-control" })
             </div>
         </div>
-
-
-        <br />
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="حفظ" class="btn btn-default" />
+            @Html.LabelFor(model => model.sup_id, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.supId.name, new { @class = "form-control" })
             </div>
+        </div>
+        <br />
+        <div>
+            @Html.Label("      ", new { @class = "control-label col-md-2" })
+            @Html.ActionLink("البدء بتنفيذ الطلب", "FoodReceiptReport",
+           new { id = Model.order_id, sup_id = Model.sup_id })
         </div>
 
     </div>
 
-        }
-        <div>
-            @Html.ActionLink("الرجوع إلى القائمة", "viewOrder")
-        </div>
+}
+<div>
+    @Html.Label("      ", new { @class = "control-label col-md-2" })
+    @Html.ActionLink("الرجوع إلى القائمة", "AssignedOrder")
+</div>
