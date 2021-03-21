@@ -530,6 +530,26 @@
     <Compile Include="Migrations\202103170051156_AlterOrderTable5.Designer.cs">
       <DependentUpon>202103170051156_AlterOrderTable5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103191847227_AlterFoodReceiptForm3Table.cs" />
+    <Compile Include="Migrations\202103191847227_AlterFoodReceiptForm3Table.Designer.cs">
+      <DependentUpon>202103191847227_AlterFoodReceiptForm3Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103192005012_AlterSafetyToolTable.cs" />
+    <Compile Include="Migrations\202103192005012_AlterSafetyToolTable.Designer.cs">
+      <DependentUpon>202103192005012_AlterSafetyToolTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103201800504_AddNewPropToOrderTable.cs" />
+    <Compile Include="Migrations\202103201800504_AddNewPropToOrderTable.Designer.cs">
+      <DependentUpon>202103201800504_AddNewPropToOrderTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103202008417_AlterFoodTypeTable.cs" />
+    <Compile Include="Migrations\202103202008417_AlterFoodTypeTable.Designer.cs">
+      <DependentUpon>202103202008417_AlterFoodTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103202235073_AddFoodReceiptForm3Table2.cs" />
+    <Compile Include="Migrations\202103202235073_AddFoodReceiptForm3Table2.Designer.cs">
+      <DependentUpon>202103202235073_AddFoodReceiptForm3Table2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -545,6 +565,7 @@
     <Compile Include="Models\FamilyDiet.cs" />
     <Compile Include="Models\FoodReceiptForm3.cs" />
     <Compile Include="Models\FoodType.cs" />
+    <Compile Include="Models\Form3ViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Neighborhood.cs" />
@@ -569,6 +590,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-flaty.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -960,6 +982,9 @@
     <Content Include="Scripts\moment-with-locales.min.js.map" />
     <Content Include="Views\Order\viewOrder.cshtml" />
     <Content Include="Views\Order\orderDetails.cshtml" />
+    <Content Include="Views\Order\FoodReceiptReport.cshtml" />
+    <Content Include="Views\Order\AssignedOrder.cshtml" />
+    <Content Include="Views\Order\empOrderDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1224,6 +1249,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103170051156_AlterOrderTable5.resx">
       <DependentUpon>202103170051156_AlterOrderTable5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103191847227_AlterFoodReceiptForm3Table.resx">
+      <DependentUpon>202103191847227_AlterFoodReceiptForm3Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103192005012_AlterSafetyToolTable.resx">
+      <DependentUpon>202103192005012_AlterSafetyToolTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103201800504_AddNewPropToOrderTable.resx">
+      <DependentUpon>202103201800504_AddNewPropToOrderTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103202008417_AlterFoodTypeTable.resx">
+      <DependentUpon>202103202008417_AlterFoodTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103202235073_AddFoodReceiptForm3Table2.resx">
+      <DependentUpon>202103202235073_AddFoodReceiptForm3Table2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

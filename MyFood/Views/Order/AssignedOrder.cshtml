@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MyFood.Models.Order>
+@{
+    ViewBag.Title = "AssignedOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>الطلبات الواردة</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("رقم الطلب")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.event_date)
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.order_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.event_date)
+            </td>
+            <td>
+                @Html.ActionLink("عرض الطلب", "empOrderDetails", new { id = item.order_id })
+            </td>
+        </tr>
+    }
+
+</table>

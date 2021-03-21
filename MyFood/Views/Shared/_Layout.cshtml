@@ -6,7 +6,7 @@
     <title>جمعية طعامي</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @*<link rel="stylesheet" href="~/public/plugins/datatables/dataTables.bootstrap.css">*@
+    <link rel="stylesheet" href="~/public/plugins/datatables/dataTables.bootstrap.css">
 
 
 </head>
@@ -27,7 +27,6 @@
                     <li>@Html.ActionLink("عن الجمعية", "About", "Home")</li>
                     <li>@Html.ActionLink("تواصل معنا", "Contact", "Home")</li>
                     <li>@Html.ActionLink("خدمة جمع الطعام", "OrderForm1", "Order")</li>
-                    <li>@Html.ActionLink("الطلبات الواردة", "viewOrder", "Order")</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             لوحة التحكم
@@ -41,6 +40,8 @@
                             <li>@Html.ActionLink("الفئات", "Index", "Categories")</li>
                             <li>@Html.ActionLink("الوحدات", "Index", "Units")</li>
                             <li>@Html.ActionLink("أصناف أدوات التعبئة", "Index", "Tools")</li>
+                            <li>@Html.ActionLink("الطلبات الواردة", "viewOrder", "Order")</li>
+                            <li>@Html.ActionLink("الطلبات المسندة", "AssignedOrder", "Order")</li>
 
                         </ul>
                     </li>
@@ -56,8 +57,7 @@
             <p>جميع الحقوق محفوظة لجمعية طعامي - @DateTime.Now.Year &copy; </p>
         </footer>
     </div>
-    @*<script src="~/public/plugins/datatables/jquery.dataTables.min.js"></script>*@
-    @*<script src="~/public/plugins/datatables/dataTables.bootstrap.min.js"></script>*@
+    
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
