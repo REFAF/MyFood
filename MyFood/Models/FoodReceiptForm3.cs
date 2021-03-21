@@ -55,13 +55,13 @@ namespace MyFood.Models
         [Display(Name = "وقت الرجوع")]
         public DateTime? return_time { get; set; }
 
-        [Display(Name = "عدد الكيلوات أثناءالخروج")]
+        [Display(Name = "عدد الكيلوات أثناء الخروج")]
         public byte? kilos_exit_time { get; set; }
 
-        [Display(Name = "عدد الكيلوات أثناءالوصول")]
+        [Display(Name = "عدد الكيلوات أثناء الوصول")]
         public byte? kilos_arrival_time { get; set; }
 
-        [Display(Name = "عدد الكيلوات أثناءالرجوع")]
+        [Display(Name = "عدد الكيلوات أثناء الرجوع")]
         public byte? kilos_return_time { get; set; }
 
         [StringLength(10)]

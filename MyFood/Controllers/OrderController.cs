@@ -133,27 +133,33 @@ namespace MyFood.Controllers
         }
 
         //GET: Order/FoodReceiptReport
-        public ActionResult FoodReceiptReport()
+        public ActionResult FoodReceiptReport(long id)
         {
-            var form3 = db.FoodReceiptForms3.Include(c => c.Order).Include(c => c.teamLeaderId);
-            
+            FoodReceiptForm3 form3 = new FoodReceiptForm3()
+            {
+                order_id = id,
+            };
             return View(form3);
         }
 
         //POST: Order/FoodReceiptReport
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FoodReceiptReport( long id, string sup_id, FoodReceiptForm3 foodReceiptForm3,
+        public ActionResult FoodReceiptReport( long id, FoodReceiptForm3 foodReceiptForm3,
             NotHealthy notHealthy, SafetyTool safetyTool, FoodType foodType)
         {
+            var order = db.Orders.Include(c => c.empId)
+                .Include(c => c.supId)
+                .SingleOrDefault(c => c.order_id == id);
+
             var form3 = new FoodReceiptForm3();
             var staff_health = new NotHealthy();
             var staff_tool = new SafetyTool();
             var food = new FoodType();
 
             form3.team_leader_id = User.Identity.GetUserId();
-            form3.order_id = id;
-            form3.sup_id = sup_id;
+            form3.order_id = order.order_id;
+            form3.sup_id = order.sup_id;
             form3.car_num = foodReceiptForm3.car_num;
             form3.staff_num = foodReceiptForm3.staff_num;
             form3.date = foodReceiptForm3.date;
@@ -167,7 +173,10 @@ namespace MyFood.Controllers
             staff_health.Employee2_name = notHealthy.Employee2_name;
             staff_health.note = notHealthy.note;
 
-            for(var i = 0; i<3; i++)
+            form3.nothealthy_type_id = notHealthy.nothealthy_type_id;
+
+            var list = new List<SafetyTool>();
+            for (var i = 0; i<3; i++)
             {
                 staff_tool.staff_name = safetyTool.staff_name;
                 staff_tool.clothing = safetyTool.clothing;
@@ -179,7 +188,12 @@ namespace MyFood.Controllers
                 staff_tool.gloves = safetyTool.gloves;
                 staff_tool.note = safetyTool.note;
 
+                list.Add(staff_tool);
+
+                //form3.safetyTool_id = safetyTool.safetyTool_id;
+
                 db.SafetyTools.Add(staff_tool);
+                db.SaveChanges();
             }
 
             food.rice = foodType.rice;
@@ -198,6 +212,8 @@ namespace MyFood.Controllers
             food.vegetables = foodType.vegetables;
             food.buffet = foodType.buffet;
             food.juices = foodType.juices;
+
+            form3.food_type_id = foodType.food_type_id;
 
             form3.cart_num = foodReceiptForm3.cart_num;
             form3.pot_num = foodReceiptForm3.pot_num;
@@ -218,7 +234,7 @@ namespace MyFood.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("empOrderDetails");
+            return RedirectToAction("AssignedOrder");
         }
     }
 }
