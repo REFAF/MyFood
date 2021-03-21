@@ -22,3 +22,18 @@ select,
 textarea {
     max-width: 280px;
 }
+
+div.dataTables_wrapper {
+    direction: rtl;
+}
+
+/* Ensure that the demo table scrolls */
+th, td {
+    white-space: nowrap;
+}
+
+div.dataTables_wrapper {
+    width: auto;
+    margin: 0 auto;
+}
+
