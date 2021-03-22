@@ -550,6 +550,18 @@
     <Compile Include="Migrations\202103202235073_AddFoodReceiptForm3Table2.Designer.cs">
       <DependentUpon>202103202235073_AddFoodReceiptForm3Table2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103221805180_AlterForm3ReportTable.cs" />
+    <Compile Include="Migrations\202103221805180_AlterForm3ReportTable.Designer.cs">
+      <DependentUpon>202103221805180_AlterForm3ReportTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221810181_AlterForm3ReportTable1.cs" />
+    <Compile Include="Migrations\202103221810181_AlterForm3ReportTable1.Designer.cs">
+      <DependentUpon>202103221810181_AlterForm3ReportTable1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103221818508_AlterForm3Table.cs" />
+    <Compile Include="Migrations\202103221818508_AlterForm3Table.Designer.cs">
+      <DependentUpon>202103221818508_AlterForm3Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -1264,6 +1276,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103202235073_AddFoodReceiptForm3Table2.resx">
       <DependentUpon>202103202235073_AddFoodReceiptForm3Table2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221805180_AlterForm3ReportTable.resx">
+      <DependentUpon>202103221805180_AlterForm3ReportTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221810181_AlterForm3ReportTable1.resx">
+      <DependentUpon>202103221810181_AlterForm3ReportTable1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103221818508_AlterForm3Table.resx">
+      <DependentUpon>202103221818508_AlterForm3Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

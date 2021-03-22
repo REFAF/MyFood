@@ -413,15 +413,15 @@
 
         <div class="row">
             <div class="col-sm-2">
-                @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
-                @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
-                @Html.TextBoxFor(model => model.return_time, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -47,13 +47,13 @@ namespace MyFood.Models
         public bool inedible { get; set; }
 
         [Display(Name = "وقت الخروج")]
-        public DateTime? exit_time { get; set; }
+        public TimeSpan? exit_time { get; set; }
 
         [Display(Name = "وقت الوصول")]
-        public DateTime? arrival_time { get; set; }
+        public TimeSpan? arrival_time { get; set; }
 
         [Display(Name = "وقت الرجوع")]
-        public DateTime? return_time { get; set; }
+        public TimeSpan? return_time { get; set; }
 
         [Display(Name = "عدد الكيلوات أثناء الخروج")]
         public byte? kilos_exit_time { get; set; }
@@ -72,8 +72,18 @@ namespace MyFood.Models
 
         public byte? nothealthy_type_id { get; set; }
         public NotHealthy NotHealthy { get; set; }
-        public int? safetyTool_id { get; set; }
-        public SafetyTool SafetyTool { get; set; }
+
+        [ForeignKey("SafetyToolEmp1")]
+        public int? safety_id_emp1 { get; set; }
+        public SafetyTool SafetyToolEmp1 { get; set; }
+
+        [ForeignKey("SafetyToolEmp2")]
+        public int? safety_id_emp2 { get; set; }
+        public SafetyTool SafetyToolEmp2 { get; set; }
+
+        [ForeignKey("SafetyToolEmp3")]
+        public int? safety_id_emp3 { get; set; }
+        public SafetyTool SafetyToolEmp3 { get; set; }
 
         [Display(Name = "الوجهة التي تم الاستلام منها")]
         [ForeignKey("Order")]
