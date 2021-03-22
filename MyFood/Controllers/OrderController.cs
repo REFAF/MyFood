@@ -135,18 +135,22 @@ namespace MyFood.Controllers
         //GET: Order/FoodReceiptReport
         public ActionResult FoodReceiptReport(long id)
         {
-            FoodReceiptForm3 form3 = new FoodReceiptForm3()
+            ViewModelForm3 viewmodel = new ViewModelForm3()
             {
+                safetyTool = new List<SafetyTool> {new SafetyTool { staff_name = "", clothing = false,
+                    hair = false, nails = false, clothing_claean = false,
+                    head_cover = false, face_mask = false,gloves = false, note = ""} },
+
                 order_id = id,
             };
-            return View(form3);
+            return View(viewmodel);
         }
 
         //POST: Order/FoodReceiptReport
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult FoodReceiptReport( long id, FoodReceiptForm3 foodReceiptForm3,
-            NotHealthy notHealthy, SafetyTool safetyTool, FoodType foodType)
+        public ActionResult FoodReceiptReport(long id, ViewModelForm3 viewModelForm3,
+            NotHealthy notHealthy, List<SafetyTool> safety, FoodType foodType)
         {
             var order = db.Orders.Include(c => c.empId)
                 .Include(c => c.supId)
@@ -160,13 +164,26 @@ namespace MyFood.Controllers
             form3.team_leader_id = User.Identity.GetUserId();
             form3.order_id = order.order_id;
             form3.sup_id = order.sup_id;
-            form3.car_num = foodReceiptForm3.car_num;
-            form3.staff_num = foodReceiptForm3.staff_num;
-            form3.date = foodReceiptForm3.date;
-            form3.day = foodReceiptForm3.day;
 
-            form3.healthy = foodReceiptForm3.healthy;
-            form3.not_healthy = foodReceiptForm3.not_healthy;
+            form3.car_num = viewModelForm3.car_num;
+            form3.staff_num = viewModelForm3.staff_num;
+            form3.date = viewModelForm3.date;
+            form3.day = viewModelForm3.day;
+
+
+            foreach (var i in viewModelForm3.safetyTool)
+            {
+                db.SafetyTools.Add(i);
+                i.f3_id = form3.f3_id;
+            }
+
+            safety = new List<SafetyTool> { new SafetyTool { staff_name = "", clothing = false,
+                hair = false, nails = false, clothing_claean = false ,head_cover = false,
+                face_mask = false,gloves = false, note = ""} };
+
+            
+            form3.healthy = viewModelForm3.healthy;
+            form3.not_healthy = viewModelForm3.not_healthy;
 
             staff_health.nothealthy_type_name = notHealthy.nothealthy_type_name;
             staff_health.Employee1_name = notHealthy.Employee1_name;
@@ -174,28 +191,6 @@ namespace MyFood.Controllers
             staff_health.note = notHealthy.note;
 
             form3.nothealthy_type_id = notHealthy.nothealthy_type_id;
-
-            var list = new List<SafetyTool>();
-            for (var i = 0; i<3; i++)
-            {
-                staff_tool.staff_name = safetyTool.staff_name;
-                staff_tool.clothing = safetyTool.clothing;
-                staff_tool.hair = safetyTool.hair;
-                staff_tool.nails = safetyTool.nails;
-                staff_tool.clothing_claean = safetyTool.clothing_claean;
-                staff_tool.head_cover = safetyTool.head_cover;
-                staff_tool.face_mask = safetyTool.face_mask;
-                staff_tool.gloves = safetyTool.gloves;
-                staff_tool.note = safetyTool.note;
-
-                list.Add(staff_tool);
-
-                //form3.safetyTool_id = safetyTool.safetyTool_id;
-
-                db.SafetyTools.Add(staff_tool);
-                db.SaveChanges();
-            }
-
             food.rice = foodType.rice;
             food.water = foodType.water;
             food.chicken = foodType.chicken;
@@ -215,18 +210,18 @@ namespace MyFood.Controllers
 
             form3.food_type_id = foodType.food_type_id;
 
-            form3.cart_num = foodReceiptForm3.cart_num;
-            form3.pot_num = foodReceiptForm3.pot_num;
-            form3.edible = foodReceiptForm3.edible;
-            form3.inedible = foodReceiptForm3.inedible;
-            form3.exit_time = foodReceiptForm3.exit_time;
-            form3.arrival_time = foodReceiptForm3.arrival_time;
-            form3.return_time = foodReceiptForm3.return_time;
-            form3.kilos_exit_time = foodReceiptForm3.kilos_exit_time;
-            form3.kilos_arrival_time = foodReceiptForm3.kilos_arrival_time;
-            form3.kilos_return_time = foodReceiptForm3.kilos_return_time;
+            form3.cart_num = viewModelForm3.cart_num;
+            form3.pot_num = viewModelForm3.pot_num;
+            form3.edible = viewModelForm3.edible;
+            form3.inedible = viewModelForm3.inedible;
+            form3.exit_time = viewModelForm3.exit_time;
+            form3.arrival_time = viewModelForm3.arrival_time;
+            form3.return_time = viewModelForm3.return_time;
+            form3.kilos_exit_time = viewModelForm3.kilos_exit_time;
+            form3.kilos_arrival_time = viewModelForm3.kilos_arrival_time;
+            form3.kilos_return_time = viewModelForm3.kilos_return_time;
 
-            form3.note = foodReceiptForm3.note;
+            form3.note = viewModelForm3.note;
 
             db.FoodReceiptForms3.Add(form3);
             db.NotHealthies.Add(staff_health);

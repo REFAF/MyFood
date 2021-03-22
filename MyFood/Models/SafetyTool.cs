@@ -40,5 +40,9 @@ namespace MyFood.Models
         [Display(Name = "ملاحظات")]
         public string note { get; set; }
 
+        [ForeignKey("FoodReceiptForm3")]
+        public int? f3_id { get; set; }
+        public FoodReceiptForm3 FoodReceiptForm3 { get; set; }
+
     }
 }

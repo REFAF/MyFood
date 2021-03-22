@@ -14,8 +14,8 @@ namespace MyFood.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int f3_id { get; set; }
 
-        [Display(Name ="رقم السيارة")]
-        public byte? car_num { get; set; }
+        [Display(Name = "رقم السيارة")]
+        public int? car_num { get; set; }
 
         [Display(Name = "عدد العاملين")]
         public byte? staff_num { get; set; }
@@ -67,23 +67,20 @@ namespace MyFood.Models
         [StringLength(10)]
         public string note { get; set; }
 
-
-        //public byte? staff_health_status_type_id { get; set; }
-
         public byte? nothealthy_type_id { get; set; }
         public NotHealthy NotHealthy { get; set; }
 
-        [ForeignKey("SafetyToolEmp1")]
-        public int? safety_id_emp1 { get; set; }
-        public SafetyTool SafetyToolEmp1 { get; set; }
+        //[ForeignKey("SafetyToolEmp1")]
+        //public int? safety_id_emp1 { get; set; }
+        //public SafetyTool SafetyToolEmp1 { get; set; }
 
-        [ForeignKey("SafetyToolEmp2")]
-        public int? safety_id_emp2 { get; set; }
-        public SafetyTool SafetyToolEmp2 { get; set; }
+        //[ForeignKey("SafetyToolEmp2")]
+        //public int? safety_id_emp2 { get; set; }
+        //public SafetyTool SafetyToolEmp2 { get; set; }
 
-        [ForeignKey("SafetyToolEmp3")]
-        public int? safety_id_emp3 { get; set; }
-        public SafetyTool SafetyToolEmp3 { get; set; }
+        //[ForeignKey("SafetyToolEmp3")]
+        //public int? safety_id_emp3 { get; set; }
+        //public SafetyTool SafetyToolEmp3 { get; set; }
 
         [Display(Name = "الوجهة التي تم الاستلام منها")]
         [ForeignKey("Order")]

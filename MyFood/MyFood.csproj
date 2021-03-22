@@ -562,6 +562,22 @@
     <Compile Include="Migrations\202103221818508_AlterForm3Table.Designer.cs">
       <DependentUpon>202103221818508_AlterForm3Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103222236346_AlterFKinForm3AndSaftyToolTables.cs" />
+    <Compile Include="Migrations\202103222236346_AlterFKinForm3AndSaftyToolTables.Designer.cs">
+      <DependentUpon>202103222236346_AlterFKinForm3AndSaftyToolTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103222255490_AlterForm3.cs" />
+    <Compile Include="Migrations\202103222255490_AlterForm3.Designer.cs">
+      <DependentUpon>202103222255490_AlterForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103222313281_AlterForm3-car.cs" />
+    <Compile Include="Migrations\202103222313281_AlterForm3-car.Designer.cs">
+      <DependentUpon>202103222313281_AlterForm3-car.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103222316291_AlterForm3-car-add.cs" />
+    <Compile Include="Migrations\202103222316291_AlterForm3-car-add.Designer.cs">
+      <DependentUpon>202103222316291_AlterForm3-car-add.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -1285,6 +1301,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103221818508_AlterForm3Table.resx">
       <DependentUpon>202103221818508_AlterForm3Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103222236346_AlterFKinForm3AndSaftyToolTables.resx">
+      <DependentUpon>202103222236346_AlterFKinForm3AndSaftyToolTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103222255490_AlterForm3.resx">
+      <DependentUpon>202103222255490_AlterForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103222313281_AlterForm3-car.resx">
+      <DependentUpon>202103222313281_AlterForm3-car.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103222316291_AlterForm3-car-add.resx">
+      <DependentUpon>202103222316291_AlterForm3-car-add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

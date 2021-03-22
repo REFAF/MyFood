@@ -1,275 +1,129 @@
-﻿@model MyFood.Models.FoodReceiptForm3
+﻿@model MyFood.Models.ViewModelForm3
 @{
     ViewBag.Title = "FoodReceiptReport";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    .con-dir-clo {
-        flex-direction: column;
-    }
-</style>
+<br />
 <h2> تقرير صحة وسلامة استلام الطعام</h2>
 
 @using (Html.BeginForm("FoodReceiptReport", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.car_num, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.car_num, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.car_num, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.staff_num, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.staff_num, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.staff_num, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    @*<div class="form-group">
-            @Html.LabelFor(model => model.date, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.EditorFor(m => m.date,
-                    new { htmlAttributes = new { @class = "form-control", @type = "date", data_val_date = "صيغة التاريخ غير صحيحة" } })
-                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.day, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-    @*<div class="form-group">
-            @Html.Label("مدى صحة وسلامة العاملين:", new { @class = "control-label col-md-2" })
-            <div class="checkbox">
-                @Html.Label("        ", new { @class = "control-label col-md-2" })
-                <div>
-                    @Html.CheckBoxFor(m => m.healthy) سليم
-                </div>
-            </div>
-
-            <div class="checkbox">
-                @Html.Label("        ", new { @class = "control-label col-md-2" })
-                <div>
-                    @Html.CheckBoxFor(m => m.not_healthy) غير سليم
-                </div>
-            </div>
-
-        </div>*@
-    @*<div class="form-group">
-            @Html.Label("الحالة الصحية", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.NotHealthy.nothealthy_type_name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NotHealthy.nothealthy_type_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.NotHealthy.Employee1_name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NotHealthy.Employee1_name, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.NotHealthy.Employee2_name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NotHealthy.Employee2_name, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
 
     <div class="container-sm">
-        <div></div>
-    </div>
-
-    <table class="table-condensed">
-        <tr>
-            <td>
+        <div class="row">
+            <div class="col-sm-2">
                 @Html.LabelFor(model => model.car_num)
-            </td>
-            <td>
                 @Html.TextBoxFor(model => model.car_num, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.car_num, "", new { @class = "text-danger" })
-            </td>
-
-            <td>
+            </div>
+            <div class="col-sm-2">
                 @Html.LabelFor(model => model.staff_num)
-            </td>
-            <td>
                 @Html.TextBoxFor(model => model.staff_num, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.staff_num, "", new { @class = "text-danger" })
-            </td>
-
-            <td>
+            </div>
+            <div class="col-sm-2">
                 @Html.LabelFor(model => model.date)
-            </td>
-            <td>
-                @Html.EditorFor(m => m.date,
-               new { htmlAttributes = new { @class = "form-control", @type = "date", data_val_date = "صيغة التاريخ غير صحيحة" } })
+                @Html.EditorFor(m => m.date, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+               @type = "date",
+                        data_val_date = "صيغة التاريخ غير صحيحة"
+                    }
+                })
                 @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
-            </td>
-
-            <td>
+            </div>
+            <div class="col-sm-2">
                 @Html.LabelFor(model => model.day)
-            </td>
-            <td>
                 @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
 
     <hr />
-    <table class="table-condensed">
-        <tr>
-            <td>
-                @Html.Label("مدى صحة وسلامة العاملين:")
-            </td>
-            <td>
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.Label("صحة وسلامة العاملين:")<br />
                 @Html.CheckBoxFor(m => m.healthy) سليم
                 @Html.CheckBoxFor(m => m.not_healthy) غير سليم
-            </td>
-            <td>
-                @Html.Label("يذكر:")
-            </td>
-            <td>
+            </div>
+            <div class="col-sm-2">
+                @Html.Label(" يذكر نوع الحالة:")
                 @Html.TextBoxFor(model => model.NotHealthy.nothealthy_type_name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NotHealthy.nothealthy_type_name, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        <tr>
-            <td>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm">
                 @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:")
-            </td>
-            <td>
+            </div>
+            <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.NotHealthy.Employee1_name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NotHealthy.Employee1_name, "", new { @class = "text-danger" })
-            </td>
-            <td>
+            </div>
+            <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.NotHealthy.Employee2_name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NotHealthy.Employee2_name, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.Label("ملاحظات")
-                @Html.TextBoxFor(model => model.NotHealthy.note, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.NotHealthy.note, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
+
     <hr />
 
-    <table class="table-condensed">
-        <tr>
-            <td>
-                @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
-            </td>
-        </tr>
+    <div>
+        <div><a href="#" id="addNew">Add New</a></div>
+        <table id="dataTable" border="0">
+            <tr>
+                <th>staff_name</th>
+                <th>clothing</th>
+                <th>hair</th>
+                <th>nails</th>
+                <th>clothing_claean</th>
+                <th>head_cover</th>
+                <th>face_mask</th>
+                <th>gloves</th>
+                <th>note</th>
+                <th></th>
+            </tr>
+            @if (Model != null && Model.safetyTool.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model.safetyTool)
+                {
+                    <tr style="border:1px solid black">
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].hair)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].nails)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing_claean)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].head_cover)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].face_mask)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].gloves)</td>
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note)</td>
+                        <td>
+                            @if (j > 0)
+                            {
+                                <a href="#" class="remove">Remove</a>
+                            }
+                        </td>
 
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.staff_name)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.clothing)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.hair)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.nails)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.clothing_claean)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.head_cover)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.face_mask)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.gloves)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.SafetyTool.note)
-            </td>
-        </tr>
+                    </tr>
+                    j++;
+                }
+            }
+        </table>
 
-        @*@for (var i = 0; i < 3; i++)
-        {*@
-        <tr>
-            <td>
-                @Html.TextBoxFor(model => model.SafetyTool.staff_name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SafetyTool.staff_name, "", new { @class = "text-danger" })
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.clothing)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.hair)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.nails)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.clothing_claean)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.head_cover)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.face_mask)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.gloves)
-            </td>
-            <td>
-                @Html.TextBoxFor(model => model.SafetyTool.note, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SafetyTool.note, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.TextBoxFor(model => model.SafetyTool.staff_name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SafetyTool.staff_name, "", new { @class = "text-danger" })
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.clothing)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.hair)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.nails)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.clothing_claean)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.head_cover)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.face_mask)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.SafetyTool.gloves)
-            </td>
-            <td>
-                @Html.TextBoxFor(model => model.SafetyTool.note, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SafetyTool.note, "", new { @class = "text-danger" })
-            </td>
-        </tr>
-        @*}*@
+        @*<input type="submit" value="Save" />*@
+    </div>
 
-    </table>
     <hr />
 
     <div>
@@ -383,9 +237,12 @@
     </table>
     <br />
 
+    <div class="container-sm">
+        <div></div>
+    </div>
     <div class="form-group">
         <div class="col-md-10">
-            @Html.Label("           ", new { @class = "control-label col-md-2" })
+            @Html.Label("تصنيف الطعام:", new { @class = "control-label col-md-2" })
             @Html.CheckBoxFor(model => model.edible)
             @Html.Label("طعام صالح")
             @Html.CheckBoxFor(model => model.inedible)
@@ -394,33 +251,19 @@
     </div>
 
     <div class="container-sm">
-        @*<div class="row">
-                <div class="col-sm-6">
-                    @Html.Label("توقيت السيارة وقراءة عداد الكيلوات")
-                </div>
-            </div>*@
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.exit_time)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.arrival_time)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.return_time)
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
+                @Html.LabelFor(model => model.arrival_time)
                 @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
+                @Html.LabelFor(model => model.return_time)
                 @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
             </div>
@@ -428,36 +271,27 @@
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.kilos_exit_time)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.kilos_arrival_time)
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.kilos_return_time)
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.kilos_exit_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_arrival_time)
                 @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_return_time)
                 @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+
     <br />
-    <div class="container">
+    <div class="container-sm">
         <div class="row">
-            <div class=" col-sm-1">
+            <div class=" col-sm-2">
                 @Html.Label("ملاحظات")
-            </div>
-            <div class="col-sm-2">
                 @Html.TextBoxFor(model => model.note, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
             </div>
@@ -473,7 +307,51 @@
     </div>
 }
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script language="javascript">
+        $(document).ready(function () {
+
+            //1. Add new row
+            $("#addNew").click(function (e) {
+                e.preventDefault();
+                var $tableBody = $("#dataTable");
+                var $trLast = $tableBody.find("tr:last");
+                var $trNew = $trLast.clone();
+
+                var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                $trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                $.each($trNew.find(':input'), function (i, val) {
+                    // Replaced Name
+                    var oldN = $(this).attr('name');
+                    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
+                    $(this).attr('name', newN);
+                    //Replaced value
+                    var type = $(this).attr('type');
+                    if (type.toLowerCase() == "text") {
+                        $(this).attr('value', '');
+                    }
+
+                    // If you have another Type then replace with default value
+                    $(this).removeClass("input-validation-error");
+
+                });
+                $trLast.after($trNew);
+
+                // Re-assign Validation
+                var form = $("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+            });
+
+            // 2. Remove
+            $('a.remove').live("click", function (e) {
+                e.preventDefault();
+                $(this).parent().parent().remove();
+            });
+
+        });
+    </script>
+}
