@@ -59,7 +59,7 @@ namespace MyFood.Controllers
         //Get: Order/viewOrder
         public ActionResult viewOrder()
         {
-            var order = db.Orders.Where(o => o.order_status == null).ToList();
+            var order = db.Orders.Where(o => o.accept == null).ToList();
             return View(order);
         }
 
@@ -96,7 +96,7 @@ namespace MyFood.Controllers
                 var orderInDb = db.Orders.SingleOrDefault(c => c.order_id == id);
 
                 
-                orderInDb.order_status = order.order_status;
+                orderInDb.accept = order.accept;
                 orderInDb.sup_id = User.Identity.GetUserId();
                 orderInDb.emp_id = order.emp_id;
 

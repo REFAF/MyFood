@@ -61,7 +61,7 @@ namespace MyFood.Models
         [Display(Name = "مشرف صالات")]
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
-
+        public string accept { get; set; }
         public string order_status { get; set; }
     }
 }

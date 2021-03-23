@@ -578,6 +578,10 @@
     <Compile Include="Migrations\202103222316291_AlterForm3-car-add.Designer.cs">
       <DependentUpon>202103222316291_AlterForm3-car-add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103230133062_AddAcceptAndStatusToOrderTable.cs" />
+    <Compile Include="Migrations\202103230133062_AddAcceptAndStatusToOrderTable.Designer.cs">
+      <DependentUpon>202103230133062_AddAcceptAndStatusToOrderTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -1313,6 +1317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103222316291_AlterForm3-car-add.resx">
       <DependentUpon>202103222316291_AlterForm3-car-add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103230133062_AddAcceptAndStatusToOrderTable.resx">
+      <DependentUpon>202103230133062_AddAcceptAndStatusToOrderTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
