@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MyFood.Models.FoodReceiptForm3>
+@{
+    ViewBag.Title = "empProcessingOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>الطلبات قيد التنفيذ</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("رقم النموذج")
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.f3_id)
+            </td>
+            <td>
+                @Html.ActionLink("عرض الطلب", "empProcessingOrder", new { id = item.f3_id })
+            </td>
+        </tr>
+    }
+
+</table>
