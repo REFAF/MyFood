@@ -7,10 +7,10 @@ using System.Web;
 
 namespace MyFood.Models
 {
-    public class CarToolForm2
+    public class Form2ViewModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public List<ToolDetailForm2> toolDetailForm2 { get; set; }
+
         public long form2_id { get; set; }
 
         [Display(Name = "رقم السيارة")]
@@ -36,7 +36,29 @@ namespace MyFood.Models
 
         public long order_id { get; set; }
         public Order Order { get; set; }
- 
+
+
+        public long tool_detail_id { get; set; }
+
+        [Display(Name = "الكمية")]
+        public int? quantity { get; set; }
+
+        [Display(Name = "الراجع ")]
+        public int? returned_tools { get; set; }
+
+        [Display(Name = " الملاحظات")]
+        public string note { get; set; }
+
+        [Display(Name = "اسم الصنف")]
+        public int? tool_id { get; set; }
+        public IEnumerable<Tool> Tool { get; set; }
+
+        [Display(Name = "الوحدة")]
+        public string tool_unit { get; set; }
+
+        [ForeignKey("CarToolForm2")]
+        public long? f2_id { get; set; }
+        public CarToolForm2 CarToolForm2 { get; set; }
 
     }
 }

@@ -26,15 +26,8 @@
             </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.date)
-                @Html.EditorFor(m => m.date, new
-                {
-                    htmlAttributes = new
-                    {
-                        @class = "form-control",
-               @type = "date",
-                        data_val_date = "صيغة التاريخ غير صحيحة"
-                    }
-                })
+                @Html.EditorFor(m => m.date, new { htmlAttributes = new { @class = "form-control",
+               @type = "date", data_val_date = "صيغة التاريخ غير صحيحة" }})
                 @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
@@ -78,28 +71,35 @@
 
     <hr />
 
-    <div>
-        <div><a href="#" id="addNew">إضافة</a></div>
-        <table id="dataTable" border="0">
-            <tr>
-                <th>staff_name</th>
-                <th>clothing</th>
-                <th>hair</th>
-                <th>nails</th>
-                <th>clothing_claean</th>
-                <th>head_cover</th>
-                <th>face_mask</th>
-                <th>gloves</th>
-                <th>note</th>
-                <th></th>
+    <style>
+        .cs {
+            transform: rotate(90deg);
+        }
+    </style>
+
+    <div class="container-sm">
+        @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
+        <div><a href="#" id="addNew">إضافة حقل جديد</a></div>
+        <table id="dataTable" @*border="0"*@>
+            <tr class="row-cols-2">
+                <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.hair)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.nails)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing_claean)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.head_cover)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.face_mask)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.gloves)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
+                @*<th></th>*@
             </tr>
             @if (Model != null && Model.safetyTool.Count > 0)
             {
                 int j = 0;
                 foreach (var i in Model.safetyTool)
                 {
-                    <tr style="border:1px solid black">
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name)</td>
+                    <tr class="text-center">
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control col-xs-2" })</td>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing)</td>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].hair)</td>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].nails)</td>
@@ -107,13 +107,13 @@
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].head_cover)</td>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].face_mask)</td>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].gloves)</td>
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note)</td>
-                        <td>
-                            @if (j > 0)
-                            {
-                                <a href="#" class="remove">Remove</a>
-                            }
-                        </td>
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control col-xs-2" })</td>
+                        @*<td>
+                                @if (j > 0)
+                                {
+                                    <a href="#" class="remove">Remove</a>
+                                }
+                            </td>*@
 
                     </tr>
                     j++;
@@ -121,7 +121,6 @@
             }
         </table>
 
-        @*<input type="submit" value="Save" />*@
     </div>
 
     <hr />
@@ -238,18 +237,30 @@
     <br />
 
     <div class="container-sm">
-        <div></div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.cart_num)
+                @Html.TextBoxFor(model => model.cart_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cart_num, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.pot_num)
+                @Html.TextBoxFor(model => model.pot_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.pot_num, "", new { @class = "text-danger" })
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("تصنيف الطعام:", new { @class = "control-label col-md-2" })
-            @Html.CheckBoxFor(model => model.edible)
-            @Html.Label("طعام صالح")
-            @Html.CheckBoxFor(model => model.inedible)
-            @Html.Label("طعام غير صالح")
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.Label("تصنيف الطعام:")<br />
+                @Html.CheckBoxFor(model => model.edible) طعام صالح
+                @Html.CheckBoxFor(model => model.inedible) طعام غير صالح
+            </div>
         </div>
     </div>
 
+    <hr />
     <div class="container-sm">
         <div class="row">
             <div class="col-sm-2">
@@ -321,7 +332,7 @@
                 var $trNew = $trLast.clone();
 
                 var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
-                $trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                //$trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
                 $.each($trNew.find(':input'), function (i, val) {
                     // Replaced Name
                     var oldN = $(this).attr('name');
@@ -346,11 +357,11 @@
                 $.validator.unobtrusive.parse(form);
             });
 
-            // 2. Remove
-            $('a.remove').live("click", function (e) {
-                e.preventDefault();
-                $(this).parent().parent().remove();
-            });
+            //// 2. Remove
+            //$('a.remove').live("click", function (e) {
+            //    e.preventDefault();
+            //    $(this).parent().parent().remove();
+            //});
 
         });
     </script>

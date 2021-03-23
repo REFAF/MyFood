@@ -107,6 +107,11 @@ namespace MyFood.Controllers
         }
 
 
+        //GET: Order/Form2
+        public ActionResult Form2()
+        {
+            return View();
+        }
 
         //authorize team
         //Get: Order/AssignedOrder

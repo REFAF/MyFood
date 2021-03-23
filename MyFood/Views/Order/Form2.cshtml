@@ -1,0 +1,111 @@
+﻿@model MyFood.Models.Form2ViewModel
+@{
+    ViewBag.Title = "Form2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>استلام سيارة وأدوات تعبئة </h2>
+<br />
+
+@using (Html.BeginForm("Form2", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.car_num)
+                @Html.TextBoxFor(model => model.car_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.car_num, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.delivery_date)
+                @Html.EditorFor(m => m.delivery_date, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+               @type = "date",
+                        data_val_date = "صيغة التاريخ غير صحيحة"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.delivery_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="container-sm">
+
+        <div><a href="#" id="addNew">إضافة صنف جديد</a></div>
+        <table id="dataTable" >
+            <tr class="row-cols">
+                <th>@Html.LabelFor(model => model.tool_id)</th>
+                <th>@Html.LabelFor(model => model.tool_unit)</th>
+                <th>@Html.LabelFor(model => model.quantity)</th>
+                <th>@Html.LabelFor(model => model.returned_tools)</th>
+                <th>@Html.LabelFor(model => model.note)</th>
+            </tr>
+
+            @if (Model != null && Model.toolDetailForm2.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model.toolDetailForm2)
+                {
+        <tr class="text-center">
+            @Html.DropDownListFor(a => a.toolDetailForm2[j].tool_id, 
+           new SelectList(Model.Tool, "tool_id", "tool_name"), "اختر اسم الصنف...", new { @class = "form-control" })
+            <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].tool_unit)</td>
+            <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].quantity)</td>
+            <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].returned_tools)</td>
+            <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].note, new { @class = "form-control col-xs-2" })</td>
+        </tr>
+
+                    j++;
+                }
+            }
+        </table>
+
+    </div>
+
+}
+
+<script language="javascript">
+        $(document).ready(function () {
+
+            //1. Add new row
+            $("#addNew").click(function (e) {
+                e.preventDefault();
+                var $tableBody = $("#dataTable");
+                var $trLast = $tableBody.find("tr:last");
+                var $trNew = $trLast.clone();
+
+                var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                //$trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                $.each($trNew.find(':input'), function (i, val) {
+                    // Replaced Name
+                    var oldN = $(this).attr('name');
+                    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
+                    $(this).attr('name', newN);
+                    //Replaced value
+                    var type = $(this).attr('type');
+                    if (type.toLowerCase() == "text") {
+                        $(this).attr('value', '');
+                    }
+
+                    // If you have another Type then replace with default value
+                    $(this).removeClass("input-validation-error");
+
+                });
+                $trLast.after($trNew);
+
+                // Re-assign Validation
+                var form = $("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+            });
+
+        });
+</script>

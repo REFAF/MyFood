@@ -30,5 +30,9 @@ namespace MyFood.Models
 
         [Display(Name = "الوحدة")]
         public string tool_unit { get; set; }
+
+        [ForeignKey("CarToolForm2")]
+        public long? f2_id { get; set; }
+        public CarToolForm2 CarToolForm2 { get; set; }
     }
 }
