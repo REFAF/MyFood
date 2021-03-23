@@ -72,7 +72,7 @@ namespace MyFood.Controllers
                 .Include(c => c.Unit).SingleOrDefault(c => c.order_id == id);
 
             var users = from u in db.Users
-                        where u.Roles.Any(r => r.RoleId == "65986752-711f-4b17-a15f-7cb96b094090")
+                        where u.Roles.Any(r => r.RoleId == "19d1428e-d468-42a6-b493-20fa8a3b6657")
                         select u;
 
             ViewBag.UserName = users.ToList();
@@ -157,10 +157,10 @@ namespace MyFood.Controllers
         public ActionResult FoodReceiptReport(long id, ViewModelForm3 viewModelForm3,
             NotHealthy notHealthy, List<SafetyTool> safety, FoodType foodType)
         {
-            var order = db.Orders.Include(c => c.empId)
-                .Include(c => c.supId)
+            var order = db.Orders.Include(c => c.supId)
                 .SingleOrDefault(c => c.order_id == id);
 
+            order.order_status = "قيد التنفيذ";
             var form3 = new FoodReceiptForm3();
             var staff_health = new NotHealthy();
             var staff_tool = new SafetyTool();
@@ -169,6 +169,7 @@ namespace MyFood.Controllers
             form3.team_leader_id = User.Identity.GetUserId();
             form3.order_id = order.order_id;
             form3.sup_id = order.sup_id;
+            
 
             form3.car_num = viewModelForm3.car_num;
             form3.staff_num = viewModelForm3.staff_num;
@@ -236,5 +237,15 @@ namespace MyFood.Controllers
 
             return RedirectToAction("AssignedOrder");
         }
+
+        public ActionResult empProcessingOrder()
+        {
+            var form3 = db.FoodReceiptForms3
+                .Where(c => c.Order.order_status == "قيد التنفيذ").ToList();
+
+            return View(form3);
+        }
+
+
     }
 }
