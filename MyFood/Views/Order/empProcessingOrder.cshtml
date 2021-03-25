@@ -5,14 +5,14 @@
 }
 
 
-<h2>الطلبات قيد التنفيذ</h2>
+<h2>طلبات قيد التنفيذ</h2>
 
 <br />
 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayName("رقم النموذج")
+            @Html.DisplayName("رقم الطلب")
         </th>
     </tr>
 
@@ -21,10 +21,10 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.f3_id)
+                @Html.DisplayFor(modelItem => item.Order.order_id)
             </td>
             <td>
-                @Html.ActionLink("عرض الطلب", "empProcessingOrder", new { id = item.f3_id })
+                @Html.ActionLink("عرض الطلب", "Form3Sec2", new { id = item.f3_id })
             </td>
         </tr>
     }

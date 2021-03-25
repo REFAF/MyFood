@@ -12,7 +12,7 @@ namespace MyFood.Models
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int f3_id { get; set; }
+        public long f3_id { get; set; }
 
         [Display(Name = "رقم السيارة")]
         public int? car_num { get; set; }
@@ -56,18 +56,18 @@ namespace MyFood.Models
         public TimeSpan? return_time { get; set; }
 
         [Display(Name = "عدد الكيلوات أثناء الخروج")]
-        public byte? kilos_exit_time { get; set; }
+        public int? kilos_exit_time { get; set; }
 
         [Display(Name = "عدد الكيلوات أثناء الوصول")]
-        public byte? kilos_arrival_time { get; set; }
+        public int? kilos_arrival_time { get; set; }
 
         [Display(Name = "عدد الكيلوات أثناء الرجوع")]
-        public byte? kilos_return_time { get; set; }
+        public int? kilos_return_time { get; set; }
 
         [StringLength(10)]
         public string note { get; set; }
 
-        public byte? nothealthy_type_id { get; set; }
+        public int? nothealthy_type_id { get; set; }
         public NotHealthy NotHealthy { get; set; }
 
         //[ForeignKey("SafetyToolEmp1")]
@@ -86,7 +86,7 @@ namespace MyFood.Models
         [ForeignKey("Order")]
         public long order_id { get; set; }
         public Order Order { get; set; }
-        public byte? food_type_id { get; set; }
+        public int? food_type_id { get; set; }
         public FoodType FoodType { get; set; }
 
         [ForeignKey("teamLeaderId")]

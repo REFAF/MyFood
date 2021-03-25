@@ -55,9 +55,9 @@ namespace MyFood.Models
         public DbSet<Unit> Units { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Tool> Tools { get; set; }
-        public DbSet<ToolUnit> ToolUnits { get; set; }
         public DbSet<CarToolForm2> CarToolForm2s { get; set; }
-        public DbSet<ToolDetailForm2> ToolDetailForm2s { get; set; }
+        public DbSet<ToolDetailForm2> ToolDetailForms2 { get; set; }
+        public DbSet<Form4A> Forms4A { get; set; }
 
 
 

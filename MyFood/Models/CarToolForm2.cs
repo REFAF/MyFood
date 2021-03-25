@@ -19,15 +19,18 @@ namespace MyFood.Models
         [Display(Name = "تاريخ التسليم")]
         public DateTime? delivery_date { get; set; }
 
+
         [Display(Name = "رئيس الفريق")]
         [ForeignKey("team_leaderId")]
         public string team_leader_id { get; set; }
         public ApplicationUser team_leaderId { get; set; }
 
+
         [ForeignKey("supId")]
         [Display(Name = "مشرف صالات")]
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
+
 
         [Display(Name = "مدير الجمعية")]
         [ForeignKey("managerId")]

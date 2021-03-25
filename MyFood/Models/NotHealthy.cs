@@ -11,7 +11,7 @@ namespace MyFood.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte nothealthy_type_id { get; set; }
+        public int nothealthy_type_id { get; set; }
 
         public string nothealthy_type_name { get; set; }
 

@@ -1,13 +1,13 @@
 ﻿@model MyFood.Models.ViewModelForm3
 @{
-    ViewBag.Title = "FoodReceiptReport";
+    ViewBag.Title = "Form3Sec1";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <br />
 <h2> تقرير صحة وسلامة استلام الطعام</h2>
 
-@using (Html.BeginForm("FoodReceiptReport", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
@@ -124,143 +124,6 @@
     </div>
 
     <hr />
-
-    <div>
-        @Html.Label("نوع الطعام")
-    </div>
-    <table class="table-condensed">
-
-        <tr>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.rice)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.rice)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.water)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.water)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.chicken)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.chicken)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.soup)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.soup)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.meat)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.meat)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.pies)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.pies)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.dates)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.dates)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.bread)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.bread)
-            </td>
-        </tr>
-
-        <tr>
-
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.fruit)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.fruit)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.dessert)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.dessert)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.gursan)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.gursan)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.groats)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.groats)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.pasta)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.pasta)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.vegetables)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.vegetables)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.buffet)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.buffet)
-            </td>
-            <td>
-                @Html.CheckBoxFor(model => model.FoodType.juices)
-            </td>
-            <td>
-                @Html.LabelFor(model => model.FoodType.juices)
-            </td>
-        </tr>
-
-    </table>
-    <br />
-
-    <div class="container-sm">
-        <div class="row">
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.cart_num)
-                @Html.TextBoxFor(model => model.cart_num, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.cart_num, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.pot_num)
-                @Html.TextBoxFor(model => model.pot_num, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.pot_num, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-    <div class="container-sm">
-        <div class="row">
-            <div class="col-sm-3">
-                @Html.Label("تصنيف الطعام:")<br />
-                @Html.CheckBoxFor(model => model.edible) طعام صالح
-                @Html.CheckBoxFor(model => model.inedible) طعام غير صالح
-            </div>
-        </div>
-    </div>
-
-    <hr />
     <div class="container-sm">
         <div class="row">
             <div class="col-sm-2">
@@ -269,50 +132,17 @@
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
-                @Html.LabelFor(model => model.arrival_time)
-                @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
-                @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.return_time)
-                @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
-                @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-2">
                 @Html.LabelFor(model => model.kilos_exit_time)
                 @Html.TextBoxFor(model => model.kilos_exit_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.kilos_arrival_time)
-                @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
-            </div>
-            <div class="col-sm-2">
-                @Html.LabelFor(model => model.kilos_return_time)
-                @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
-            </div>
         </div>
     </div>
 
+    <br />
     <br />
     <div class="container-sm">
-        <div class="row">
-            <div class=" col-sm-2">
-                @Html.Label("ملاحظات")
-                @Html.TextBoxFor(model => model.note, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
-            </div>
-        </div>
-    </div>
-
-    <br />
-    <br />
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div>
             <input type="submit" class="btn btn-default" value="حفظ" />
         </div>
     </div>

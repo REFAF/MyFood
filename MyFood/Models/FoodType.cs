@@ -11,7 +11,7 @@ namespace MyFood.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public byte food_type_id { get; set; }
+        public int food_type_id { get; set; }
 
         [Display(Name = "أرز")]
         public bool rice { get; set; }

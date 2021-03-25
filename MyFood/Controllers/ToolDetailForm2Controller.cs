@@ -22,7 +22,7 @@ namespace MyFood.Controllers
                 tools.Add(new ToolDetailForm2());
             }
 
-            ViewBag.tool_id = new SelectList(db.ToolDetailForm2s, "quantity", "note");
+            ViewBag.tool_id = new SelectList(db.ToolDetailForms2, "quantity", "note");
 
             return View(tools);
         }

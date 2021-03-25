@@ -13,6 +13,15 @@ namespace MyFood.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long tool_detail_id { get; set; }
 
+
+        [Display(Name = "اسم الصنف")]
+        [ForeignKey("Tool")]
+        public int? tool_id { get; set; }
+        public Tool Tool { get; set; }
+
+        [Display(Name = "الوحدة")]
+        public string tool_unit { get; set; }
+
         [Display(Name = "الكمية")]
         public int? quantity { get; set; }
 
@@ -23,13 +32,6 @@ namespace MyFood.Models
         public string note { get; set; }
 
 
-        [Display(Name = "اسم الصنف")]
-        public int? tool_id { get; set; }
-        public Tool Tool { get; set; }
-
-
-        [Display(Name = "الوحدة")]
-        public string tool_unit { get; set; }
 
         [ForeignKey("CarToolForm2")]
         public long? f2_id { get; set; }
