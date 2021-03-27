@@ -32,6 +32,7 @@ namespace MyFood.Models
 
         public byte? sample_num { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime? packing_date { get; set; }
 
         public string day { get; set; }
