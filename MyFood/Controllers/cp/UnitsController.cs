@@ -80,6 +80,8 @@ namespace MyFood.Controllers.cp
                 return HttpNotFound();
             }
             ViewBag.category_id = new SelectList(db.Categories, "category_id", "category_name", unit.category_id);
+            ViewBag.direction_id = new SelectList(db.Directions, "direction_id", "direction_name", unit.direction_id);
+
             return View(unit);
         }
 
@@ -88,7 +90,7 @@ namespace MyFood.Controllers.cp
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "unit_id,unit_name,category_id")] Unit unit)
+        public ActionResult Edit([Bind(Include = "unit_id,unit_name,category_id,direction_id")] Unit unit)
         {
             if (ModelState.IsValid)
             {
@@ -97,6 +99,8 @@ namespace MyFood.Controllers.cp
                 return RedirectToAction("Index");
             }
             ViewBag.category_id = new SelectList(db.Categories, "category_id", "category_name", unit.category_id);
+            ViewBag.direction_id = new SelectList(db.Directions, "direction_id", "direction_name", unit.direction_id);
+
             return View(unit);
         }
 
