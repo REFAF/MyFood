@@ -20,6 +20,7 @@ namespace MyFood.Models
         public string Id { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
+        [Display(Name = "رقم الفريق")]
         public byte? Team_id { get; set; }
         public TeamNumber TeamNumber { get; set; }
     }

@@ -107,6 +107,8 @@ namespace MyFood.Models
         [Display(Name = "الصلاحية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public string UserRoles { get; set; }
+
+        [Display(Name = "رقم الفريق")]
         public byte? Team_id { get; set; }
         public TeamNumber TeamNumber { get; set; }
 

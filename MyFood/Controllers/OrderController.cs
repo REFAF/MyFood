@@ -453,14 +453,21 @@ namespace MyFood.Controllers
                .Include(c => c.Unit)
                .SingleOrDefault(c => c.order_id == id);
 
+            var Employee = db.Employees
+                 .Include(c => c.ApplicationUser)
+                 .SingleOrDefault(c => c.ApplicationUser.Id == order.emp_id);
+
+            var Direction = db.Units.Include(d => d.Direction)
+                .SingleOrDefault(d => d.Direction.direction_id == order.Unit.direction_id);
 
             ViewModelForm4 viewModel = new ViewModelForm4()
             {
-                safetyTool = new List<SafetyTool> {new SafetyTool { staff_name = "", clothing = false,
+                safetyTool = new List<SafetyTool> { new SafetyTool { staff_name = "", clothing = false,
                     hair = false, nails = false, clothing_claean = false,
-                    head_cover = false, face_mask = false,gloves = false, note = ""} },
+                    head_cover = false, face_mask = false, gloves = false, note = "" } },
 
                 order_id = id,
+                Team_id = Employee.Team_id,
 
                 unitId = order.unit_id,
 

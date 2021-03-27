@@ -650,6 +650,14 @@
     <Compile Include="Migrations\202103270234281_AlterForm4A.Designer.cs">
       <DependentUpon>202103270234281_AlterForm4A.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103271750244_fix.cs" />
+    <Compile Include="Migrations\202103271750244_fix.Designer.cs">
+      <DependentUpon>202103271750244_fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103271831374_PupulateTeamNumber.cs" />
+    <Compile Include="Migrations\202103271831374_PupulateTeamNumber.Designer.cs">
+      <DependentUpon>202103271831374_PupulateTeamNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -1449,6 +1457,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103270234281_AlterForm4A.resx">
       <DependentUpon>202103270234281_AlterForm4A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271750244_fix.resx">
+      <DependentUpon>202103271750244_fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103271831374_PupulateTeamNumber.resx">
+      <DependentUpon>202103271831374_PupulateTeamNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

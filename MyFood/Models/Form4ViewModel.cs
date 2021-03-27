@@ -45,10 +45,13 @@ namespace MyFood.Models
         public long? order_id { get; set; }
         public Order Order { get; set; }
 
+        [Display(Name ="المصدر")]
         public byte? unitId { get; set; }
 
+        [Display(Name = "الفرقة")]
+        public byte? Team_id { get; set; }
 
-
+        public string direction_symbol { get; set; }
 
     }
 }
