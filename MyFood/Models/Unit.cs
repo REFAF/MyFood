@@ -25,5 +25,12 @@ namespace MyFood.Models
         public byte category_id { get; set; }
 
         public Category Category { get; set; }
+
+
+        [Display(Name = "المنطقة")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        public byte direction_id { get; set; }
+
+        public Direction Direction { get; set; }
     }
 }

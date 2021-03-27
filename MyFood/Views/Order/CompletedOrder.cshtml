@@ -1,0 +1,31 @@
+﻿@model IEnumerable<MyFood.Models.FoodReceiptForm3>
+@{
+    ViewBag.Title = "CompletedOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>دخول الطعام للصالات</h2>
+
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("رقم الطلب")
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.order_id)
+            </td>
+            <td>
+                @Html.ActionLink("عرض الطلب", "CompletedOrderDetails", new { id = item.f3_id })
+            </td>
+        </tr>
+    }
+
+</table>

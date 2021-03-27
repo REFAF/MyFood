@@ -74,7 +74,7 @@ namespace MyFood.Controllers
             //65986752-711f-4b17-a15f-7cb96b094090
             //19d1428e-d468-42a6-b493-20fa8a3b6657
             var users = from u in db.Users
-                        where u.Roles.Any(r => r.RoleId == "65986752-711f-4b17-a15f-7cb96b094090")
+                        where u.Roles.Any(r => r.RoleId == "19d1428e-d468-42a6-b493-20fa8a3b6657")
                         select u;
 
             ViewBag.UserName = users.ToList();
@@ -110,6 +110,7 @@ namespace MyFood.Controllers
 
 
        
+
 
         //authorize team
         //Get: Order/AssignedOrder
@@ -311,7 +312,7 @@ namespace MyFood.Controllers
             ViewModelForm2 viewModel = new ViewModelForm2()
             {
 
-                toolDetailForm2 = new List<ToolDetailForm2> {new ToolDetailForm2 { tool_id = 0, quantity = 0 ,
+                toolDetailForm2 = new List<ToolDetailForm2> {new ToolDetailForm2 {quantity = 0 ,
                     returned_tools = 0, note = "", tool_unit = ""} },
 
                 ToolIE = db.Tools.ToList(),
@@ -332,6 +333,8 @@ namespace MyFood.Controllers
 
             carTool.order_id = viewModelForm2.order_id;
 
+            tool = new List<ToolDetailForm2> {new ToolDetailForm2 {quantity = 0 ,
+                    returned_tools = 0, note = "", tool_unit = ""} };
 
             foreach (var i in viewModelForm2.toolDetailForm2)
             {
@@ -339,8 +342,7 @@ namespace MyFood.Controllers
                 i.f2_id = carTool.form2_id;
             }
 
-            tool = new List<ToolDetailForm2> {new ToolDetailForm2 { tool_id = 0, quantity = 0 ,
-                    returned_tools = 0, note = "", tool_unit = ""} };
+            
 
             carTool.car_num = viewModelForm2.car_num;
             carTool.delivery_date = viewModelForm2.delivery_date;
@@ -352,6 +354,175 @@ namespace MyFood.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+
+        // (Index)
+        //GET: Order/CompletedOrder
+        public ActionResult CompletedOrder()
+        {
+            var form3 = db.FoodReceiptForms3.Include(f => f.Order)
+                .Where(c => c.Order.order_status == "الانتهاء من استلام الطعام").ToList();
+
+            return View(form3);
+        }
+
+        //GET: Order/CompletedOrderDetails
+        public ActionResult CompletedOrderDetails(long id)
+        {
+
+            var form3 = db.FoodReceiptForms3
+                .Include(c => c.FoodType)
+                .Include(c => c.NotHealthy)
+                .Include(c => c.Order).SingleOrDefault(c => c.f3_id == id);
+
+
+            if (form3 == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(form3);
+
+
+        }
+
+        //POST: Order/CompletedOrderDetails
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CompletedOrderDetails(long id, string button, FoodReceiptForm3 foodReceiptForm3, FoodType foodType)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var form3 = db.FoodReceiptForms3
+                .Include(c => c.FoodType)
+                .Include(c => c.Order).SingleOrDefault(c => c.f3_id == id);
+
+                var order = db.Orders.SingleOrDefault(c => c.order_id == form3.order_id);
+
+                var food = new FoodType();
+
+
+                food.rice = foodType.rice;
+                food.water = foodType.water;
+                food.chicken = foodType.chicken;
+                food.soup = foodType.soup;
+                food.meat = foodType.meat;
+                food.pies = foodType.pies;
+                food.dates = foodType.dates;
+                food.bread = foodType.bread;
+                food.fruit = foodType.fruit;
+                food.dessert = foodType.dessert;
+                food.gursan = foodType.gursan;
+                food.groats = foodType.groats;
+                food.pasta = foodType.pasta;
+                food.vegetables = foodType.vegetables;
+                food.buffet = foodType.buffet;
+                food.juices = foodType.juices;
+
+                form3.food_type_id = foodType.food_type_id;
+
+                form3.cart_num = foodReceiptForm3.cart_num;
+                form3.pot_num = foodReceiptForm3.pot_num;
+                form3.edible = foodReceiptForm3.edible;
+                form3.inedible = foodReceiptForm3.inedible;
+
+                form3.arrival_time = foodReceiptForm3.arrival_time;
+                form3.return_time = foodReceiptForm3.return_time;
+                form3.kilos_arrival_time = foodReceiptForm3.kilos_arrival_time;
+                form3.kilos_return_time = foodReceiptForm3.kilos_return_time;
+
+                form3.note = foodReceiptForm3.note;
+
+                db.FoodTypes.Add(food);
+                db.SaveChanges();
+
+                return RedirectToAction("CompletedOrder");
+
+
+            }
+
+            return View(foodReceiptForm3);
+        }
+
+        //GET: Order/Form4
+        public ActionResult Form4(long id)
+        {
+            var order = db.Orders
+               .Include(c => c.supId)
+               .Include(c => c.Unit)
+               .SingleOrDefault(c => c.order_id == id);
+
+            ViewModelForm4 viewModel = new ViewModelForm4()
+            {
+                safetyTool = new List<SafetyTool> {new SafetyTool { staff_name = "", clothing = false,
+                    hair = false, nails = false, clothing_claean = false,
+                    head_cover = false, face_mask = false,gloves = false, note = ""} },
+
+                order_id = id,
+
+                unitId = order.unit_id,
+
+                mealCategoryIE = db.mealCategories.ToList(),
+            };
+            return View(viewModel);
+        }
+
+        //POST: Order/Form4
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Form4(long id, ViewModelForm4 viewModelForm4,List<SafetyTool> safety)
+        {
+            var order = db.Orders
+                .Include(c => c.supId)
+                .Include(c => c.Unit)
+                .SingleOrDefault(c => c.order_id == id);
+
+            
+
+            //order.order_status = "قيد التنفيذ";
+            var form4 = new Form4A();
+            var staff_health = new NotHealthy();
+            var staff_tool = new SafetyTool();
+
+            //var unit = db.Database.SqlQuery<Unit>( "select direction_id " +
+            //    " from Units where unit" );
+
+
+            ViewBag.unit = order.unit_id;
+
+            form4.order_id = order.order_id;
+            form4.sup_id = User.Identity.GetUserId();
+
+            
+            form4.Emp1 = viewModelForm4.Emp1;
+            form4.Emp2 = viewModelForm4.Emp2;
+            form4.meal_num = viewModelForm4.meal_num;
+            form4.sample_num = viewModelForm4.sample_num;
+            form4.meal_weight = viewModelForm4.meal_weight;
+            form4.packing_date = viewModelForm4.packing_date;
+            form4.day = viewModelForm4.day;
+            form4.mealCategory_id = viewModelForm4.mealCategory_id;
+
+            foreach (var i in viewModelForm4.safetyTool)
+            {
+                db.SafetyTools.Add(i);
+                i.form4A_id = form4.form4A_id;
+            }
+
+            safety = new List<SafetyTool> { new SafetyTool { staff_name = "", clothing = false,
+                hair = false, nails = false, clothing_claean = false ,head_cover = false,
+                face_mask = false,gloves = false, note = ""} };
+
+
+            db.Forms4A.Add(form4);
+            db.NotHealthies.Add(staff_health);
+
+            db.SaveChanges();
+
+            return RedirectToAction("CompletedOrder");
+        }
+
 
 
     }

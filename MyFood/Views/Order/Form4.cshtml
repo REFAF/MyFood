@@ -1,0 +1,219 @@
+﻿@model MyFood.Models.ViewModelForm4
+@{
+    ViewBag.Title = "Form4";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Form4</h2>
+
+<br />
+<h2> نموذج إدخال الطعام للصالات وتعبئته</h2>
+
+@using (Html.BeginForm("Form4", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+
+    <div class="container-sm">
+        <h4> بيانات الجهة</h4>
+        <div class="col-sm-2">
+            <label>الجهة:</label> @ViewBag.unit
+        </div>
+       
+
+    </div>
+    <br />
+    <br />
+
+    <div class="container-sm">
+            
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.order_id)
+                @Html.DisplayFor(model => model.Order.unit_id, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.order_id, "", new { @class = "text-danger" })
+            </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="container-sm">
+            <h4> بيانات الفريق المستلم</h4>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Emp1)
+                @Html.TextBoxFor(model => model.Emp1, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Emp1, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Emp2)
+                @Html.TextBoxFor(model => model.Emp2, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Emp2, "", new { @class = "text-danger" })
+            </div>
+    </div>
+
+    <hr />
+    <br />
+    <br />
+
+
+
+    <div class="container-sm">
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.packing_date)
+            @Html.EditorFor(m => m.packing_date,
+           new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        @type = "date",
+                    data_val_date = "صيغة التاريخ غير صحيحة"
+                    }
+                })
+
+            @Html.ValidationMessageFor(model => model.packing_date, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.day)
+            @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
+        </div>
+  
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.mealCategory_id, new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(model => model.mealCategory_id,
+           new SelectList(Model.mealCategoryIE, "mealCategory_id", "mealCategory_name")
+           , "اختر فئة الوجبات...", new { @class = "form-control" })
+        </div>
+        
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.meal_num)
+            @Html.TextBoxFor(model => model.meal_num, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.meal_num, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.meal_weight)
+            @Html.TextBoxFor(model => model.meal_weight, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.meal_weight, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-sm-2">
+            @Html.LabelFor(model => model.sample_num)
+            @Html.TextBoxFor(model => model.sample_num, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.sample_num, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr />
+
+    <style>
+        .cs {
+            transform: rotate(90deg);
+        }
+    </style>
+
+    <hr />
+    <br />
+
+    <div class="container-sm">
+        @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
+        <div><a href="#" id="addNew">إضافة حقل جديد</a></div>
+        <table id="dataTable" @*border="0"*@>
+            <tr class="row-cols-2">
+                <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.hair)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.nails)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing_claean)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.head_cover)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.face_mask)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.gloves)</th>
+                <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
+                @*<th></th>*@
+            </tr>
+            @if (Model != null && Model.safetyTool.Count > 0)
+            {
+                int j = 0;
+                foreach (var i in Model.safetyTool)
+                {
+                    <tr class="text-center">
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control col-xs-2" })</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].hair)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].nails)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing_claean)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].head_cover)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].face_mask)</td>
+                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].gloves)</td>
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control col-xs-2" })</td>
+                        @*<td>
+                                @if (j > 0)
+                                {
+                                    <a href="#" class="remove">Remove</a>
+                                }
+                            </td>*@
+
+                    </tr>
+                    j++;
+                }
+            }
+        </table>
+
+    </div>
+
+    <hr />
+
+    <div class="container-sm">
+        <div>
+            <input type="submit" class="btn btn-default" value="حفظ" />
+        </div>
+    </div>
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script language="javascript">
+        $(document).ready(function () {
+
+            //1. Add new row
+            $("#addNew").click(function (e) {
+                e.preventDefault();
+                var $tableBody = $("#dataTable");
+                var $trLast = $tableBody.find("tr:last");
+                var $trNew = $trLast.clone();
+
+                var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                //$trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                $.each($trNew.find(':input'), function (i, val) {
+                    // Replaced Name
+                    var oldN = $(this).attr('name');
+                    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
+                    $(this).attr('name', newN);
+                    //Replaced value
+                    var type = $(this).attr('type');
+                    if (type.toLowerCase() == "text") {
+                        $(this).attr('value', '');
+                    }
+
+                    // If you have another Type then replace with default value
+                    $(this).removeClass("input-validation-error");
+
+                });
+                $trLast.after($trNew);
+
+                // Re-assign Validation
+                var form = $("form")
+                    .removeData("validator")
+                    .removeData("unobtrusiveValidation");
+                $.validator.unobtrusive.parse(form);
+            });
+
+            //// 2. Remove
+            //$('a.remove').live("click", function (e) {
+            //    e.preventDefault();
+            //    $(this).parent().parent().remove();
+            //});
+
+        });
+    </script>
+}

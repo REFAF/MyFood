@@ -38,6 +38,14 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.direction_id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("direction_id", null, "اختر المنطقة...", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.direction_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="إضافة" class="btn btn-default" />
             </div>

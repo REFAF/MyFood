@@ -7,10 +7,14 @@ using System.Web;
 
 namespace MyFood.Models
 {
-    public class Form4A
+    public class ViewModelForm4
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public List<SafetyTool> safetyTool { get; set; }
+
+        public SafetyTool SafetyToolNav { get; set; }
+
+        public byte? mealCategory_id { get; set; }
+        public IEnumerable<MealCategory> mealCategoryIE { get; set; }
         public long form4A_id { get; set; }
 
         public string Emp1 { get; set; }
@@ -41,9 +45,8 @@ namespace MyFood.Models
         public long? order_id { get; set; }
         public Order Order { get; set; }
 
-        [ForeignKey("MealCategory")]
-        public byte? mealCategory_id { get; set; }
-        public MealCategory MealCategory { get; set; }
+        public byte? unitId { get; set; }
+
 
     }
 }

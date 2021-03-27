@@ -17,7 +17,10 @@ namespace MyFood.Controllers.cp
         // GET: Units
         public ActionResult Index()
         {
-            var units = db.Units.Include(u => u.Category);
+            var units = db.Units
+                .Include(u => u.Direction)
+                .Include(u => u.Category);
+
             return View(units.ToList());
         }
 
@@ -40,6 +43,7 @@ namespace MyFood.Controllers.cp
         public ActionResult Create()
         {
             ViewBag.category_id = new SelectList(db.Categories, "category_id", "category_name");
+            ViewBag.direction_id = new SelectList(db.Directions, "direction_id", "direction_name");
             return View();
         }
 
@@ -48,7 +52,7 @@ namespace MyFood.Controllers.cp
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "unit_id,unit_name,category_id")] Unit unit)
+        public ActionResult Create([Bind(Include = "unit_id,unit_name,category_id,direction_id")] Unit unit)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +62,9 @@ namespace MyFood.Controllers.cp
             }
 
             ViewBag.category_id = new SelectList(db.Categories, "category_id", "category_name", unit.category_id);
+            ViewBag.direction_id = new SelectList(db.Directions, "direction_id", "direction_name", unit.direction_id);
             return View(unit);
+
         }
 
         // GET: Units/Edit/5

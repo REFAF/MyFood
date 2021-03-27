@@ -614,6 +614,30 @@
     <Compile Include="Migrations\202103250217440_AddForm4ATable.Designer.cs">
       <DependentUpon>202103250217440_AddForm4ATable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103262009529_AddOrderIdToForm4.cs" />
+    <Compile Include="Migrations\202103262009529_AddOrderIdToForm4.Designer.cs">
+      <DependentUpon>202103262009529_AddOrderIdToForm4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262101128_AddForm4IdToSafetyTool.cs" />
+    <Compile Include="Migrations\202103262101128_AddForm4IdToSafetyTool.Designer.cs">
+      <DependentUpon>202103262101128_AddForm4IdToSafetyTool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262139254_CreateMealCategoryTable.cs" />
+    <Compile Include="Migrations\202103262139254_CreateMealCategoryTable.Designer.cs">
+      <DependentUpon>202103262139254_CreateMealCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262143292_AddMealCategoryToForm4.cs" />
+    <Compile Include="Migrations\202103262143292_AddMealCategoryToForm4.Designer.cs">
+      <DependentUpon>202103262143292_AddMealCategoryToForm4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262237231_AddDirectionToUnit.cs" />
+    <Compile Include="Migrations\202103262237231_AddDirectionToUnit.Designer.cs">
+      <DependentUpon>202103262237231_AddDirectionToUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103262313173_CreateTeamNumberTable.cs" />
+    <Compile Include="Migrations\202103262313173_CreateTeamNumberTable.Designer.cs">
+      <DependentUpon>202103262313173_CreateTeamNumberTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -632,8 +656,10 @@
     <Compile Include="Models\Form2ViewModel.cs" />
     <Compile Include="Models\Form3ViewModel.cs" />
     <Compile Include="Models\Form4A.cs" />
+    <Compile Include="Models\Form4ViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MealCategory.cs" />
     <Compile Include="Models\Neighborhood.cs" />
     <Compile Include="Models\NotHealthy.cs" />
     <Compile Include="Models\Order.cs" />
@@ -647,6 +673,7 @@
     <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
+    <Compile Include="Models\TeamNumber.cs" />
     <Compile Include="Models\Tool.cs" />
     <Compile Include="Models\ToolDetailForm2.cs" />
     <Compile Include="Models\Unit.cs" />
@@ -1053,6 +1080,9 @@
     <Content Include="Views\Order\empProcessingOrder.cshtml" />
     <Content Include="Views\Order\Form2.cshtml" />
     <Content Include="Views\Order\Form3Sec2.cshtml" />
+    <Content Include="Views\Order\CompletedOrder.cshtml" />
+    <Content Include="Views\Order\CompletedOrderDetails.cshtml" />
+    <Content Include="Views\Order\Form4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1380,6 +1410,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103250217440_AddForm4ATable.resx">
       <DependentUpon>202103250217440_AddForm4ATable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262009529_AddOrderIdToForm4.resx">
+      <DependentUpon>202103262009529_AddOrderIdToForm4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262101128_AddForm4IdToSafetyTool.resx">
+      <DependentUpon>202103262101128_AddForm4IdToSafetyTool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262139254_CreateMealCategoryTable.resx">
+      <DependentUpon>202103262139254_CreateMealCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262143292_AddMealCategoryToForm4.resx">
+      <DependentUpon>202103262143292_AddMealCategoryToForm4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262237231_AddDirectionToUnit.resx">
+      <DependentUpon>202103262237231_AddDirectionToUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103262313173_CreateTeamNumberTable.resx">
+      <DependentUpon>202103262313173_CreateTeamNumberTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

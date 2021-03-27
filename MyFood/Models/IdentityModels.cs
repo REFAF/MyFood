@@ -59,8 +59,9 @@ namespace MyFood.Models
         public DbSet<ToolDetailForm2> ToolDetailForms2 { get; set; }
         public DbSet<Form4A> Forms4A { get; set; }
 
+        public DbSet<MealCategory> mealCategories { get; set; }
 
-
+        public DbSet<TeamNumber> teamNumbers { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

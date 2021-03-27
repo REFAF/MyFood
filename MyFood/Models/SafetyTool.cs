@@ -44,5 +44,9 @@ namespace MyFood.Models
         public long? f3_id { get; set; }
         public FoodReceiptForm3 FoodReceiptForm3 { get; set; }
 
+        [ForeignKey("Form4A")]
+        public long? form4A_id { get; set; }
+        public Form4A Form4A { get; set; }
+
     }
 }
