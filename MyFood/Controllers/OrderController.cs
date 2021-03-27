@@ -74,7 +74,7 @@ namespace MyFood.Controllers
             //65986752-711f-4b17-a15f-7cb96b094090
             //19d1428e-d468-42a6-b493-20fa8a3b6657
             var users = from u in db.Users
-                        where u.Roles.Any(r => r.RoleId == "19d1428e-d468-42a6-b493-20fa8a3b6657")
+                        where u.Roles.Any(r => r.RoleId == "65986752-711f-4b17-a15f-7cb96b094090")
                         select u;
 
             ViewBag.UserName = users.ToList();
@@ -486,10 +486,15 @@ namespace MyFood.Controllers
             var staff_health = new NotHealthy();
             var staff_tool = new SafetyTool();
 
+            //var unit = db.Database.SqlQuery<Unit>( "select direction_id " +
+            //    " from Units where unit" );
+
+
+            ViewBag.unit = order.unit_id;
 
             form4.order_id = order.order_id;
             form4.sup_id = User.Identity.GetUserId();
-
+            form4.team_leader_id = order.emp_id;
             
             form4.Emp1 = viewModelForm4.Emp1;
             form4.Emp2 = viewModelForm4.Emp2;

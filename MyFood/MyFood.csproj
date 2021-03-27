@@ -642,6 +642,14 @@
     <Compile Include="Migrations\202103270159169_AddTeamNumberToEmployee.Designer.cs">
       <DependentUpon>202103270159169_AddTeamNumberToEmployee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103270217097_PupulateMealCategory.cs" />
+    <Compile Include="Migrations\202103270217097_PupulateMealCategory.Designer.cs">
+      <DependentUpon>202103270217097_PupulateMealCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103270234281_AlterForm4A.cs" />
+    <Compile Include="Migrations\202103270234281_AlterForm4A.Designer.cs">
+      <DependentUpon>202103270234281_AlterForm4A.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -1435,6 +1443,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103270159169_AddTeamNumberToEmployee.resx">
       <DependentUpon>202103270159169_AddTeamNumberToEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103270217097_PupulateMealCategory.resx">
+      <DependentUpon>202103270217097_PupulateMealCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103270234281_AlterForm4A.resx">
+      <DependentUpon>202103270234281_AlterForm4A.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
