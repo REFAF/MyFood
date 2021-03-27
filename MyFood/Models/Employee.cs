@@ -15,7 +15,12 @@ namespace MyFood.Models
         [Display(Name = "رقم الهوية")]
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public long national_id { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+
+        [ForeignKey("ApplicationUser")]
         public string Id { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
+
+        public byte? Team_id { get; set; }
+        public TeamNumber TeamNumber { get; set; }
     }
 }

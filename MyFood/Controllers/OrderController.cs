@@ -453,6 +453,7 @@ namespace MyFood.Controllers
                .Include(c => c.Unit)
                .SingleOrDefault(c => c.order_id == id);
 
+
             ViewModelForm4 viewModel = new ViewModelForm4()
             {
                 safetyTool = new List<SafetyTool> {new SafetyTool { staff_name = "", clothing = false,
@@ -485,11 +486,6 @@ namespace MyFood.Controllers
             var staff_health = new NotHealthy();
             var staff_tool = new SafetyTool();
 
-            //var unit = db.Database.SqlQuery<Unit>( "select direction_id " +
-            //    " from Units where unit" );
-
-
-            ViewBag.unit = order.unit_id;
 
             form4.order_id = order.order_id;
             form4.sup_id = User.Identity.GetUserId();

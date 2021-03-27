@@ -377,6 +377,8 @@ namespace MyFood.Controllers
         {
             ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
                                     .ToList(), "Name", "Name");
+
+            ViewBag.TeamNumber = new SelectList(db.teamNumbers.ToList(), "Team_id", "Team_id");
             return View();
 
         }
@@ -408,6 +410,7 @@ namespace MyFood.Controllers
 
                     empUser.Id = user.Id;
                     empUser.national_id = model.national_id;
+                    empUser.Team_id = model.Team_id;
 
                     var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
 
@@ -428,7 +431,7 @@ namespace MyFood.Controllers
 
                 ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
                                   .ToList(), "Name", "Name");
-
+                ViewBag.TeamNumber = new SelectList(db.teamNumbers.ToList(), "Team_id", "Team_id");
 
                 AddErrors(result);
 

@@ -43,6 +43,12 @@
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Team_id, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownList("Team_id", (SelectList)ViewBag.TeamNumber, " اختر رقم الفريق...", new { @class = "form-control" })
+        </div>
+    </div>
 
     <div class="form-group">
         @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })

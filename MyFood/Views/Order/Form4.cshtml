@@ -14,23 +14,14 @@
     @Html.AntiForgeryToken()
     <br />
 
-    <div class="container-sm">
-        <h4> بيانات الجهة</h4>
-        <div class="col-sm-2">
-            <label>الجهة:</label> @ViewBag.unit
-        </div>
-       
-
-    </div>
-    <br />
     <br />
 
     <div class="container-sm">
             
             <div class="col-sm-2">
-                @Html.LabelFor(model => model.order_id)
-                @Html.DisplayFor(model => model.Order.unit_id, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.order_id, "", new { @class = "text-danger" })
+                @Html.LabelFor(model => model.unitId)
+                @Html.DisplayFor(model => model.unitId, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.unitId, "", new { @class = "text-danger" })
             </div>
     </div>
 
