@@ -13,11 +13,15 @@ namespace MyFood.Models
 
         public SafetyTool SafetyToolNav { get; set; }
 
+        [Display(Name ="فئة الوجبات")]
         public byte? mealCategory_id { get; set; }
         public IEnumerable<MealCategory> mealCategoryIE { get; set; }
         public long form4A_id { get; set; }
 
+        [Display(Name ="العامل الثاني")]
         public string Emp1 { get; set; }
+
+        [Display(Name ="العامل الثالث")]
         public string Emp2 { get; set; }
 
         [ForeignKey("teamLeaderId")]
@@ -30,14 +34,19 @@ namespace MyFood.Models
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
 
+        [Display(Name = "عدد الوجبات")]
         public int? meal_num { get; set; }
 
+        [Display(Name = "وزن الوجبات")]
         public int? meal_weight { get; set; }
 
+        [Display(Name = "عدد العينات")]
         public byte? sample_num { get; set; }
 
+        [Display(Name ="تاريخ التعبئة")]
         public DateTime? packing_date { get; set; }
 
+        [Display(Name = "اليوم")]
         public string day { get; set; }
 
 
@@ -45,13 +54,21 @@ namespace MyFood.Models
         public long? order_id { get; set; }
         public Order Order { get; set; }
 
-        [Display(Name ="المصدر")]
-        public byte? unitId { get; set; }
 
         [Display(Name = "الفرقة")]
         public byte? Team_id { get; set; }
 
-        public string direction_symbol { get; set; }
+        [Display(Name = "الجهة")]
+        public string directionSymbol { get; set; }
+
+        [Display(Name = "المصدر")]
+        public byte? categoryId { get; set; }
+
+        [Display(Name = "رقم المناسبة")]
+        public byte? unitId { get; set; }
+
+        [Display(Name = "العامل الاول")]
+        public string team_leader_name { get; set; }
 
     }
 }

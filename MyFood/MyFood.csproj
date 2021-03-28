@@ -658,6 +658,22 @@
     <Compile Include="Migrations\202103271831374_PupulateTeamNumber.Designer.cs">
       <DependentUpon>202103271831374_PupulateTeamNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103272342026_AddForm5Table.cs" />
+    <Compile Include="Migrations\202103272342026_AddForm5Table.Designer.cs">
+      <DependentUpon>202103272342026_AddForm5Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103280016266_AddForm5FKToSafetyToolTable.cs" />
+    <Compile Include="Migrations\202103280016266_AddForm5FKToSafetyToolTable.Designer.cs">
+      <DependentUpon>202103280016266_AddForm5FKToSafetyToolTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103280230461_AlterForm5.cs" />
+    <Compile Include="Migrations\202103280230461_AlterForm5.Designer.cs">
+      <DependentUpon>202103280230461_AlterForm5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103280234000_AlterForm5Table.cs" />
+    <Compile Include="Migrations\202103280234000_AlterForm5Table.Designer.cs">
+      <DependentUpon>202103280234000_AlterForm5Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -677,6 +693,8 @@
     <Compile Include="Models\Form3ViewModel.cs" />
     <Compile Include="Models\Form4A.cs" />
     <Compile Include="Models\Form4ViewModel.cs" />
+    <Compile Include="Models\Form5.cs" />
+    <Compile Include="Models\Form5ViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MealCategory.cs" />
@@ -1103,6 +1121,7 @@
     <Content Include="Views\Order\CompletedOrder.cshtml" />
     <Content Include="Views\Order\CompletedOrderDetails.cshtml" />
     <Content Include="Views\Order\Form4.cshtml" />
+    <Content Include="Views\Order\Form5Sec1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1463,6 +1482,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103271831374_PupulateTeamNumber.resx">
       <DependentUpon>202103271831374_PupulateTeamNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103272342026_AddForm5Table.resx">
+      <DependentUpon>202103272342026_AddForm5Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103280016266_AddForm5FKToSafetyToolTable.resx">
+      <DependentUpon>202103280016266_AddForm5FKToSafetyToolTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103280230461_AlterForm5.resx">
+      <DependentUpon>202103280230461_AlterForm5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103280234000_AlterForm5Table.resx">
+      <DependentUpon>202103280234000_AlterForm5Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

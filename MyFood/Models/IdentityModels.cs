@@ -58,10 +58,14 @@ namespace MyFood.Models
         public DbSet<CarToolForm2> CarToolForm2s { get; set; }
         public DbSet<ToolDetailForm2> ToolDetailForms2 { get; set; }
         public DbSet<Form4A> Forms4A { get; set; }
-
         public DbSet<MealCategory> mealCategories { get; set; }
-
         public DbSet<TeamNumber> teamNumbers { get; set; }
+        public DbSet<Form5> Forms5 { get; set; }
+
+
+
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

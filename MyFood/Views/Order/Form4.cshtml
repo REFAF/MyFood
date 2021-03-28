@@ -4,11 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Form4</h2>
-
 <br />
 <h2> نموذج إدخال الطعام للصالات وتعبئته</h2>
-
+<br />
 @using (Html.BeginForm("Form4", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
@@ -22,23 +20,35 @@
             <div class="col-sm-1">
                 @Html.LabelFor(model => model.Team_id)
                 @Html.DisplayFor(model => model.Team_id, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Team_id, "", new { @class = "text-danger" })
             </div>
-
             <div class="col-sm-1">
+                @Html.LabelFor(model => model.directionSymbol)
+                @Html.DisplayFor(model => model.directionSymbol, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-1">
+                @Html.LabelFor(model => model.categoryId)
+                @Html.DisplayFor(model => model.categoryId, new { @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
                 @Html.LabelFor(model => model.unitId)
                 @Html.DisplayFor(model => model.unitId, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.unitId, "", new { @class = "text-danger" })
             </div>
+
+
         </div>
 
     </div>
-
-    <br />
-    <br />
+<hr />
 
     <div class="container-sm">
-            <h4> بيانات الفريق المستلم</h4>
+        @Html.Label("اعضاء الفريق المستلم")
+        <br /><br />
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.team_leader_name)<br />
+                @Html.DisplayFor(model => model.team_leader_name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.team_leader_name, "", new { @class = "text-danger" })
+            </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.Emp1)
                 @Html.TextBoxFor(model => model.Emp1, new { @class = "form-control" })
@@ -49,62 +59,61 @@
                 @Html.TextBoxFor(model => model.Emp2, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Emp2, "", new { @class = "text-danger" })
             </div>
+        </div>
     </div>
 
     <hr />
-    <br />
-    <br />
-
-
-
     <div class="container-sm">
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.packing_date)
-            @Html.EditorFor(m => m.packing_date,
-           new
-                {
-                    htmlAttributes = new
+        @Html.Label("بيانات التعبئة")
+        <br /><br />
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.mealCategory_id)
+                @Html.DropDownListFor(model => model.mealCategory_id,
+               new SelectList(Model.mealCategoryIE, "mealCategory_id", "mealCategory_name")
+               , "اختر فئة الوجبات...", new { @class = "form-control" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.meal_num)
+                @Html.TextBoxFor(model => model.meal_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.meal_num, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.meal_weight)
+                @Html.TextBoxFor(model => model.meal_weight, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.meal_weight, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.sample_num)
+                @Html.TextBoxFor(model => model.sample_num, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.sample_num, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.packing_date)
+                @Html.EditorFor(m => m.packing_date,
+               new
                     {
-                        @class = "form-control",
-                        @type = "date",
-                    data_val_date = "صيغة التاريخ غير صحيحة"
-                    }
-                })
+                        htmlAttributes = new
+                        {
+                            @class = "form-control",
+                            @type = "date",
+                        data_val_date = "صيغة التاريخ غير صحيحة"
+                        }
+                    })
 
-            @Html.ValidationMessageFor(model => model.packing_date, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.day)
-            @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
-        </div>
-  
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.mealCategory_id, new { @class = "control-label col-md-2" })
-            @Html.DropDownListFor(model => model.mealCategory_id,
-           new SelectList(Model.mealCategoryIE, "mealCategory_id", "mealCategory_name")
-           , "اختر فئة الوجبات...", new { @class = "form-control" })
-        </div>
-        
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.meal_num)
-            @Html.TextBoxFor(model => model.meal_num, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.meal_num, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.meal_weight)
-            @Html.TextBoxFor(model => model.meal_weight, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.meal_weight, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="col-sm-2">
-            @Html.LabelFor(model => model.sample_num)
-            @Html.TextBoxFor(model => model.sample_num, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.sample_num, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.packing_date, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.day)
+                @Html.TextBoxFor(model => model.day, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.day, "", new { @class = "text-danger" })
+            </div>
         </div>
     </div>
+
     <hr />
 
     <style>
@@ -112,9 +121,6 @@
             transform: rotate(90deg);
         }
     </style>
-
-    <hr />
-    <br />
 
     <div class="container-sm">
         @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
