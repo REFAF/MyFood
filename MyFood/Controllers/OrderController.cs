@@ -129,7 +129,7 @@ namespace MyFood.Controllers
         //Get: Order/empOrderDetails
         public ActionResult empOrderDetails(long id)
         {
-            var order = db.Orders.Include(c => c.Unit).Include(c => c.empId)
+            var order = db.Orders.Include(c => c.Unit).Include(c => c.BuffetType).Include(c => c.empId)
                 .Include(c => c.supId).SingleOrDefault(c => c.order_id == id);
 
             if (order == null)
@@ -266,6 +266,7 @@ namespace MyFood.Controllers
                 var food = new FoodType();
 
 
+
                 food.rice = foodType.rice;
                 food.water = foodType.water;
                 food.chicken = foodType.chicken;
@@ -321,8 +322,8 @@ namespace MyFood.Controllers
             ViewModelForm2 viewModel = new ViewModelForm2()
             {
 
-                toolDetailForm2 = new List<ToolDetailForm2> {new ToolDetailForm2 {quantity = 0 ,
-                    returned_tools = 0, note = "", tool_unit = ""} },
+                toolDetailForm2 = new List<ToolDetailForm2> {new ToolDetailForm2 {tool_unit = "", quantity = null ,
+                    returned_tools = null, note = ""} },
 
                 ToolIE = db.Tools.ToList(),
 
@@ -335,33 +336,43 @@ namespace MyFood.Controllers
         //POST: Order/Form2
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Form2(ViewModelForm2 viewModelForm2, List<ToolDetailForm2> tool)
+        public ActionResult Form2(ViewModelForm2 viewModelForm2)
         {
-            var carTool = new CarToolForm2();
-            var toolDetail = new ToolDetailForm2();
-
-            carTool.order_id = viewModelForm2.order_id;
-
-            tool = new List<ToolDetailForm2> {new ToolDetailForm2 {quantity = 0 ,
-                    returned_tools = 0, note = "", tool_unit = ""} };
-
-            foreach (var i in viewModelForm2.toolDetailForm2)
+            if (ModelState.IsValid)
             {
-                db.ToolDetailForms2.Add(i);
-                i.f2_id = carTool.form2_id;
+                var carTool = new CarToolForm2();
+
+                carTool.order_id = viewModelForm2.order_id;
+                
+
+                var toolD = new ToolDetailForm2();
+                //toolD.tool_id = viewModelForm2.tool_id;
+               
+
+                foreach (var i in viewModelForm2.toolDetailForm2)
+                {
+                    db.ToolDetailForms2.Add(i);
+                    i.f2_id = carTool.form2_id;
+                    toolD.tool_id = viewModelForm2.tool_id;
+                }
+
+                viewModelForm2.toolDetailForm2 = new List<ToolDetailForm2>
+                {new ToolDetailForm2 {tool_unit = "", quantity = null , returned_tools = null,
+                note = ""} };
+
+
+
+                carTool.car_num = viewModelForm2.car_num;
+                carTool.delivery_date = viewModelForm2.delivery_date;
+                db.CarToolForm2s.Add(carTool);
+
+                db.SaveChanges();
+
+
+
+                return RedirectToAction("Index", "Home");
             }
-
-            
-
-            carTool.car_num = viewModelForm2.car_num;
-            carTool.delivery_date = viewModelForm2.delivery_date;
-            db.CarToolForm2s.Add(carTool);
-
-            db.SaveChanges();
-
-
-
-            return RedirectToAction("Index", "Home");
+            return View(viewModelForm2);
         }
 
 
@@ -384,74 +395,12 @@ namespace MyFood.Controllers
                 .Include(c => c.NotHealthy)
                 .Include(c => c.Order).SingleOrDefault(c => c.f3_id == id);
 
-
             if (form3 == null)
             {
                 return HttpNotFound();
             }
 
             return View(form3);
-
-
-        }
-
-        //POST: Order/CompletedOrderDetails
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CompletedOrderDetails(long id, FoodReceiptForm3 foodReceiptForm3, FoodType foodType)
-        {
-
-            if (ModelState.IsValid)
-            {
-                var form3 = db.FoodReceiptForms3
-                .Include(c => c.FoodType)
-                .Include(c => c.Order).SingleOrDefault(c => c.f3_id == id);
-
-                var order = db.Orders.SingleOrDefault(c => c.order_id == form3.order_id);
-
-                var food = new FoodType();
-
-
-                food.rice = foodType.rice;
-                food.water = foodType.water;
-                food.chicken = foodType.chicken;
-                food.soup = foodType.soup;
-                food.meat = foodType.meat;
-                food.pies = foodType.pies;
-                food.dates = foodType.dates;
-                food.bread = foodType.bread;
-                food.fruit = foodType.fruit;
-                food.dessert = foodType.dessert;
-                food.gursan = foodType.gursan;
-                food.groats = foodType.groats;
-                food.pasta = foodType.pasta;
-                food.vegetables = foodType.vegetables;
-                food.buffet = foodType.buffet;
-                food.juices = foodType.juices;
-
-                form3.food_type_id = foodType.food_type_id;
-
-                form3.cart_num = foodReceiptForm3.cart_num;
-                form3.pot_num = foodReceiptForm3.pot_num;
-                form3.edible = foodReceiptForm3.edible;
-                form3.inedible = foodReceiptForm3.inedible;
-
-                form3.arrival_time = foodReceiptForm3.arrival_time;
-                form3.return_time = foodReceiptForm3.return_time;
-                form3.kilos_arrival_time = foodReceiptForm3.kilos_arrival_time;
-                form3.kilos_return_time = foodReceiptForm3.kilos_return_time;
-
-                form3.note = foodReceiptForm3.note;
-
-                db.FoodTypes.Add(food);
-                db.SaveChanges();
-
-                return RedirectToAction("CompletedOrder");
-
-
-            }
-
-            return View(foodReceiptForm3);
         }
 
         //GET: Order/Form4
@@ -548,15 +497,24 @@ namespace MyFood.Controllers
             return View(viewModelForm4);
         }
 
+
+        //authurize team leader
+        //GET: Order/FoodDelivery
+        public ActionResult FoodDelivery()
+        {
+            return View( db.Forms5.ToList());
+        }
+
+
         //authurize team leader
         //GET: Order/Form5Sec1
         public ActionResult Form5Sec1()
         {
-            var users = from u in db.Users
-                        where u.Roles.Any(r => r.RoleId == "7add0474-8906-4c7b-9cd3-4a37b6df9fb0")
-                        select u;
+            //var users = from u in db.Users
+            //            where u.Roles.Any(r => r.RoleId == "7add0474-8906-4c7b-9cd3-4a37b6df9fb0")
+            //            select u;
 
-            ViewBag.UserName = users.ToList();
+            //ViewBag.UserName = users.ToList();
 
 
             ViewModelForm5 viewModel = new ViewModelForm5()
@@ -587,7 +545,7 @@ namespace MyFood.Controllers
 
 
                 form5.team_leader_id = User.Identity.GetUserId();
-                form5.sup_id = viewModelForm5.sup_id;
+                //form5.sup_id = viewModelForm5.sup_id;
 
                 form5.car_num = viewModelForm5.car_num;
                 form5.staff_num = viewModelForm5.staff_num;
@@ -645,6 +603,9 @@ namespace MyFood.Controllers
 
                 form5.Neighborhood_id = viewModelForm5.Neighborhood_id;
 
+                form5.families = viewModelForm5.families;
+                form5.individual = viewModelForm5.individual;
+
                 //form5.arrival_time = viewModelForm5.arrival_time;
                 //form5.return_time = viewModelForm5.return_time;
                 //form5.kilos_arrival_time = viewModelForm5.kilos_arrival_time;
@@ -658,12 +619,139 @@ namespace MyFood.Controllers
 
                 db.SaveChanges();
 
-                return RedirectToAction("AssignedOrder");
+                return RedirectToAction("FoodDelivery");
             }
             return View(viewModelForm5);
         }
 
+        //GET: Order/Form5Sec2
+        public ActionResult Form5Sec2(long id)
+        {
+
+            var form5 = db.Forms5
+                .Include(c => c.FoodType)
+                .Include(c => c.NotHealthy)
+                .Include(c => c.Neighborhood)
+                .SingleOrDefault(c => c.form5_id == id);
+
+            //ViewBag.NID = new SelectList
+            //    (db.neighborhoods, "Neighborhood_id ", "Neighborhood_name", form5.Neighborhood_id);
+
+            ViewBag.NID = db.neighborhoods.ToList();
+
+
+            //var model = new ViewModelForm5() 
+            //{ 
+            //    form5_id = form5.form5_id
+            //};
+
+            if (form5 == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(form5);
+
+        }
+
         
+        //POST: Order/Form5Sec2
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Form5Sec2(long id, string button, ViewModelForm5 viewModelForm5,
+            NotHealthy notHealthy, FoodType foodType)
+        {
+            if (ModelState.IsValid)
+            {
+                var form5 = db.Forms5
+                .Include(c => c.FoodType)
+                .Include(c => c.NotHealthy)
+                .Include(c => c.Neighborhood)
+                .SingleOrDefault(c => c.form5_id == id);
+
+ 
+                var staff_health = db.NotHealthies
+                    .SingleOrDefault(s => s.nothealthy_type_id == form5.nothealthy_type_id);
+
+                var food = db.FoodTypes.SingleOrDefault(f => f.food_type_id == form5.food_type_id);
+                //var staff_tool = new SafetyTool();
+
+
+                form5.team_leader_id = User.Identity.GetUserId();
+                //form5.sup_id = viewModelForm5.sup_id;
+
+                form5.car_num = viewModelForm5.car_num;
+                form5.staff_num = viewModelForm5.staff_num;
+                form5.date = viewModelForm5.date;
+                form5.day = viewModelForm5.day;
+
+                form5.healthy = viewModelForm5.healthy;
+                form5.not_healthy = viewModelForm5.not_healthy;
+
+                staff_health.nothealthy_type_name = notHealthy.nothealthy_type_name;
+                staff_health.Employee1_name = notHealthy.Employee1_name;
+                staff_health.Employee2_name = notHealthy.Employee2_name;
+                staff_health.note = notHealthy.note;
+
+
+                form5.note = viewModelForm5.note;
+
+                food.rice = foodType.rice;
+                food.water = foodType.water;
+                food.chicken = foodType.chicken;
+                food.soup = foodType.soup;
+                food.meat = foodType.meat;
+                food.pies = foodType.pies;
+                food.dates = foodType.dates;
+                food.bread = foodType.bread;
+                food.fruit = foodType.fruit;
+                food.dessert = foodType.dessert;
+                food.gursan = foodType.gursan;
+                food.groats = foodType.groats;
+                food.pasta = foodType.pasta;
+                food.vegetables = foodType.vegetables;
+                food.buffet = foodType.buffet;
+                food.juices = foodType.juices;
+
+                form5.meal_num = viewModelForm5.meal_num;
+                form5.weight = viewModelForm5.weight;
+
+                //ViewBag.NID = db.neighborhoods.ToList();
+               // ViewBag.NID = new SelectList
+               //(db.neighborhoods, "Neighborhood_id ", "Neighborhood_name", viewModelForm5.neighborhoods);
+
+                form5.Neighborhood_id = viewModelForm5.Neighborhood_id;
+
+                form5.families = viewModelForm5.families;
+                form5.individual = viewModelForm5.individual;
+
+                form5.exit_time = viewModelForm5.exit_time;
+                form5.kilos_exit_time = viewModelForm5.kilos_exit_time;
+                form5.arrival_time = viewModelForm5.arrival_time;
+                form5.return_time = viewModelForm5.return_time;
+                form5.kilos_arrival_time = viewModelForm5.kilos_arrival_time;
+                form5.kilos_return_time = viewModelForm5.kilos_return_time;
+
+                form5.note = viewModelForm5.note;
+
+                //db.Forms5.Add(form5);
+                //db.NotHealthies.Add(staff_health);
+                //db.FoodTypes.Add(food);
+
+                db.SaveChanges();
+
+
+                if (button == "تسليم التقرير")
+                {
+                    form5.report_status = "تم تسليم التقرير";
+                    db.SaveChanges();
+                }
+
+                return RedirectToAction("FoodDelivery");
+            }
+            return View(viewModelForm5);
+        }
+
 
 
     }

@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.order_id)
-                @Html.TextBoxFor(model => model.order_id, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.order_id, "{0:#.#}", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.order_id, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
@@ -26,8 +26,15 @@
             </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.delivery_date)
-                @Html.EditorFor(m => m.delivery_date, new{ htmlAttributes = new {@class = "form-control",@type = "date",
-               data_val_date = "صيغة التاريخ غير صحيحة" }})
+                @Html.EditorFor(m => m.delivery_date, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        @type = "date",
+               data_val_date = "صيغة التاريخ غير صحيحة"
+                    }
+                })
                 @Html.ValidationMessageFor(model => model.delivery_date, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -36,41 +43,53 @@
     <hr />
     <div class="container-sm">
         @Html.Label("أدوات التعبئة")
+        <br />
         <div><a href="#" id="addNew">إضافة صنف جديد</a></div>
-        <table id="dataTable" @*border="0"*@>
-            <tr class="row-cols-2">
+        <table id="dataTable">
+            <tr>
+                @*<th>@Html.LabelFor(model => model.ToolDetailNav.tool_id)</th>*@
                 <th>@Html.LabelFor(model => model.ToolDetailNav.tool_unit)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.quantity)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.returned_tools)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.note)</th>
-                @*<th></th>*@
+
             </tr>
             @if (Model != null && Model.toolDetailForm2.Count > 0)
             {
                 int j = 0;
                 foreach (var i in Model.toolDetailForm2)
                 {
-                    <tr class="text-center">
-                        <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].tool_unit, new { @class = "form-control col-xs-2" })</td>
-                        <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].quantity)</td>
-                        <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].returned_tools)</td>
-                        <td>@Html.TextBoxFor(a => a.toolDetailForm2[j].note)</td>
+                    <tr>
                         @*<td>
-                                @if (j > 0)
-                                {
-                                    <a href="#" class="remove">Remove</a>
-                                }
+                                @Html.DropDownListFor(a => a.toolDetailForm2[j].tool_id,
+                               new SelectList(Model.ToolIE, "tool_id", "tool_name"), "اختر اسم الصنف ...",
+                               new { @class = "form-control col-sm-2"})
                             </td>*@
+                        <td>
+                            @Html.TextBoxFor(a => a.toolDetailForm2[j].tool_unit,
+                           new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(a => a.toolDetailForm2[j].quantity,
+                           new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(a => a.toolDetailForm2[j].returned_tools,
+                           new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.TextBoxFor(a => a.toolDetailForm2[j].note,
+                           new { @class = "form-control" })
+                        </td>
 
                     </tr>
                     j++;
                 }
             }
         </table>
-
     </div>
 
-    
+
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
@@ -80,10 +99,17 @@
 
 }
 
+
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval")
+
+
     <script language="javascript">
         $(document).ready(function () {
+
+            $(function () {
+                $("#search").chosen();
+            });
 
             //1. Add new row
             $("#addNew").click(function (e) {

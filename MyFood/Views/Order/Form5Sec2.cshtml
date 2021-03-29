@@ -1,6 +1,6 @@
-﻿@model MyFood.Models.ViewModelForm5
+﻿@model MyFood.Models.Form5
 @{
-    ViewBag.Title = "Form5Sec1";
+    ViewBag.Title = "Form5Sec2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -13,10 +13,12 @@
 <br />
 <h2>صحة وسلامة تسليم الطعام</h2>
 
-@using (Html.BeginForm("Form5Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Form5Sec2", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
+
+    @Html.HiddenFor(model => model.form5_id)
 
     <div class="container-sm">
         <div class="row">
@@ -84,59 +86,6 @@
 
     <hr />
 
-    <style>
-        .cs {
-            transform: rotate(90deg);
-        }
-    </style>
-
-    <div class="container-sm">
-        @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
-        <div><a href="#" id="addNew">إضافة حقل جديد</a></div>
-        <table id="dataTable" @*border="0"*@>
-            <tr class="row-cols-2">
-                <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.hair)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.nails)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing_claean)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.head_cover)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.face_mask)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.gloves)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
-                @*<th></th>*@
-            </tr>
-            @if (Model != null && Model.safetyTool.Count > 0)
-            {
-                int j = 0;
-                foreach (var i in Model.safetyTool)
-                {
-                    <tr class="text-center">
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control col-xs-2" })</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].hair)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].nails)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing_claean)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].head_cover)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].face_mask)</td>
-                        <td>@Html.CheckBoxFor(a => a.safetyTool[j].gloves)</td>
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control col-xs-2" })</td>
-                        @*<td>
-                                @if (j > 0)
-                                {
-                                    <a href="#" class="remove">Remove</a>
-                                }
-                            </td>*@
-
-                    </tr>
-                    j++;
-                }
-            }
-        </table>
-
-    </div>
-
-    <hr />
 
     <div>
         @Html.Label("نوع الطعام")
@@ -195,12 +144,13 @@
     <div class="container-sm marginTop">
         @Html.Label("المستهدفين في التوزيع")
         <div class="row">
-            <div class="col-sm-2">
+            @*<div class="col-sm-2">
                 @Html.LabelFor(model => model.neighborhoods)
-                @Html.DropDownListFor(model => model.Neighborhood_id,
-               new SelectList(Model.neighborhoods, "Neighborhood_id", "Neighborhood_name")
-               , "اختر اسم الحي...", new { @class = "form-control"/*, id = "search" */})
-            </div>
+                @Html.DropDownList("Neighborhood_id", null, "اختر الجهة...", new { @class = "form-control" })
+                @Html.DropDownList("Neighborhood_id", new SelectList(ViewBag.NID, 
+               "Neighborhood_id", "Neighborhood_name"), " اختر الحي...", new { @class = "form-control" })
+
+            </div>*@
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.families)
                 @Html.TextBoxFor(model => model.families, new { @class = "form-control" })
@@ -230,22 +180,48 @@
             </div>
         </div>
     </div>
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.arrival_time)
+                @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
+                @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_arrival_time)
+                @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.return_time)
+                @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
+                @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_return_time)
+                @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
     <br />
-    <hr />
 
     @*<div class="container-sm mBottom">
-        <div class="row col-sm-3">
-            @Html.LabelFor(model => model.sup_id)
-            @Html.DropDownList("sup_id", new SelectList(ViewBag.UserName, "Id", "name"),
-           " اختر مشرف الصالات ...", new { @class = "form-control"})
-        </div>
-    </div>*@
+            <div class="row col-sm-3">
+                @Html.LabelFor(model => model.sup_id)
+                @Html.DropDownList("sup_id", new SelectList(ViewBag.UserName, "Id", "name"),
+               " اختر مشرف الصالات ...", new { @class = "form-control"})
+            </div>
+        </div>*@
 
     <br />
     <br />
     <div class="container-sm">
         <div>
             <input type="submit" class="btn btn-default" value="حفظ" />
+            <input name="button" type="submit" class="btn btn-default" value="تسليم التقرير" />
         </div>
     </div>
 }

@@ -674,6 +674,10 @@
     <Compile Include="Migrations\202103280234000_AlterForm5Table.Designer.cs">
       <DependentUpon>202103280234000_AlterForm5Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103290055151_AddReportStatusToForm5Table.cs" />
+    <Compile Include="Migrations\202103290055151_AddReportStatusToForm5Table.Designer.cs">
+      <DependentUpon>202103290055151_AddReportStatusToForm5Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
@@ -720,6 +724,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-chosen.css" />
     <Content Include="Content\bootstrap-flaty.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -729,6 +734,8 @@
     <Content Include="Content\bootstrap.rtl.full.css" />
     <Content Include="Content\bootstrap.rtl.full.min.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap4.css" />
@@ -936,7 +943,11 @@
     <Content Include="Content\DataTables\css\semanticui.scss" />
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap4.js" />
@@ -1122,6 +1133,8 @@
     <Content Include="Views\Order\CompletedOrderDetails.cshtml" />
     <Content Include="Views\Order\Form4.cshtml" />
     <Content Include="Views\Order\Form5Sec1.cshtml" />
+    <Content Include="Views\Order\FoodDelivery.cshtml" />
+    <Content Include="Views\Order\Form5Sec2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1494,6 +1507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103280234000_AlterForm5Table.resx">
       <DependentUpon>202103280234000_AlterForm5Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103290055151_AddReportStatusToForm5Table.resx">
+      <DependentUpon>202103290055151_AddReportStatusToForm5Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

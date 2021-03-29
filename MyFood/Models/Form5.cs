@@ -93,5 +93,8 @@ namespace MyFood.Models
         [Display(Name = "مشرف الصالات")]
         public string sup_id { get; set; }
         public ApplicationUser supId { get; set; }
+
+        [Display(Name ="حالة التقرير")]
+        public string report_status { get; set; }
     }
 }

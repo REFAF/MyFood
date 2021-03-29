@@ -1,0 +1,33 @@
+﻿@model IEnumerable<MyFood.Models.Form5>
+@{
+    ViewBag.Title = "FoodDelivery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>صحة وسلامة تسليم الطعام</h2>
+
+<p>
+    @Html.ActionLink("تقرير جديد", "Form5Sec1")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.form5_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.form5_id)
+            </td>
+            <td>
+                @Html.ActionLink("اكمال", "Form5Sec2", new { id = item.form5_id }) 
+            </td>
+        </tr>
+    }
+
+</table>

@@ -65,7 +65,9 @@
     <div class="form-group">
         @Html.LabelFor(model => model.unit_id, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DropDownListFor(model => model.unit_id, new SelectList(Model.Unit, "unit_id", "unit_name"), "اختر اسم المكان...", new { @class = "form-control" })
+            @Html.DropDownListFor(model => model.unit_id,
+           new SelectList(Model.Unit, "unit_id", "unit_name"), "اختر اسم المكان...",
+           new { @class = "form-control"/*, id = "search" */})
 
         </div>
     </div>
@@ -88,6 +90,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    @*<script type="text/javascript">
+        $(function () {
+            $("#search").chosen();
+        });
+    </script>*@
 
     @*@Scripts.Render("~/Scripts/jquery-3.1.1.js")
     @Scripts.Render("~/Scripts/jquery.validate.min.js")
