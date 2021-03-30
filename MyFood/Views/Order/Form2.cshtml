@@ -47,7 +47,7 @@
         <div><a href="#" id="addNew">إضافة صنف جديد</a></div>
         <table id="dataTable">
             <tr>
-                @*<th>@Html.LabelFor(model => model.ToolDetailNav.tool_id)</th>*@
+                <th>@Html.LabelFor(model => model.ToolDetailNav.tool_id)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.tool_unit)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.quantity)</th>
                 <th>@Html.LabelFor(model => model.ToolDetailNav.returned_tools)</th>
@@ -60,11 +60,11 @@
                 foreach (var i in Model.toolDetailForm2)
                 {
                     <tr>
-                        @*<td>
+                        <td>
                                 @Html.DropDownListFor(a => a.toolDetailForm2[j].tool_id,
                                new SelectList(Model.ToolIE, "tool_id", "tool_name"), "اختر اسم الصنف ...",
                                new { @class = "form-control col-sm-2"})
-                            </td>*@
+                            </td>
                         <td>
                             @Html.TextBoxFor(a => a.toolDetailForm2[j].tool_unit,
                            new { @class = "form-control" })

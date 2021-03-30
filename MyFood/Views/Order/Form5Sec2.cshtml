@@ -144,13 +144,11 @@
     <div class="container-sm marginTop">
         @Html.Label("المستهدفين في التوزيع")
         <div class="row">
-            @*<div class="col-sm-2">
-                @Html.LabelFor(model => model.neighborhoods)
-                @Html.DropDownList("Neighborhood_id", null, "اختر الجهة...", new { @class = "form-control" })
-                @Html.DropDownList("Neighborhood_id", new SelectList(ViewBag.NID, 
-               "Neighborhood_id", "Neighborhood_name"), " اختر الحي...", new { @class = "form-control" })
-
-            </div>*@
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Neighborhood_id)
+                @Html.DropDownList("Neighborhood_id", (IEnumerable<SelectListItem>)ViewBag.neighborhood,
+               "اختر الحي...", new { @class = "form-control" })
+            </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.families)
                 @Html.TextBoxFor(model => model.families, new { @class = "form-control" })
@@ -179,8 +177,6 @@
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
             </div>
         </div>
-    </div>
-    <div class="container-sm">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.arrival_time)

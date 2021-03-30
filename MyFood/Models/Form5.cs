@@ -11,6 +11,7 @@ namespace MyFood.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Display(Name ="رقم التقرير")]
         public long form5_id { get; set; }
 
         [Display(Name = "رقم السيارة")]
@@ -66,7 +67,7 @@ namespace MyFood.Models
         [StringLength(10)]
         public string note { get; set; }
 
-
+        [Display(Name = "الحي")]
         [ForeignKey("Neighborhood")]
         public byte? Neighborhood_id { get; set; }
         public Neighborhood Neighborhood { get; set; }

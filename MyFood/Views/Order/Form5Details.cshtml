@@ -1,0 +1,187 @@
+﻿@model MyFood.Models.Form5
+@{
+    ViewBag.Title = "Form5Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>صحة وسلامة تسليم الطعام</h2>
+
+@using (Html.BeginForm("Form5Details", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <br />
+
+    @Html.HiddenFor(model => model.form5_id)
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.car_num)
+                @Html.DisplayFor(model => model.car_num)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.staff_num)
+                @Html.DisplayFor(model => model.staff_num)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.date)
+                @Model.date.Value.ToString("dd/MM/yyyy")
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.day)
+                @Html.DisplayFor(model => model.day)
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.Label("صحة وسلامة العاملين:")<br />
+                @Html.DisplayFor(m => m.healthy) سليم
+                @Html.DisplayFor(m => m.not_healthy) غير سليم
+            </div>
+            <div class="col-sm-2">
+                @Html.Label(" يذكر نوع الحالة:")
+                @Html.DisplayFor(model => model.NotHealthy.nothealthy_type_name)
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm">
+                @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:")
+            </div>
+            <div class="col-sm-2">
+                @Html.DisplayFor(model => model.NotHealthy.Employee1_name)
+            </div>
+            <div class="col-sm-2">
+                @Html.DisplayFor(model => model.NotHealthy.Employee2_name)
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div>
+        @Html.Label("نوع الطعام")
+    </div>
+    <div class="container-sm">
+        <div class="row marginTop">
+            <div class="col-sm-6">
+                @Html.DisplayFor(model => model.FoodType.rice)  أرز
+                @Html.DisplayFor(model => model.FoodType.water) ماء
+                @Html.DisplayFor(model => model.FoodType.chicken)  دجاج
+                @Html.DisplayFor(model => model.FoodType.soup) إدام
+                @Html.DisplayFor(model => model.FoodType.meat) لحم
+                @Html.DisplayFor(model => model.FoodType.pies) فطائر
+            </div>
+        </div>
+
+        <div class="row marginTop">
+            <div class="col-sm-6">
+                @Html.DisplayFor(model => model.FoodType.dates) تمر
+                @Html.DisplayFor(model => model.FoodType.bread) خبز
+                @Html.DisplayFor(model => model.FoodType.fruit) فاكهة
+                @Html.DisplayFor(model => model.FoodType.pasta) معكرونة
+                @Html.DisplayFor(model => model.FoodType.gursan) قرصان
+            </div>
+        </div>
+        <div class="row marginTop">
+            <div class="col-sm-6">
+                @Html.DisplayFor(model => model.FoodType.groats) جريش
+                @Html.DisplayFor(model => model.FoodType.dessert) حلا
+                @Html.DisplayFor(model => model.FoodType.vegetables) خضار
+                @Html.DisplayFor(model => model.FoodType.buffet) بوفيه
+                @Html.DisplayFor(model => model.FoodType.juices) عصائر
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-sm marginTop">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.meal_num)
+                @Html.DisplayFor(model => model.meal_num)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.weight)
+                @Html.DisplayFor(model => model.weight)
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-sm marginTop">
+        @Html.Label("المستهدفين في التوزيع")
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.Neighborhood_id)
+                @Html.DisplayFor(model => model.Neighborhood.Neighborhood_name)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.families)
+                @Html.DisplayFor(model => model.families)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.individual)
+                @Html.DisplayFor(model => model.individual)
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <div class="container-sm">
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.exit_time)
+                @Html.DisplayFor(model => model.exit_time)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_exit_time)
+                @Html.DisplayFor(model => model.kilos_exit_time)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.arrival_time)
+                @Html.DisplayFor(model => model.arrival_time)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_arrival_time)
+                @Html.DisplayFor(model => model.kilos_arrival_time)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.return_time)
+                @Html.DisplayFor(model => model.return_time)
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_return_time)
+                @Html.DisplayFor(model => model.kilos_return_time)
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="إعتماد" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+
+
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

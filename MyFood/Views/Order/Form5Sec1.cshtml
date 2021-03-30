@@ -229,17 +229,43 @@
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.arrival_time)
+                @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
+                @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_arrival_time)
+                @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.return_time)
+                @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
+                @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-sm-2">
+                @Html.LabelFor(model => model.kilos_return_time)
+                @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
+            </div>
+        </div>
     </div>
     <br />
-    <hr />
-
-    @*<div class="container-sm mBottom">
-        <div class="row col-sm-3">
-            @Html.LabelFor(model => model.sup_id)
-            @Html.DropDownList("sup_id", new SelectList(ViewBag.UserName, "Id", "name"),
-           " اختر مشرف الصالات ...", new { @class = "form-control"})
+    <div class="container-sm">
+        <div class="row">
+            <div class=" col-sm-2">
+                @Html.Label("ملاحظات")
+                @Html.TextBoxFor(model => model.note, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>*@
+    </div>
+    <br />
+
 
     <br />
     <br />

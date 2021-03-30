@@ -1135,6 +1135,8 @@
     <Content Include="Views\Order\Form5Sec1.cshtml" />
     <Content Include="Views\Order\FoodDelivery.cshtml" />
     <Content Include="Views\Order\Form5Sec2.cshtml" />
+    <Content Include="Views\Order\FoodDeliverySup.cshtml" />
+    <Content Include="Views\Order\Form5Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
