@@ -37,11 +37,11 @@ namespace MyFood.Controllers.cp
         }
 
         // GET: Employees/Create
-        public ActionResult Create()
-        {
-            ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name");
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    ViewBag.role_id = new SelectList(db.EmpRoles, "role_id", "role_name");
+        //    return View();
+        //}
 
         // POST: Employees/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 

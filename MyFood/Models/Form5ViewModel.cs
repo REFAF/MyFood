@@ -25,8 +25,10 @@ namespace MyFood.Models
         public byte? staff_num { get; set; }
 
         [Display(Name = "التاريخ")]
-        [Column(TypeName = "date")]
-        public DateTime? date { get; set; }
+        public string date { get; set; }
+
+        //[Column(TypeName = "date")]
+        //public DateTime? date { get; set; }
 
         [Display(Name = "اليوم")]
         [StringLength(50)]

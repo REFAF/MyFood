@@ -118,23 +118,23 @@
                 var $trLast = $tableBody.find("tr:last");
                 var $trNew = $trLast.clone();
 
-                var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
-                //$trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
-                $.each($trNew.find(':input'), function (i, val) {
-                    // Replaced Name
-                    var oldN = $(this).attr('name');
-                    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
-                    $(this).attr('name', newN);
-                    //Replaced value
-                    var type = $(this).attr('type');
-                    if (type.toLowerCase() == "text") {
-                        $(this).attr('value', '');
-                    }
+                //var suffix = $trNew.find(':input:first').attr('name').match(/\d+/);
+                ////$trNew.find("td:last").html('<a href="#" class="remove">Remove</a>');
+                //$.each($trNew.find(':input'), function (i, val) {
+                //    // Replaced Name
+                //    var oldN = $(this).attr('name');
+                //    var newN = oldN.replace('[' + suffix + ']', '[' + (parseInt(suffix) + 1) + ']');
+                //    $(this).attr('name', newN);
+                //    //Replaced value
+                //    var type = $(this).attr('type');
+                //    if (type.toLowerCase() == "text") {
+                //        $(this).attr('value', '');
+                //    }
 
-                    // If you have another Type then replace with default value
-                    $(this).removeClass("input-validation-error");
+                //    // If you have another Type then replace with default value
+                //    $(this).removeClass("input-validation-error");
 
-                });
+                //});
                 $trLast.after($trNew);
 
                 // Re-assign Validation

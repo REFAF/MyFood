@@ -14,6 +14,7 @@ namespace MyFood.Models
         [Required(ErrorMessage = "نوع الجهة")]
         public byte orgType_id { get; set; }
 
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(50)]
         [Display(Name ="اسم الجهة")]
         public string orgType_name { get; set; }

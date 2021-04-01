@@ -678,18 +678,71 @@
     <Compile Include="Migrations\202103290055151_AddReportStatusToForm5Table.Designer.cs">
       <DependentUpon>202103290055151_AddReportStatusToForm5Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202103311847201_RequiredNamePropInBuffetTypeTable.cs" />
+    <Compile Include="Migrations\202103311847201_RequiredNamePropInBuffetTypeTable.Designer.cs">
+      <DependentUpon>202103311847201_RequiredNamePropInBuffetTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103311947251_RequiredNamePropInOrgTypeTable.cs" />
+    <Compile Include="Migrations\202103311947251_RequiredNamePropInOrgTypeTable.Designer.cs">
+      <DependentUpon>202103311947251_RequiredNamePropInOrgTypeTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312231330_DeleteCityTable.cs" />
+    <Compile Include="Migrations\202103312231330_DeleteCityTable.Designer.cs">
+      <DependentUpon>202103312231330_DeleteCityTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312242045_DeleteEmpRoleTable.cs" />
+    <Compile Include="Migrations\202103312242045_DeleteEmpRoleTable.Designer.cs">
+      <DependentUpon>202103312242045_DeleteEmpRoleTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312246329_DeleteEventTable.cs" />
+    <Compile Include="Migrations\202103312246329_DeleteEventTable.Designer.cs">
+      <DependentUpon>202103312246329_DeleteEventTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312250395_DeleteOrderForm1Table.cs" />
+    <Compile Include="Migrations\202103312250395_DeleteOrderForm1Table.Designer.cs">
+      <DependentUpon>202103312250395_DeleteOrderForm1Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312253501_DeletePackagingFoTable.cs" />
+    <Compile Include="Migrations\202103312253501_DeletePackagingFoTable.Designer.cs">
+      <DependentUpon>202103312253501_DeletePackagingFoTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312309225_DeleteCityFK.cs" />
+    <Compile Include="Migrations\202103312309225_DeleteCityFK.Designer.cs">
+      <DependentUpon>202103312309225_DeleteCityFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103312337492_AddResetPasswordCodeToUserTable.cs" />
+    <Compile Include="Migrations\202103312337492_AddResetPasswordCodeToUserTable.Designer.cs">
+      <DependentUpon>202103312337492_AddResetPasswordCodeToUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010042068_AlterDateTimeInOrder.cs" />
+    <Compile Include="Migrations\202104010042068_AlterDateTimeInOrder.Designer.cs">
+      <DependentUpon>202104010042068_AlterDateTimeInOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010103064_AlterDateTimeInForm3.cs" />
+    <Compile Include="Migrations\202104010103064_AlterDateTimeInForm3.Designer.cs">
+      <DependentUpon>202104010103064_AlterDateTimeInForm3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010134306_AlterDateTimeInForm4A.cs" />
+    <Compile Include="Migrations\202104010134306_AlterDateTimeInForm4A.Designer.cs">
+      <DependentUpon>202104010134306_AlterDateTimeInForm4A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010140572_AlterWeightInForm4A.cs" />
+    <Compile Include="Migrations\202104010140572_AlterWeightInForm4A.Designer.cs">
+      <DependentUpon>202104010140572_AlterWeightInForm4A.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104010145292_AlterDateTimeInForm5.cs" />
+    <Compile Include="Migrations\202104010145292_AlterDateTimeInForm5.Designer.cs">
+      <DependentUpon>202104010145292_AlterDateTimeInForm5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Beneficiary.cs" />
     <Compile Include="Models\BuffetType.cs" />
     <Compile Include="Models\CarToolForm2.cs" />
     <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\City.cs" />
     <Compile Include="Models\Diet.cs" />
     <Compile Include="Models\Direction.cs" />
-    <Compile Include="Models\Donator.cs" />
     <Compile Include="Models\Employee.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\FamilyDiet.cs" />
     <Compile Include="Models\FoodReceiptForm3.cs" />
     <Compile Include="Models\FoodType.cs" />
@@ -705,14 +758,10 @@
     <Compile Include="Models\Neighborhood.cs" />
     <Compile Include="Models\NotHealthy.cs" />
     <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderForm1.cs" />
     <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\Organization.cs" />
     <Compile Include="Models\OrgType.cs" />
-    <Compile Include="Models\PackagingFollowUp.cs" />
     <Compile Include="Models\Region.cs" />
-    <Compile Include="Models\EmpRole.cs" />
-    <Compile Include="Models\RegistrationViewModel.cs" />
     <Compile Include="Models\SafetyTool.cs" />
     <Compile Include="Models\Sample.cs" />
     <Compile Include="Models\TeamNumber.cs" />
@@ -725,6 +774,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-chosen.css" />
+    <Content Include="Content\bootstrap-datetimepicker.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
     <Content Include="Content\bootstrap-flaty.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -893,6 +944,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -938,6 +990,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\DataTables\css\semanticui.scss" />
@@ -945,6 +999,83 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\bootstrap-chosen.scss" />
     <Content Include="Content\bootstrap-chosen.less" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap\wells.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\utilities.less" />
+    <Content Include="Content\bootstrap\type.less" />
+    <Content Include="Content\bootstrap\tooltip.less" />
+    <Content Include="Content\bootstrap\thumbnails.less" />
+    <Content Include="Content\bootstrap\theme.less" />
+    <Content Include="Content\bootstrap\tables.less" />
+    <Content Include="Content\bootstrap\scaffolding.less" />
+    <Content Include="Content\bootstrap\responsive-utilities.less" />
+    <Content Include="Content\bootstrap\responsive-embed.less" />
+    <Content Include="Content\bootstrap\progress-bars.less" />
+    <Content Include="Content\bootstrap\print.less" />
+    <Content Include="Content\bootstrap\popovers.less" />
+    <Content Include="Content\bootstrap\panels.less" />
+    <Content Include="Content\bootstrap\pagination.less" />
+    <Content Include="Content\bootstrap\pager.less" />
+    <Content Include="Content\bootstrap\normalize.less" />
+    <Content Include="Content\bootstrap\navs.less" />
+    <Content Include="Content\bootstrap\navbar.less" />
+    <Content Include="Content\bootstrap\modals.less" />
+    <Content Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <Content Include="Content\bootstrap\mixins\text-overflow.less" />
+    <Content Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <Content Include="Content\bootstrap\mixins\table-row.less" />
+    <Content Include="Content\bootstrap\mixins\tab-focus.less" />
+    <Content Include="Content\bootstrap\mixins\size.less" />
+    <Content Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <Content Include="Content\bootstrap\mixins\resize.less" />
+    <Content Include="Content\bootstrap\mixins\reset-text.less" />
+    <Content Include="Content\bootstrap\mixins\reset-filter.less" />
+    <Content Include="Content\bootstrap\mixins\progress-bar.less" />
+    <Content Include="Content\bootstrap\mixins\panels.less" />
+    <Content Include="Content\bootstrap\mixins\pagination.less" />
+    <Content Include="Content\bootstrap\mixins\opacity.less" />
+    <Content Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <Content Include="Content\bootstrap\mixins\nav-divider.less" />
+    <Content Include="Content\bootstrap\mixins\list-group.less" />
+    <Content Include="Content\bootstrap\mixins\labels.less" />
+    <Content Include="Content\bootstrap\mixins\image.less" />
+    <Content Include="Content\bootstrap\mixins\hide-text.less" />
+    <Content Include="Content\bootstrap\mixins\grid.less" />
+    <Content Include="Content\bootstrap\mixins\grid-framework.less" />
+    <Content Include="Content\bootstrap\mixins\gradients.less" />
+    <Content Include="Content\bootstrap\mixins\forms.less" />
+    <Content Include="Content\bootstrap\mixins\clearfix.less" />
+    <Content Include="Content\bootstrap\mixins\center-block.less" />
+    <Content Include="Content\bootstrap\mixins\buttons.less" />
+    <Content Include="Content\bootstrap\mixins\border-radius.less" />
+    <Content Include="Content\bootstrap\mixins\background-variant.less" />
+    <Content Include="Content\bootstrap\mixins\alerts.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Content\bootstrap\media.less" />
+    <Content Include="Content\bootstrap\list-group.less" />
+    <Content Include="Content\bootstrap\labels.less" />
+    <Content Include="Content\bootstrap\jumbotron.less" />
+    <Content Include="Content\bootstrap\input-groups.less" />
+    <Content Include="Content\bootstrap\grid.less" />
+    <Content Include="Content\bootstrap\glyphicons.less" />
+    <Content Include="Content\bootstrap\forms.less" />
+    <Content Include="Content\bootstrap\dropdowns.less" />
+    <Content Include="Content\bootstrap\component-animations.less" />
+    <Content Include="Content\bootstrap\code.less" />
+    <Content Include="Content\bootstrap\close.less" />
+    <Content Include="Content\bootstrap\carousel.less" />
+    <Content Include="Content\bootstrap\buttons.less" />
+    <Content Include="Content\bootstrap\button-groups.less" />
+    <Content Include="Content\bootstrap\breadcrumbs.less" />
+    <Content Include="Content\bootstrap\bootstrap.less" />
+    <Content Include="Content\bootstrap\badges.less" />
+    <Content Include="Content\bootstrap\alerts.less" />
+    <Content Include="Content\_bootstrap-datetimepicker.less" />
+    <Content Include="Content\bootstrap-datetimepicker-build.less" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
@@ -1035,6 +1166,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\mobiscroll.javascript.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -1137,6 +1269,7 @@
     <Content Include="Views\Order\Form5Sec2.cshtml" />
     <Content Include="Views\Order\FoodDeliverySup.cshtml" />
     <Content Include="Views\Order\Form5Details.cshtml" />
+    <Content Include="Views\Account\AdminRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1512,6 +1645,48 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202103290055151_AddReportStatusToForm5Table.resx">
       <DependentUpon>202103290055151_AddReportStatusToForm5Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311847201_RequiredNamePropInBuffetTypeTable.resx">
+      <DependentUpon>202103311847201_RequiredNamePropInBuffetTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103311947251_RequiredNamePropInOrgTypeTable.resx">
+      <DependentUpon>202103311947251_RequiredNamePropInOrgTypeTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312231330_DeleteCityTable.resx">
+      <DependentUpon>202103312231330_DeleteCityTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312242045_DeleteEmpRoleTable.resx">
+      <DependentUpon>202103312242045_DeleteEmpRoleTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312246329_DeleteEventTable.resx">
+      <DependentUpon>202103312246329_DeleteEventTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312250395_DeleteOrderForm1Table.resx">
+      <DependentUpon>202103312250395_DeleteOrderForm1Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312253501_DeletePackagingFoTable.resx">
+      <DependentUpon>202103312253501_DeletePackagingFoTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312309225_DeleteCityFK.resx">
+      <DependentUpon>202103312309225_DeleteCityFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103312337492_AddResetPasswordCodeToUserTable.resx">
+      <DependentUpon>202103312337492_AddResetPasswordCodeToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010042068_AlterDateTimeInOrder.resx">
+      <DependentUpon>202104010042068_AlterDateTimeInOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010103064_AlterDateTimeInForm3.resx">
+      <DependentUpon>202104010103064_AlterDateTimeInForm3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010134306_AlterDateTimeInForm4A.resx">
+      <DependentUpon>202104010134306_AlterDateTimeInForm4A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010140572_AlterWeightInForm4A.resx">
+      <DependentUpon>202104010140572_AlterWeightInForm4A.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104010145292_AlterDateTimeInForm5.resx">
+      <DependentUpon>202104010145292_AlterDateTimeInForm5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

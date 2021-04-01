@@ -319,11 +319,10 @@ namespace MyFood.Controllers
         {
             ViewModelForm2 viewModel = new ViewModelForm2()
             {
+                ToolIE = db.Tools.ToList(),
 
                 toolDetailForm2 = new List<ToolDetailForm2> {new ToolDetailForm2 {tool_unit = "", quantity = null ,
                     returned_tools = null, note = ""} },
-
-                ToolIE = db.Tools.ToList(),
 
             };
 
@@ -341,7 +340,9 @@ namespace MyFood.Controllers
                 var carTool = new CarToolForm2();
 
                 carTool.order_id = viewModelForm2.order_id;
-                
+                carTool.car_num = viewModelForm2.car_num;
+                carTool.delivery_date = viewModelForm2.delivery_date;
+
                 var toolD = new ToolDetailForm2();
                 //toolD.tool_id = viewModelForm2.tool_id;
                
@@ -349,15 +350,14 @@ namespace MyFood.Controllers
                 {
                     db.ToolDetailForms2.Add(i);
                     i.f2_id = carTool.form2_id;
-                    toolD.tool_id = viewModelForm2.tool_id;
+                    i.tool_id = viewModelForm2.tool_id;
                 }
 
+                
                 viewModelForm2.toolDetailForm2 = new List<ToolDetailForm2>
                 {new ToolDetailForm2 {tool_unit = "", quantity = null , returned_tools = null,
                 note = ""} };
 
-                carTool.car_num = viewModelForm2.car_num;
-                carTool.delivery_date = viewModelForm2.delivery_date;
                 db.CarToolForm2s.Add(carTool);
 
                 db.SaveChanges();
@@ -759,6 +759,7 @@ namespace MyFood.Controllers
             }
                 return View(form5);
         }
+
 
     }
 }

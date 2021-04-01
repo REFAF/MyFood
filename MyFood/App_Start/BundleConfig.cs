@@ -40,6 +40,7 @@ namespace MyFood
                       "~/Content/bootstrap.rtl.full.min.css",
                       "~/Content/bootstrap.rtl.min",
                       "~/Content/site.css"));
+
         }
     }
 }

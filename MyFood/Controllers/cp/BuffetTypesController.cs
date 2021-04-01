@@ -10,7 +10,7 @@ using MyFood.Models;
 
 namespace MyFood.Controllers.cp
 {
-    [Authorize(Roles = "رئيس فريق")]
+    //[Authorize(Roles = "Admin")]
     public class BuffetTypesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

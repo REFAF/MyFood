@@ -17,6 +17,7 @@ namespace MyFood.Models
         public byte userType_id { get; set; }
 
         public string name { get; set; }
+        public string ResetPasswordCode { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -29,13 +30,9 @@ namespace MyFood.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<City> Cities { get; set; }
-        public DbSet<EmpRole> EmpRoles { get; set; }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<FoodType> FoodTypes { get; set; }
         public DbSet<Beneficiary> Beneficiaries { get; set; }
-        public DbSet<Donator> Donators { get; set; }
-        public DbSet<Event> Events { get; set; }
         public DbSet<BuffetType> BuffetTypes { get; set; }
         public DbSet<Diet> Diets { get; set; }
         public DbSet<OrgType> OrgTypes { get; set; }
@@ -43,10 +40,8 @@ namespace MyFood.Models
         public DbSet<SafetyTool> SafetyTools { get; set; }
         public DbSet<FoodReceiptForm3> FoodReceiptForms3 { get; set; }
         public DbSet<NotHealthy> NotHealthies { get; set; }
-        public DbSet<PackagingFollowUp> PackagingFollowUps { get; set; }
         public DbSet<Sample> Samples { get; set; }
         public DbSet<FamilyDiet> FamilyDiets { get; set; }
-        public DbSet<OrderForm1> OrderForms1 { get; set; }
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<UserType> UserTypes { get; set; }
         public DbSet<Direction> Directions{ get; set; }

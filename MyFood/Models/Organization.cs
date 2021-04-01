@@ -13,15 +13,11 @@ namespace MyFood.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int org_id { get; set; }
 
-        public byte? city_id { get; set; }
-
         [Display(Name = "الموقع")]
         public string org_location { get; set; }
 
         [Display(Name = "نوع الجهة")]
         public byte? orgType_id { get; set; }
-
-        public City City { get; set; }
 
         public OrgType OrgType { get; set; }
 

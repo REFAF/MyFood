@@ -15,9 +15,6 @@ namespace MyFood.Models
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public long national_id { get; set; }
 
-        [Display(Name = "المدينة")]
-        public byte? city_id { get; set; }
-
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "رقم المبنى")]
         public string address { get; set; }

@@ -39,8 +39,7 @@
                     htmlAttributes = new
                     {
                         @class = "form-control",
-               @type = "date",
-                        data_val_date = "صيغة التاريخ غير صحيحة"
+               placeholder = "01-01-2021"
                     }
                 })
                 @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })

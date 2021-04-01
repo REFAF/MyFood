@@ -28,12 +28,14 @@ namespace MyFood.Models
 
         public int? meal_num { get; set; }
 
-        public int? meal_weight { get; set; }
+        public float? meal_weight { get; set; }
 
         public byte? sample_num { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? packing_date { get; set; }
+        //[Column(TypeName = "date")]
+        //public DateTime? packing_date { get; set; }
+
+        public string packing_date { get; set; }
 
         public string day { get; set; }
 

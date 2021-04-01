@@ -19,6 +19,7 @@ namespace MyFood.Models
         public string Neighborhood_name { get; set; }
 
         [Display(Name = "الجهة")]
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         public byte direction_id { get; set; }
         public Direction Direction { get; set; }
     }

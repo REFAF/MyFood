@@ -38,13 +38,14 @@ namespace MyFood.Models
         public int? meal_num { get; set; }
 
         [Display(Name = "وزن الوجبات")]
-        public int? meal_weight { get; set; }
+        public float? meal_weight { get; set; }
 
         [Display(Name = "عدد العينات")]
         public byte? sample_num { get; set; }
 
         [Display(Name ="تاريخ التعبئة")]
-        public DateTime? packing_date { get; set; }
+        public string packing_date { get; set; }
+        //public DateTime? packing_date { get; set; }
 
         [Display(Name = "اليوم")]
         public string day { get; set; }

@@ -35,10 +35,10 @@ namespace MyFood
                 //Here we create a Admin super user who will maintain the website                   
 
                 //var user = new ApplicationUser();
-                //user.UserName = "MyFoodAdmin@MyFood.com";
-                //user.Email = "MyFoodAdmin@MyFood.com";
+                //user.UserName = "";
+                //user.Email = "";
 
-                //string userPWD = "MyFood1234";
+                //string userPWD = "";
 
                 //var chkUser = UserManager.Create(user, userPWD);
 

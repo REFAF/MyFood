@@ -5,6 +5,7 @@
 }
 
 
+
 <h2> تسجيل طلب جديد</h2>
 
 @using (Html.BeginForm("OrderForm1", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -48,8 +49,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.event_date,
-                new { htmlAttributes = new { @class = "form-control", @type="date" ,data_val_date = "صيغة التاريخ غير صحيحة" } })
+            @Html.EditorFor(m => m.event_date,new { htmlAttributes = 
+           new { @class = "form-control", placeholder="01-01-2021" } })
             @Html.ValidationMessageFor(model => model.event_date, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -92,60 +93,12 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
-    @*<script type="text/javascript">
-        $(function () {
-            $("#search").chosen();
-        });
-    </script>*@
-
-    @*@Scripts.Render("~/Scripts/jquery-3.1.1.js")
-    @Scripts.Render("~/Scripts/jquery.validate.min.js")
-    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
-    @Scripts.Render("~/Scripts/moment.js")
-
-    <script>
-        $(function () {
-            $.validator.methods.date = function (value, element) {
-                return this.optional(element) || moment(value, "DD/MM/YYYY", true).isValid();
-            }
-        });
-    </script>*@
-
-
-
-    @*@Scripts.Render("~/bundles/jqueryui")
-        @Styles.Render("~/Content/cssjqryUi")*@
 
     @*<script type="text/javascript">
-            $(document).ready(function () {
-                $('input[type=datetime]').datepicker({
-                    dateFormat: "dd/mm/yy",
-                    changeMonth: true,
-                    changeYear: true,
-                    yearRange: "-60:+0"
-                });
-                $(":input[time-picker]").timepicker({
-                    timeFormat: "HH:mm:ss"
-                });
-
+            $(function () {
+                $("#search").chosen();
             });
         </script>*@
-
-    @*<script type="text/javascript">
-            $(document).ready(function () {
-                $('input[type=datetime]').datepicker({
-                    dateFormat: "dd/mm/yy",
-                    changeMonth: true,
-                    changeYear: true,
-                    yearRange: "-60:+0"
-                });
-                $(":input[time-picker]").timepicker({
-                    timeFormat: "HH:mm:ss"
-                });
-
-            });
-        </script>*@
-
 
 
 }

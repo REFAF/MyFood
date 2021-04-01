@@ -13,6 +13,7 @@ namespace MyFood.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int buffet_type_id { get; set; }
 
+        [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [StringLength(30)]
         [Display(Name = "نوع الضيافة")]
         public string buffet_type_name { get; set; }

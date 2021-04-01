@@ -16,12 +16,15 @@ namespace MyFood.Models
         [Display(Name = "رقم الجوال")]
         public string phone_number { get; set; }
 
-        [Column(TypeName = "date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        [Display(Name = "تاريخ المناسبة")]
-        public DateTime? event_date { get; set; }
+        //[Column(TypeName = "date")]
+        //[DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
+        //[Display(Name = "تاريخ المناسبة")]
+        //public DateTime? event_date { get; set; }
 
         
+        [Display(Name = "تاريخ المناسبة")]
+        public string event_date { get; set; }
+
         [Display(Name = "وقت المناسبة")]
         public TimeSpan? event_time { get; set; }
 

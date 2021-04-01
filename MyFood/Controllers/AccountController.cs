@@ -4,9 +4,11 @@ using System.Data.Entity;
 using System.Globalization;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -320,7 +322,6 @@ namespace MyFood.Controllers
                     var benUser = new Beneficiary();
 
                     benUser.Id = user.Id;
-                    benUser.city_id = model.city_id;
                     benUser.address = model.address;
                     benUser.Neighborhood_id = model.Neighborhood_id;
                     benUser.guardian = model.guardian;
@@ -432,6 +433,67 @@ namespace MyFood.Controllers
                 ViewBag.Name = new SelectList(db.Roles.Where(u => !u.Name.Contains("Admin"))
                                   .ToList(), "Name", "Name");
                 ViewBag.TeamNumber = new SelectList(db.teamNumbers.ToList(), "Team_id", "Team_id");
+
+                AddErrors(result);
+
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
+        }
+
+        // GET: /Account/AdminRegister
+        [AllowAnonymous]
+        public ActionResult AdminRegister()
+        {
+            ViewBag.Name = new SelectList(db.Roles.Where(u => u.Name.Contains("Admin"))
+                                    .ToList(), "Name", "Name");
+
+            return View();
+
+        }
+
+        //POST: /Account/AdminRegister
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AdminRegister(AdminRegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                var user = new ApplicationUser
+                {
+                    userType_id = 5,
+                    UserName = model.Email,
+                    Email = model.Email,
+                    PhoneNumber = model.PhoneNumber,
+                    name = model.name,
+                };
+
+
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+                    var result1 = UserManager.AddToRole(user.Id, model.UserRoles);
+                   
+
+                    //db.SaveChanges();
+
+                    //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ViewBag.Name = new SelectList(db.Roles.Where(u => u.Name.Contains("Admin"))
+                                    .ToList(), "Name", "Name");
 
                 AddErrors(result);
 
@@ -572,6 +634,8 @@ namespace MyFood.Controllers
             return View(model);
         }
 
+
+
         //
         //// GET: /Account/Register
         //[AllowAnonymous]
@@ -612,54 +676,194 @@ namespace MyFood.Controllers
 
         //
         // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return View("Error");
-            }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
-        }
+        //[AllowAnonymous]
+        //public async Task<ActionResult> ConfirmEmail(string userId, string code)
+        //{
+        //    if (userId == null || code == null)
+        //    {
+        //        return View("Error");
+        //    }
+        //    var result = await UserManager.ConfirmEmailAsync(userId, code);
+        //    return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        //}
+
+        ////
+        //// GET: /Account/ForgotPassword
+        //[AllowAnonymous]
+        //public ActionResult ForgotPassword()
+        //{
+        //    return View();
+        //}
+
+        ////
+        //// POST: /Account/ForgotPassword
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        var user = await UserManager.FindByNameAsync(model.Email);
+        //        if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+        //        {
+        //            // Don't reveal that the user does not exist or is not confirmed
+        //            return View("ForgotPasswordConfirmation");
+        //        }
+
+        //        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+        //        // Send an email with this link
+        //        string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+        //        var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+        //        await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
+        //        return RedirectToAction("ForgotPasswordConfirmation", "Account");
+        //    }
+
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
+
+        ////
+        //// GET: /Account/ForgotPasswordConfirmation
+        //[AllowAnonymous]
+        //public ActionResult ForgotPasswordConfirmation()
+        //{
+        //    return View();
+        //}
+
+        ////
+        //// GET: /Account/ResetPassword
+        //[AllowAnonymous]
+        //public ActionResult ResetPassword(string code)
+        //{
+        //    return code == null ? View("Error") : View();
+        //}
+
+        ////
+        //// POST: /Account/ResetPassword
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(model);
+        //    }
+        //    var user = await UserManager.FindByNameAsync(model.Email);
+        //    if (user == null)
+        //    {
+        //        // Don't reveal that the user does not exist
+        //        return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    }
+        //    var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("ResetPasswordConfirmation", "Account");
+        //    }
+        //    AddErrors(result);
+        //    return View();
+        //}
+
+        ////
+        //// GET: /Account/ResetPasswordConfirmation
+        //[AllowAnonymous]
+        //public ActionResult ResetPasswordConfirmation()
+        //{
+        //    return View();
+        //}
 
         //
-        // GET: /Account/ForgotPassword
+
+
+
         [AllowAnonymous]
+        [HttpGet]
         public ActionResult ForgotPassword()
         {
             return View();
         }
 
-        //
-        // POST: /Account/ForgotPassword
-        [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        [HttpPost]
+        public ActionResult ForgotPassword(string EmailID)
         {
-            if (ModelState.IsValid)
+            //Verify Email ID
+            //Generate Reset password link 
+            //Send Email 
+            string message = "";
+
+            using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                var account = db.Users.Where(a => a.Email == EmailID).FirstOrDefault();
+                if (account != null)
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    //Send email for reset password
+                    string Code = Guid.NewGuid().ToString();
+                    SendVerificationLinkEmail(account.Email, Code, "ResetPassword");
+                    account.ResetPasswordCode = Code;
+                    //This line I have added here to avoid confirm password not match issue , as we had added a confirm password property 
+                    //in our model class in part 1
+                    //db.Configuration.ValidateOnSaveEnabled = false;
+                    db.SaveChanges();
+                    message = "تم إرسال رابط على بريدك الإلكتروني لإعادة تعيين كلمة المرور";
                 }
-
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                else
+                {
+                    message = "البريد الإلكتروني غير صحيح";
+                }
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            ViewBag.Message = message;
+            return View();
         }
 
-        //
+        [NonAction]
+        public void SendVerificationLinkEmail(string emailID, string activationCode, string emailFor = "VerifyAccount")
+        {
+            var verifyUrl = "/Account/" + emailFor + "/" + activationCode;
+            var link = Request.Url.AbsoluteUri.Replace(Request.Url.PathAndQuery, verifyUrl);
+
+            var fromEmail = new MailAddress("myfoodpw@gmail.com", "جمعية طعامي");
+            var toEmail = new MailAddress(emailID);
+            var fromEmailPassword = "TRM!1442";
+
+            string subject = "";
+            string body = "";
+            if (emailFor == "VerifyAccount")
+            {
+                subject = "Your account is successfully created!";
+                body = "<br/><br/>We are excited to tell you that your Dotnet Awesome account is" +
+                    " successfully created. Please click on the below link to verify your account" +
+                    " <br/><br/><a href='" + link + "'>" + link + "</a> ";
+            }
+            else if (emailFor == "ResetPassword")
+            {
+                subject = "إعادة تعيين كلمة المرور";
+                body = "مرحباً! لقد طلبت إعادة تعيين كلمة المرور , للمتابعة انقر هنا " + "</br>" +
+                    "<a href=" + link + ">إعادة تعيين كلمة المرور</a>";
+            }
+
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
+
+
         // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
@@ -667,15 +871,35 @@ namespace MyFood.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/ResetPassword
+
+        //GET: /Account/ResetPassword
         [AllowAnonymous]
-        public ActionResult ResetPassword(string code)
+        public ActionResult ResetPassword(string id)
         {
-            return code == null ? View("Error") : View();
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return HttpNotFound();
+            }
+
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                var user = db.Users.Where(a => a.ResetPasswordCode == id).FirstOrDefault();
+                if (user != null)
+                {
+                    ResetPasswordViewModel model = new ResetPasswordViewModel()
+                    {
+                        Code = id,
+                        Email = user.Email,
+                    };
+                    return View(model);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
         }
 
-        //
         // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
@@ -692,7 +916,12 @@ namespace MyFood.Controllers
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+
+            var hash = Crypto.HashPassword(model.Password);
+            Crypto.VerifyHashedPassword(hash, model.Password);
+
+            user.PasswordHash = hash;
+            var result = await UserManager.UpdateAsync(user);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -701,15 +930,17 @@ namespace MyFood.Controllers
             return View();
         }
 
-        //
-        // GET: /Account/ResetPasswordConfirmation
+
+        //GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
         }
 
-        //
+
+
+
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
