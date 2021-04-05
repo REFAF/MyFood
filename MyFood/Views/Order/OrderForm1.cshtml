@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="dropdown-menu">
         @Html.LabelFor(model => model.buffet_type_id, new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.DropDownListFor(model => model.buffet_type_id, new SelectList(Model.BuffetType,
