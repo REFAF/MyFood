@@ -133,23 +133,29 @@
 
 .container-text2 {
     float: right;
-    width: 94%;
+    width: 92%;
     margin-bottom: 50px;
     margin-top: 120px;
     font-weight: 600;
     font-size: x-large;
     color: #AC8C34;
-    padding: 20px;
-    background-color: rgba(225, 225, 227, 0.34);
+    padding: 5px;
+    padding-bottom:10px;
+    padding-right: 10px;
+    background-color: rgba(172, 140, 52, 0.14);
+    border-radius: 25px;
 }
 
-
+.card-container {
+    margin-right: 400px;
+}
 .property-card {
     height: 17em;
     width: 25em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    margin-right:20px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
@@ -189,30 +195,21 @@
 .property-description {
     text-align: center;
     background-color: rgba(172, 140, 52, 0.40);
-    height: 4em;
-    width: 25em;
+    height: 2.5em;
+    width: 15em;
     position: absolute;
     bottom: 0em;
+    /*margin-left:50em;*/
     -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    padding: 0.5em 5em;
-    padding-top:10px;
+    /*padding: 0.5em 5em;*/
+    padding-top: 10px;
+    font-size: x-large;
+    font-family:font-Mirza-Medium;
+    color:#f7f7f7;
 }
 
-/* Social Icons */
-
-.property-social-icons {
-    width: 1em;
-    height: 1em;/*
-    background-color: black;*/
-    position: absolute;
-    bottom: 1em;
-    left: 1em;
-    -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
 
 /* Property Cards Hover States */
 
@@ -224,12 +221,6 @@
 .property-card:hover .property-image {
     /*height: 18em;*/
 }
-
-
-
-    
-
-
 
 
     .nav-bar-color .brand-color {
@@ -255,10 +246,170 @@
     font-size: large;
 }
 
+.vision-container {
+    float: right;
+    margin-top: 140px;
+    /*background-color: rgba(226, 208, 192, 0.30);*/
+    padding-top: 2px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border-radius: 25px;
+    width: 25%;
+}
+.vision-h {
+    font-weight: 100;
+    color: #145C51;
+    font-size: xx-large;
+    text-align: center;
+}
+.vision-text {
+    font-size:large;
+    color: #AC8C34;
+    text-align: right;
+    padding:10px;
+}
+
+.vision-img {
+    height: 170px;
+    width: 170px;
+    float: right;
+    margin-right:45px;
+    margin-bottom:30px;
+}
+
+.message-container {
+    float: right;
+    margin-top: 140px;
+    /*background-color: rgba(226, 208, 192, 0.30);*/
+    padding-top: 2px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border-radius: 25px;
+    width: 25%;
+    margin-right:120px;
+}
+
+.message-h {
+    font-weight: 100;
+    color: #145C51;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.message-text {
+    font-size: large;
+    color: #AC8C34;
+    text-align: right;
+    padding: 10px;
+}
+
+.message-img {
+    height: 170px;
+    width: 170px;
+    float: right;
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+.goal-container {
+    float: right;
+    margin-top: 130px;
+    /*background-color: rgba(226, 208, 192, 0.30);*/
+    padding-top: 2px;
+    padding-bottom: 15px;
+    padding-right: 10px;
+    border-radius: 25px;
+    width: 25%;
+    margin-right: 120px;
+}
+
+.goal-h {
+    font-weight: 100;
+    color: #145C51;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.goal-text {
+    font-size: large;
+    color: #AC8C34;
+    text-align: right;
+    padding: 10px;
+}
+
+.goal-img {
+    height: 170px;
+    width: 170px;
+    float: right;
+    margin-right: 45px;
+    margin-bottom: 30px;
+}
+
+.cantactus-h {
+    margin-top: 120px;
+    color: rgba(172, 140, 52, 0.90);
+    text-align: center;
+}
+.social-media {
+    margin-top: 50px;
+    display: flex;
+    justify-content:center;
+}
+.social-media .social-icon {
+    display: flex;
+    background: #f7f7f7;
+    height: 60px;
+    width: 60px;
+    margin: 0 15px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+               -6px -6px 10px -1px rgba(255,255,255,0.7);
+    border: 1px solid rgba(0,0,0,0);
+    transition: transform 0.5s;
+}
+.icon {
+    font-size: 25px;
+    color: #777;
+    transition: transform 0.5s;
+}
+.social-icon:hover {
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2), 
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px 0.5px 0px rgba(255,255,255,01),
+                0.5px 0.5px 0px rgba(0,0,0,0.15),
+                0px 12px 10px -10px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.01);
+    transform: translateY(2px);
+
+}
+.social-icon:hover .icon {
+    transform: scale(0.90);
+}
+.social-icon:hover .fa-twitter {
+    color: #07aeee;
+}
+.social-icon:hover .fa-instagram {
+    color: #f14843;
+}
+.social-icon:hover .fa-youtube {
+    color: #f00;
+}
+.social-icon:hover .fa-snapchat {
+    color: #dae42d;
+}
+
+
 @media screen and (max-width: 767px) {
     .brand-color {
         /*color: #145C51;*/
         display: block;
+    }
+
+    .header-container {
+        margin:auto;
     }
 
     .right-text {
@@ -278,6 +429,88 @@
         margin-top: 30px;
         width: 100%;
     }
+
+    .container-text2 {
+        margin-bottom: 20px;
+        margin-top: 30px;
+        font-weight: 500;
+        font-size: small;
+        padding: 15px;
+        background-color: #f7f7f7;
+        width: 100%;
+    }
+
+    .card-container {
+        margin: auto;
+    }
+
+    .property-card {
+        height: 8em;
+        width: 10em;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin:auto;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: rgba(226, 208, 192, 0.30);
+        -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+        box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    }
+    /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+    /* Top Half of card, image. */
+
+    .property-image {
+        height: 5em;
+        width: 5em;
+        margin-top: 10px;
+        padding: 1em 2em;
+        margin-right: 35px;
+        position: Absolute;
+        top: 0px;
+        background-image: url('img/order-food2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Bottom Card Section */
+
+    .property-description {
+        text-align: center;
+        background-color: rgba(172, 140, 52, 0.40);
+        height: 1em;
+        width: 11em;
+        position: absolute;
+        bottom: 0em;
+        padding-bottom:2em;
+        font-size: small;
+        font-family: font-Mirza-Medium;
+        color: #f7f7f7;
+    }
+    .cantactus-h {
+        margin-top: 40px;
+        font-size: small;
+    }
+
+    .social-media {
+        margin-top: 30px;
+    }
+
+        .social-media .social-icon {
+            height: 25px;
+            width: 25px;
+            margin: 0 10px;
+        }
+
+    .icon {
+        font-size: 15px;
+    }
 }
 
 @media screen and (min-width: 768px) and ( max-width: 900px) {
@@ -286,6 +519,10 @@
         font-size: medium;
         margin-top: 20px;
         padding: 20px;
+    }
+
+    .header-container {
+        margin: auto;
     }
 
     .Index-img {
@@ -303,6 +540,103 @@
     .header-container {
         margin-left: 70px;
         margin-right: 70px;
+    }
+
+
+    .container-text2 {
+        /*float: right;*/
+        width: 80%;
+        margin-bottom: 30px;
+        margin-top: 60px;
+        margin-right: 70px;
+        font-weight: 600;
+        font-size: large;
+        color: #AC8C34;
+        padding: 5px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+        border-radius: 25px;
+        background-color: #f7f7f7;
+    }
+
+    .card-container {
+        margin-right: auto;
+    }
+
+    .property-card {
+        height: 11em;
+        width: 15em;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-right: 250px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: rgba(226, 208, 192, 0.30);
+        -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+        box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    }
+    /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+    /* Top Half of card, image. */
+
+    .property-image {
+        height: 8.5em;
+        width: 8.5em;
+        margin-top: 10px;
+        padding: 1em 2em;
+        margin-right: 50px;
+        position: Absolute;
+        top: 0px;
+        background-image: url('img/order-food2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Bottom Card Section */
+
+    .property-description {
+        text-align:center;
+        background-color: rgba(172, 140, 52, 0.40);
+        height: 2.3em;
+        width: 18em;
+        position: absolute;
+        bottom: 0em;
+        /*margin-left:50em;*/
+        -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        /*padding: 0.5em 5em;*/
+        padding-top: 10px;
+        padding-left:100px;
+        font-size: large;
+        font-family: font-Mirza-Medium;
+        color: #f7f7f7;
+       
+    }
+
+    .cantactus-h {
+        margin-top: 40px;
+        font-size: large;
+    }
+
+    .social-media {
+        margin-top: 20px;
+    }
+
+        .social-media .social-icon {
+            height: 25px;
+            width: 25px;
+            margin: 0 10px;
+        }
+
+    .icon {
+        font-size: 15px;
     }
 }
 
@@ -336,6 +670,105 @@
 
     .header-container {
         margin: 70px auto;
+    }
+
+    .container-text2 {
+        /*float: right;*/
+        width: 95%;
+        margin-bottom: 30px;
+        margin-top: 100px;
+        font-weight: 600;
+        font-size: x-large;
+        color: #AC8C34;
+        padding: 5px;
+        padding-bottom: 10px;
+        padding-right: 20px;
+        border-radius: 25px;
+        background-color: #f7f7f7;
+    }
+
+    .card-container {
+        margin-right: auto;
+    }
+
+    .property-card {
+        height: 12em;
+        width: 16em;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-right: 350px;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        position: relative;
+        -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: rgba(226, 208, 192, 0.30);
+        -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+        box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    }
+    /* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+    /* Top Half of card, image. */
+
+    .property-image {
+        height: 8.5em;
+        width: 8.5em;
+        margin-top: 10px;
+        padding: 1em 2em;
+        margin-right: 50px;
+        position: Absolute;
+        top: 0px;
+        -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        background-image: url('img/order-food2.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    /* Bottom Card Section */
+
+    .property-description {
+        text-align: center;
+        background-color: rgba(172, 140, 52, 0.40);
+        height: 2.3em;
+        width: 18em;
+        position: absolute;
+        bottom: 0em;
+        /*margin-left:50em;*/
+        -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+        /*padding: 0.5em 5em;*/
+        padding-top: 10px;
+        padding-left: 100px;
+        font-size: large;
+        font-family: font-Mirza-Medium;
+        color: #f7f7f7;
+    }
+    .cantactus-h {
+        margin-top: 40px;
+        font-size: medium;
+    }
+
+    .social-media {
+        margin-top: 30px;
+    }
+
+        .social-media .social-icon {
+            height: 40px;
+            width: 40px;
+            margin: 0 10px;
+        }
+
+    .icon {
+        font-size: 20px;
     }
 }
 
