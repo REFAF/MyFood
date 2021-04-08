@@ -4,11 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>الطلبات الواردة</h2>
+<br />
+<br />
+<h2 class="font-KhebratMusamim green">الطلبات الواردة</h2>
 
 <br />
 
-<table class="table">
+<table class="table green-label">
     <tr>
         <th>
             @Html.DisplayName("رقم الطلب")
@@ -17,7 +19,7 @@
             @Html.DisplayNameFor(model => model.event_date)
         </th>
     </tr>
-    
+
 
     @foreach (var item in Model)
     {
@@ -29,7 +31,8 @@
                 @Html.DisplayFor(modelItem => item.event_date)
             </td>
             <td>
-                @Html.ActionLink("عرض الطلب", "orderDetails", new { id = item.order_id })
+                @Html.ActionLink("عرض الطلب", "orderDetails",null,
+               new { id = item.order_id}, new { @class = "green-link" })
             </td>
         </tr>
     }

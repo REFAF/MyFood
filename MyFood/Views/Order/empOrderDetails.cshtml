@@ -4,27 +4,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
+<br />
+<h2 class="font-KhebratMusamim green">الطلب الوارد</h2>
 
-<h2>الطلب الوارد</h2>
 
-
-@using (Html.BeginForm("empOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("empOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <br />
     <hr />
     <div class="form-horizontal">
 
         <div class="form-group">
-            @Html.Label("رقم الطلب", new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            @Html.Label("رقم الطلب", new { @class = "col-md-2 control-label green-label" })
+            <div class="col-md-10 gold-label">
                 @Html.DisplayFor(model => model.order_id, new { @class = "form-control" })
             </div>
         </div>
         <br />
         <div class="form-group">
             @Html.LabelFor(model => model.phone_number, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
+            <div class="col-md-10 gold-label">
                 @Html.DisplayFor(model => model.phone_number, new { @class = "form-control" })
             </div>
         </div>
@@ -91,9 +91,11 @@
             </div>
         </div>
         <br />
-        <div>
-            @Html.ActionLink("البدء بتنفيذ الطلب", "Form3Sec1",
-           new { id = Model.order_id }, new { @class=" btn btn-default" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @Html.ActionLink("البدء بتنفيذ الطلب", "Form3Sec1",
+           new { id = Model.order_id }, new { @class = " btn btn-default" })
+            </div>
         </div>
 
     </div>
@@ -101,5 +103,5 @@
 }
 <br />
 <div>
-    @Html.ActionLink("الرجوع إلى القائمة", "AssignedOrder")
+    @Html.ActionLink("الرجوع إلى القائمة", "AssignedOrder", null, new { @class = "green-link" })
 </div>

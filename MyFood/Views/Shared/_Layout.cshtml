@@ -10,9 +10,12 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/bootstrap-chosen.css" rel="stylesheet" />
 
+    @* icon in browser tab *@
+    <link rel="shortcut icon" type="image/ico" href="~/Content/img/logo.png">
     @* social media icon *@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
 </head>
+
 <body class="body-color">
     <div class="navbar nav-bar-color navbar-fixed-top">
         <div class="container">
@@ -27,7 +30,7 @@
             <div class="navbar-collapse collapse font-KhebratMusamim">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("الرئيسية", "Index", "Home")</li>
-                    <li><a href="@Url.Action("Index","Home", new { id= "#about" })"> عن الجمعية</a></li>
+                    <li>@Html.ActionLink("عن الجمعية", "Index", "Home")</li>
                     <li>@Html.ActionLink("تواصل معنا", "Index", "Home")</li>
                     <li>@Html.ActionLink("خدمة جمع الطعام", "OrderForm1", "Order")</li>
 

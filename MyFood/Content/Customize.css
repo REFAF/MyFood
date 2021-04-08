@@ -61,6 +61,76 @@
     font-family: 'KhebratMusamim';
 }
 
+.green-label {
+    color: #145C51;
+    font-family: 'Mirza-Regular';
+    font-size: large;
+}
+.gold-label {
+    color: #AC8C34;
+    font-family: 'Mirza-Regular';
+    font-size: large;
+}
+.green-link {
+    color: #AC8C34;
+    font-family: Mirza-Medium;
+    font-size: large;
+}
+.green-link:hover {
+    color: #AC8C34;
+    text-decoration-color:  #AC8C34;
+}
+.green-textbox {
+    color: #145C51;
+    font-family: 'Mirza-Regular';
+    font-size: x-large;
+}
+.green {
+    color: #145C51;
+}
+.gold {
+    color: #AC8C34;
+}
+
+.btn-gold {
+  color: #ffff;
+  border-radius: 10px;
+  background-color: #dfab1c;
+  border-color: #dfab1c;
+}
+.btn-gold:focus,
+.btn-gold.focus {
+  color: #ffff;
+  background-color: #AC8C34;
+  border-color: #AC8C34;
+
+}
+.btn-gold:hover {
+  color: #ffff;
+  background-color: #AC8C34;
+  border-color: #AC8C34;
+}
+.btn-gold:active,
+.btn-gold.active,
+.open > .dropdown-toggle.btn-gold {
+  color: #ffff;
+  background-color: #AC8C34;
+  border-color: #AC8C34;
+  background-image: none;
+}
+.btn-gold:active:hover,
+.btn-gold.active:hover,
+.open > .dropdown-toggle.btn-gold:hover,
+.btn-gold:active:focus,
+.btn-gold.active:focus,
+.open > .dropdown-toggle.btn-gold:focus,
+.btn-gold:active.focus,
+.btn-gold.active.focus,
+.open > .dropdown-toggle.btn-gold.focus {
+  color: #ffff;
+  background-color: #AC8C34;
+  border-color: #AC8C34;
+}
 .mTop--30 {
     margin-top: 200px;
 }
@@ -492,6 +562,75 @@
         font-size: small;
         font-family: font-Mirza-Medium;
         color: #f7f7f7;
+    }
+
+    .vision-container {
+        margin-top: 90px;
+        margin-right: 70px;
+        width: 55%;
+    }
+    .vision-h {
+        font-size: medium;
+        margin-left: 10px;
+    }
+    .vision-text {
+        font-size: small;
+        text-align: right;
+    }
+    .vision-img {
+        height: 90px;
+        width: 90px;
+        margin-right: 30px;
+        margin-left:25px;
+        margin-bottom: 30px;
+    }
+
+    .message-container {
+        margin-top: 30px;
+        margin-right: 70px;
+        width: 55%;
+    }
+
+    .message-h {
+        font-size: medium;
+        margin:auto;
+    }
+
+    .message-text {
+        font-size: small;
+        text-align: right;
+    }
+
+    .message-img {
+        height: 80px;
+        width: 80px;
+        margin-right: 30px;
+        margin-left:25px;
+        margin-bottom: 30px;
+    }
+
+    .goal-container {
+        margin-top: 30px;
+        margin-right: 70px;
+        width: 70%;
+    }
+
+    .goal-h {
+        font-size: medium;
+        margin-left: 50px;
+    }
+
+    .goal-text {
+        font-size: small;
+        text-align: right;
+    }
+
+    .goal-img {
+        height: 80px;
+        width: 80px;
+        margin-right: 30px;
+        margin-left: 70px;
+        margin-bottom: 30px;
     }
     .cantactus-h {
         margin-top: 40px;

@@ -4,13 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br />
-<h2> تقرير صحة وسلامة استلام الطعام</h2>
+<br /><br />
+<h3 class="font-KhebratMusamim green"> تقرير صحة وسلامة استلام الطعام</h3>
 
-@using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
+
 
     <div class="container-sm">
         <div class="row">
@@ -79,7 +80,7 @@
 
     <div class="container-sm">
         @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
-        <div><a href="#" id="addNew">إضافة حقل جديد</a></div>
+        <div><a href="#" id="addNew" class="gold-label">إضافة حقل جديد</a></div>
         <table id="dataTable" @*border="0"*@>
             <tr class="row-cols-2">
                 <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>

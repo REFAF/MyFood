@@ -5,12 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>الموظفين</h2>
+<br /><br />
+<h2 class="font-KhebratMusamim green">الموظفين</h2>
 <br />
 <p>
-    @Html.ActionLink("إضافة موظف جديد", "EmpRegister")
+    @Html.ActionLink("إضافة موظف جديد", "EmpRegister",null, new { @class = "green-link" })
 </p>
-<table class="table" id="UsersWithRoles">
+<table class="table green-label" id="UsersWithRoles">
 
     <tr>
         <th>
@@ -27,13 +28,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => user.Username)
+                @Html.DisplayFor(modelItem => user.Username )
             </td>
             <td>
                 @Html.DisplayFor(modelItem => user.Role)
             </td>
             <td>
-                @Html.ActionLink("تعديل", "EmpEdit", new { id = user.UserId }) 
+                @Html.ActionLink("تعديل", "EmpEdit",null, new { @class= "green-link", id = user.UserId }) 
             </td>
         </tr>
     }

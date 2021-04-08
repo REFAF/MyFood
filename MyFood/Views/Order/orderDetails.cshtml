@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>الطلب الوارد</h2>
 
+<br /><br />
+<h2 class="font-KhebratMusamim green">الطلب الوارد</h2>
 
-@using (Html.BeginForm("orderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("orderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <br />
     <hr />
     <div class="form-horizontal">
 
@@ -110,7 +110,7 @@
 
     </div>
 
-        }
-        <div>
-            @Html.ActionLink("الرجوع إلى القائمة", "viewOrder")
-        </div>
+}
+<div>
+    @Html.ActionLink("الرجوع إلى القائمة", "viewOrder",null, new { @class = "green-link" })
+</div>
