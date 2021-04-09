@@ -4,7 +4,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<br /><br />
+<style>
+
+.mBottom {
+    margin-bottom: 100px;
+}
+
+.m-add-Bottom {
+    margin-bottom: 7px;
+}
+
+table tr td {
+    padding-left: 7px;
+    padding-right: 7px;
+    padding-top: 4px;
+}
+
+@@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 6px;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+}
+</style>
+<br />
+<br />
 <h3 class="font-KhebratMusamim green"> تقرير صحة وسلامة استلام الطعام</h3>
 
 @using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
@@ -27,8 +76,14 @@
             </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.date)
-                @Html.EditorFor(m => m.date, new { htmlAttributes = new { @class = "form-control",
-               placeholder = "01-01-2021"} })
+                @Html.EditorFor(m => m.date, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+               placeholder = "01-01-2021"
+                    }
+                })
                 @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
@@ -80,35 +135,41 @@
 
     <div class="container-sm">
         @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
-        <div><a href="#" id="addNew" class="gold-label">إضافة حقل جديد</a></div>
+
         <table id="dataTable" @*border="0"*@>
-            <tr class="row-cols-2">
-                <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.hair)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.nails)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.clothing_claean)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.head_cover)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.face_mask)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.gloves)</th>
-                <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
-                @*<th></th>*@
-            </tr>
+
             @if (Model != null && Model.safetyTool.Count > 0)
             {
                 int j = 0;
                 foreach (var i in Model.safetyTool)
                 {
-                    <tr class="text-center">
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control col-xs-2" })</td>
+                    <tr class="ml-5">
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control" })</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.clothing)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.hair)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].hair)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.nails)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].nails)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.clothing_claean)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].clothing_claean)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.head_cover)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].head_cover)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.face_mask)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].face_mask)</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.gloves)</th>
                         <td>@Html.CheckBoxFor(a => a.safetyTool[j].gloves)</td>
-                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control col-xs-2" })</td>
+
+                        <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
+                        <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control" })</td>
                         @*<td>
                                 @if (j > 0)
                                 {
@@ -121,8 +182,9 @@
                 }
             }
         </table>
-
+        <div class="m-add-Bottom gold-link"><a href="#" id="addNew">إضافة حقل جديد</a></div>
     </div>
+
 
     <hr />
     <div class="container-sm">

@@ -5,11 +5,13 @@
 }
 
 
-<br /><br />
-<h3 class="font-KhebratMusamim green">طلب خدمة جمع الطعام</h3>
+<br />
+<br />
 
-@using (Html.BeginForm("OrderForm1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
+
+@using (Html.BeginForm("OrderForm1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg-sm ", role = "form" }))
 {
+    <h3 class="green-h">طلب خدمة جمع الطعام</h3>
     @Html.AntiForgeryToken()
     <br />
     <div class="form-group">
@@ -48,8 +50,11 @@
     <div class="form-group">
         @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
         <div class="col-md-10">
-            @Html.EditorFor(m => m.event_date,new { htmlAttributes = 
-           new { @class = "form-control", placeholder="01-01-2021" } })
+            @Html.EditorFor(m => m.event_date, new
+            {
+                htmlAttributes =
+           new { @class = "form-control", placeholder = "01-01-2021" }
+            })
             @Html.ValidationMessageFor(model => model.event_date, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -76,15 +81,15 @@
     <div class="form-group">
         @Html.Label("      ", new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.DisplayName("في حال عدم وجود اسم مكان المناسبة الرجاء كتابته هنا أو كتابة رقم المبنى")
-            @Html.TextBoxFor(model => model.unit_name, new { @class = "form-control" })
+            @Html.DisplayName("\n في حال عدم وجود اسم مكان المناسبة الرجاء كتابته هنا أو كتابة رقم المبنى")
+            @Html.TextBoxFor(model => model.unit_name, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.unit_name, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="تأكيد الطلب" />
+            <input type="submit" class="btn-gold" value="تأكيد الطلب" />
         </div>
     </div>
 }

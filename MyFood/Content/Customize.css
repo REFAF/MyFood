@@ -61,29 +61,35 @@
     font-family: 'KhebratMusamim';
 }
 
+.green-h {
+    color: #145C51;
+    font-family: 'KhebratMusamim';
+    text-align: center;
+    margin-bottom: 25px;
+}
 .green-label {
     color: #145C51;
     font-family: 'Mirza-Regular';
-    font-size: large;
+    font-size: 20px;
 }
 .gold-label {
     color: #AC8C34;
     font-family: 'Mirza-Regular';
     font-size: large;
 }
-.green-link {
+.gold-link {
     color: #AC8C34;
     font-family: Mirza-Medium;
     font-size: large;
 }
-.green-link:hover {
+.gold-link:hover {
     color: #AC8C34;
     text-decoration-color:  #AC8C34;
 }
 .green-textbox {
     color: #145C51;
     font-family: 'Mirza-Regular';
-    font-size: x-large;
+    font-size: 20px;
 }
 .green {
     color: #145C51;
@@ -91,12 +97,27 @@
 .gold {
     color: #AC8C34;
 }
+.form-bg-sm {
+    background-color: rgba(226, 208, 192, 0.30);
+    width: 65%;
+    padding: 15px;
+    border-radius: 25px;
+}
+.form-bg {
+    background-color: rgba(226, 208, 192, 0.30);
+}
 
 .btn-gold {
-  color: #ffff;
-  border-radius: 10px;
-  background-color: #dfab1c;
-  border-color: #dfab1c;
+    color: #ffff;
+    border-radius: 10px;
+    background-color: #cea020;
+    border-color: #dda919;
+    border-bottom-style:double;
+    border-right-style:double;
+    box-shadow: #ffff;
+    padding:7px;
+    font-size:20px;
+    margin-top: 15px;
 }
 .btn-gold:focus,
 .btn-gold.focus {
@@ -109,6 +130,7 @@
   color: #ffff;
   background-color: #AC8C34;
   border-color: #AC8C34;
+  text-decoration: none;
 }
 .btn-gold:active,
 .btn-gold.active,
@@ -660,7 +682,7 @@
         float: right;
         margin-right: 10px;
         margin-bottom: 0px;
-        margin-top: 0px;
+        margin-top: 50px;
     }
 
     .goal-container .img-width {
