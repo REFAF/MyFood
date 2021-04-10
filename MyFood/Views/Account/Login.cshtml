@@ -5,26 +5,26 @@
 }
 
 <br />
-<h2>تسجيل الدخول</h2>
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal green-label form-bg-login", role = "form" }))
             {
+                <h3 class="green-h">تسجيل الدخول</h3>
                 @Html.AntiForgeryToken()
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-7">
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "form-control margin-right" })
                         @*@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })*@
                     </div>
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                    <div class="col-md-7">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control margin-right" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
@@ -37,17 +37,17 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="تسجيل دخول" class="btn btn-default" />
+                    <div class="col-md-offset-2 col-md-10 btn-loign">
+                        <input type="submit" value="تسجيل دخول" class="btn-gold" />
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("التسجيل كمستخدم جديد", "RegisterOptions")
+                    @Html.ActionLink("التسجيل كمستخدم جديد", "RegisterOptions", null, new { @class = "gold-link" })
                 </p>
                 //Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("نسيت كلمة المرور؟", "ForgotPassword")
-                    </p>
+                <p>
+                    @Html.ActionLink("نسيت كلمة المرور؟", "ForgotPassword", null, new { @class = "gold-link" })
+                </p>
             }
         </section>
     </div>

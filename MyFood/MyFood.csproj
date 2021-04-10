@@ -950,7 +950,9 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\bg.jpg" />
     <Content Include="Content\img\big-eclipse.svg" />
+    <Content Include="Content\img\box %281%29.png" />
     <Content Include="Content\img\card-background1.jpg" />
+    <Content Include="Content\img\food %281%29 %281%29.png" />
     <Content Include="Content\img\goal.png" />
     <Content Include="Content\img\letter.png" />
     <Content Include="Content\img\lightbulb.png" />

@@ -103,22 +103,53 @@
     padding: 15px;
     border-radius: 25px;
 }
+
+
+.form-bg-login {
+    background-color: rgba(226, 208, 192, 0.30);
+    width: 60%;
+    padding: 40px;
+    border-radius: 25px;
+    margin:0px;
+}
+
+.form-align {
+    text-align: center;
+}
+
 .form-bg {
     background-color: rgba(226, 208, 192, 0.30);
 }
+
+.btn-loign{
+
+}
+
+.btn-loign .btn-gold {
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 20px;
+        margin-top: 15px;
+        margin-right: 60px;
+    }
+
 
 .btn-gold {
     color: #ffff;
     border-radius: 10px;
     background-color: #cea020;
     border-color: #dda919;
-    border-bottom-style:double;
-    border-right-style:double;
+    border-bottom-style: double;
+    border-right-style: double;
     box-shadow: #ffff;
-    padding:7px;
-    font-size:20px;
+    padding: 7px;
+    font-size: 20px;
     margin-top: 15px;
 }
+
+
 .btn-gold:focus,
 .btn-gold.focus {
   color: #ffff;
@@ -155,6 +186,11 @@
 }
 .mTop--30 {
     margin-top: 200px;
+}
+
+.margin-right {
+    margin-right:10px;
+    margin-top:5px;
 }
 
 .bg-LightCoral {
@@ -312,10 +348,95 @@
     padding: 0px 1em;
 }
 
+
+
 .property-card:hover .property-image {
     /*height: 18em;*/
 }
 
+
+
+.card2 {
+
+}
+
+.card2 .property-card-signup {
+    height: 8em;
+    width: 12em;
+}
+
+.card2 .property-description-signup {
+    height: 3em;
+    width: 10em;
+}
+
+.card-container-signup {
+    margin-top: 30px;
+}
+
+.property-card-signup {
+    height: 19em;
+    width: 24em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /*    margin-right:20px;*/
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: rgba(226, 208, 192, 0.30);
+    -webkit-box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    box-shadow: 15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+}
+/* ^-- The margin bottom is necessary for the drop shadow otherwise it gets clipped in certain cases. */
+
+/* Top Half of card, image. */
+
+.property-image-signup {
+    height: 15em;
+    width: 15em;
+    margin-top: 10px;
+    padding: 1em 2em;
+    margin-right: 60px;
+    position: Absolute;
+    top: 0px;
+    -webkit-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    -o-transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Bottom Card Section */
+
+.property-description-signup {
+    text-align: center;
+    background-color: rgba(172, 140, 52, 0.40);
+    height: 3em;
+    width: 20em;
+    position: absolute;
+    bottom: 0em;
+    padding-top: 10px;
+    font-size: large;
+    font-family: font-Mirza-Medium;
+    color: #f7f7f7;
+}
+
+
+/* Property Cards Hover States */
+
+.property-card-signup :hover .property-description-signup {
+    height: 0em;
+    padding: 0px 1em;
+}
+
+.margin-top {
+    margin-top:50px;
+}
 
     .nav-bar-color .brand-color {
         color: #145C51;

@@ -5,74 +5,71 @@
 }
 
 
-<h2>التسجيل في جمعية طعامي</h2>
-
-@using (Html.BeginForm("BenRegister", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("BenRegister", "Account", FormMethod.Post, new { @class = "form-horizontal green-label form-bg-login", role = "form" }))
 {
     @Html.AntiForgeryToken()
     <br />
-    <h4>تسجيل مستفيد جديد</h4>
+    <h3 class="green-h">التسجيل كمستفيد جديد في جمعية طعامي</h3>
     <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
 
     <div class="form-group">
-        @Html.LabelFor(model => model.name, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.name, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(model => model.name, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.name, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.national_id, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.national_id, new { @class = "form-control" })
+        @Html.LabelFor(model => model.national_id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
+            @Html.TextBoxFor(model => model.national_id , new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.national_id, "", new { @class = "text-danger" })
         </div>
     </div>
 
 
     <div class="form-group">
-        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Neighborhood_id, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.Neighborhood_id, new { @class = "control-label col-md-4" })
+        <div class="col-md-7">
             @Html.DropDownListFor(model => model.Neighborhood_id, new SelectList(Model.Neighborhood, "Neighborhood_id", "Neighborhood_name"), "اختر اسم الحيّ...", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Neighborhood_id, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.address, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.address, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(m => m.address, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
         </div>
@@ -81,15 +78,15 @@
 
 
     <div class="form-group">
-        @Html.LabelFor(m => m.guardian, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.guardian, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(m => m.guardian, new { @class = "form-control" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(m => m.family_number, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(m => m.family_number, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(m => m.family_number, new { @class = "form-control" })
         </div>
     </div>
@@ -97,8 +94,8 @@
 
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="تسجيل" />
+        <div class="col-md-offset-2 col-md-10 btn-loign">
+            <input type="submit" class="btn-gold" value="تسجيل" />
         </div>
     </div>
 }
