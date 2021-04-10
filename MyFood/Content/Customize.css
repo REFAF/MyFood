@@ -86,6 +86,15 @@
     color: #AC8C34;
     text-decoration-color:  #AC8C34;
 }
+.green-link {
+    color: #145C51;
+    font-family: Mirza-Medium;
+    font-size: large;
+}
+.green-link:hover {
+    color: #145C51;
+    text-decoration-color:  #145C51;
+}
 .green-textbox {
     color: #145C51;
     font-family: 'Mirza-Regular';
@@ -132,7 +141,7 @@
         padding-bottom: 5px;
         font-size: 20px;
         margin-top: 15px;
-        margin-right: 60px;
+        /*margin-right: 60px;*/
     }
 
 

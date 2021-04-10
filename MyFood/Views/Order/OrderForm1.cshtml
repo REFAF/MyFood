@@ -15,16 +15,16 @@
     @Html.AntiForgeryToken()
     <br />
     <div class="form-group">
-        @Html.LabelFor(model => model.phone_number, new { @class = "col-sm-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.phone_number, new { @class = "col-sm-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(model => model.phone_number, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.phone_number, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.buffet_type_id, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.buffet_type_id, new { @class = "control-label col-md-4" })
+        <div class="col-md-7">
             @Html.DropDownListFor(model => model.buffet_type_id, new SelectList(Model.BuffetType,
            "buffet_type_id", "buffet_type_name"), "اختر نوع الضيافة...", new { @class = "form-control" })
 
@@ -32,24 +32,24 @@
     </div>
 
     <div class="form-group green-label">
-        @Html.LabelFor(model => model.plate_num, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.plate_num, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(model => model.plate_num, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.plate_num, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.persons_num, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.persons_num, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.TextBoxFor(model => model.persons_num, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.persons_num, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.event_date, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.EditorFor(m => m.event_date, new
             {
                 htmlAttributes =
@@ -60,8 +60,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.event_time, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.event_time, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7">
             @Html.EditorFor(m => m.event_time,
                 new { htmlAttributes = new { @class = "form-control", @type = "time" } })
             @Html.ValidationMessageFor(model => model.event_time, "", new { @class = "text-danger" })
@@ -69,8 +69,8 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.unit_id, new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.unit_id, new { @class = "control-label col-md-4" })
+        <div class="col-md-7">
             @Html.DropDownListFor(model => model.unit_id,
            new SelectList(Model.Unit, "unit_id", "unit_name"), "اختر اسم المكان...",
            new { @class = "form-control"/*, id = "search" */})
@@ -79,8 +79,8 @@
     </div>
 
     <div class="form-group">
-        @Html.Label("      ", new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.Label("      ", new { @class = "control-label col-md-4" })
+        <div class="col-md-7">
             @Html.DisplayName("\n في حال عدم وجود اسم مكان المناسبة الرجاء كتابته هنا أو كتابة رقم المبنى")
             @Html.TextBoxFor(model => model.unit_name, new { @class = "form-control"})
             @Html.ValidationMessageFor(model => model.unit_name, "", new { @class = "text-danger" })
@@ -88,7 +88,7 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-5 col-md-10 btn-loign">
             <input type="submit" class="btn-gold" value="تأكيد الطلب" />
         </div>
     </div>

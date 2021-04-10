@@ -9,11 +9,11 @@
 <h2 class="font-KhebratMusamim green">الموظفين</h2>
 <br />
 <p>
-    @Html.ActionLink("إضافة موظف جديد", "EmpRegister",null, new { @class = "green-link" })
+    @Html.ActionLink("إضافة موظف جديد", "EmpRegister",null, new { @class = "gold-link" })
 </p>
-<table class="table green-label" id="UsersWithRoles">
+<table class="table" id="UsersWithRoles">
 
-    <tr>
+    <tr class="green-label">
         <th>
             @Html.DisplayNameFor(model => model.Username)
         </th>
@@ -26,7 +26,7 @@
 
     @foreach (var user in Model)
     {
-        <tr>
+        <tr class="green-label">
             <td>
                 @Html.DisplayFor(modelItem => user.Username )
             </td>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => user.Role)
             </td>
             <td>
-                @Html.ActionLink("تعديل", "EmpEdit",null, new { @class= "green-link", id = user.UserId }) 
+                @Html.ActionLink("تعديل", "EmpEdit",null, new { @class= "gold-link", id = user.UserId }) 
             </td>
         </tr>
     }

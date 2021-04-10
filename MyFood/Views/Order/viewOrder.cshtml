@@ -10,8 +10,8 @@
 
 <br />
 
-<table class="table green-label">
-    <tr>
+<table class="table">
+    <tr class="green-label">
         <th>
             @Html.DisplayName("رقم الطلب")
         </th>
@@ -23,7 +23,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="gold-label">
             <td>
                 @Html.DisplayFor(modelItem => item.order_id)
             </td>
@@ -32,7 +32,7 @@
             </td>
             <td>
                 @Html.ActionLink("عرض الطلب", "orderDetails",null,
-               new { id = item.order_id}, new { @class = "green-link" })
+               new { id = item.order_id}, new { @class = "gold-link" })
             </td>
         </tr>
     }

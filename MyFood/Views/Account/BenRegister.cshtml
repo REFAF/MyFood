@@ -4,13 +4,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<br />
+<br />
+
 
 @using (Html.BeginForm("BenRegister", "Account", FormMethod.Post, new { @class = "form-horizontal green-label form-bg-login", role = "form" }))
 {
+    <h3 class="green-h">التسجيل كمستفيد جديد في جمعية طعامي</h3>
+    
     @Html.AntiForgeryToken()
     <br />
-    <h3 class="green-h">التسجيل كمستفيد جديد في جمعية طعامي</h3>
-    <hr />
 
     <div class="form-group">
         @Html.LabelFor(model => model.name, new { @class = "col-md-4 control-label" })
@@ -23,7 +26,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.national_id, new { @class = "col-md-4 control-label" })
         <div class="col-md-7">
-            @Html.TextBoxFor(model => model.national_id , new { @class = "form-control" })
+            @Html.TextBoxFor(model => model.national_id, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.national_id, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -94,7 +97,7 @@
 
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10 btn-loign">
+        <div class="col-md-offset-5 col-md-10 btn-loign">
             <input type="submit" class="btn-gold" value="تسجيل" />
         </div>
     </div>
