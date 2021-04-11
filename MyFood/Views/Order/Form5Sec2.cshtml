@@ -10,17 +10,19 @@
         margin-bottom: 100px;
     }
 </style>
-<br />
-<h2>صحة وسلامة تسليم الطعام</h2>
 
-@using (Html.BeginForm("Form5Sec2", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+<br />
+<br />
+
+@using (Html.BeginForm("Form5Sec2", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h3 class="green-h">صحة وسلامة تسليم الطعام</h3>
     <br />
 
     @Html.HiddenFor(model => model.form5_id)
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.car_num)
@@ -54,7 +56,7 @@
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.Label("صحة وسلامة العاملين:")<br />
@@ -86,10 +88,10 @@
     <hr />
 
 
-    <div>
+    <div class="form-m-right">
         @Html.Label("نوع الطعام")
     </div>
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row marginTop">
             <div class="col-sm-6">
                 @Html.CheckBoxFor(model => model.FoodType.rice)  أرز
@@ -123,7 +125,7 @@
 
     <hr />
 
-    <div class="container-sm marginTop">
+    <div class="form-m-right marginTop">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.meal_num)
@@ -140,7 +142,7 @@
 
     <hr />
 
-    <div class="container-sm marginTop">
+    <div class="form-m-right marginTop">
         @Html.Label("المستهدفين في التوزيع")
         <div class="row">
             <div class="col-sm-2">
@@ -163,14 +165,14 @@
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.exit_time)
                 @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_exit_time)
                 @Html.TextBoxFor(model => model.kilos_exit_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
@@ -182,7 +184,7 @@
                 @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_arrival_time)
                 @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
@@ -194,13 +196,26 @@
                 @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_return_time)
                 @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+
+    <hr />
+
+    <div class="form-m-right">
+        <div class="row">
+            <div class=" col-sm-2">
+                @Html.Label("ملاحظات")
+                @Html.TextBoxFor(model => model.note, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
     <br />
 
     @*<div class="container-sm mBottom">
@@ -211,14 +226,13 @@
             </div>
         </div>*@
 
-    <br />
-    <br />
-    <div class="container-sm">
+    <div class="col-md-offset-5 container-sm btn-loign">
         <div>
-            <input type="submit" class="btn btn-default" value="حفظ" />
-            <input name="button" type="submit" class="btn btn-default" value="تسليم التقرير" />
+            <input type="submit" class="btn-gold" value="حفظ" />
+            <input name="button" type="submit" class="btn-gold" value="تسليم التقرير" />
         </div>
     </div>
+    <br />
 }
 
 

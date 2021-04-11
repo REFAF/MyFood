@@ -35,9 +35,11 @@ namespace MyFood.Models
         [Display(Name = "غير سليم")]
         public bool not_healthy { get; set; }
 
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "عدد العربيات")]
         public byte? cart_num { get; set; }
 
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "عدد القدور")]
         public byte? pot_num { get; set; }
 
@@ -56,12 +58,15 @@ namespace MyFood.Models
         [Display(Name = "وقت الرجوع")]
         public TimeSpan? return_time { get; set; }
 
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "عدد الكيلوات أثناء الخروج")]
         public int? kilos_exit_time { get; set; }
 
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "عدد الكيلوات أثناء الوصول")]
         public int? kilos_arrival_time { get; set; }
 
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "عدد الكيلوات أثناء الرجوع")]
         public int? kilos_return_time { get; set; }
 

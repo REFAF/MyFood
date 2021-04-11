@@ -106,14 +106,21 @@
 .gold {
     color: #AC8C34;
 }
-.form-bg-sm {
+.form-bg {
     background-color: rgba(226, 208, 192, 0.30);
-    width: 65%;
+    width: 100%;
     padding: 15px;
     border-radius: 25px;
 }
-
-
+.form-bg-sm {
+    background-color: rgba(226, 208, 192, 0.30);
+    width: 90%;
+    padding: 15px;
+    border-radius: 25px;
+}
+.form-m-right {
+    margin-right: 30px;
+}
 .form-bg-login {
     background-color: rgba(226, 208, 192, 0.30);
     width: 60%;

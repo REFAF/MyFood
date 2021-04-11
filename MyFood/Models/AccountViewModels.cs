@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.Primitives;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -44,7 +45,7 @@ namespace MyFood.Models
     public class ForgotViewModel
     {
         //[Required]
-        [Display(Name = "Email")]
+        [Display(Name = "البريد الإلكتروني")]
         public string Email { get; set; }
     }
 
@@ -104,7 +105,7 @@ namespace MyFood.Models
 
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
@@ -125,6 +126,10 @@ namespace MyFood.Models
         //public IList<string> Roles { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [RegularExpression("\\d+" , ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
+        //[DataAnnotationExtensions]
+        ////[CustomValidation(DataType long, "هذا الحقل يتطلب أرقام فقط" )]
+        //[DataType(DataType.Custom, ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "رقم الهوية")]
         public long national_id { get; set; }
 
@@ -134,7 +139,7 @@ namespace MyFood.Models
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
         [Display(Name = "اسم الموظف")]
         public string name { get; set; }
-
+       
         [Display(Name = "رقم الجوال")]
         public string PhoneNumber { get; set; }
 
@@ -155,7 +160,7 @@ namespace MyFood.Models
 
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
@@ -212,7 +217,7 @@ namespace MyFood.Models
 
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
@@ -250,7 +255,7 @@ namespace MyFood.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [StringLength(100, ErrorMessage = "  الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
@@ -303,7 +308,7 @@ namespace MyFood.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
-        [StringLength(100, ErrorMessage = " الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ورمز على الأقل", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
@@ -336,11 +341,11 @@ namespace MyFood.Models
     {
         //[Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "البريد الإلكتروني")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف, كلمة المرور يجب أن تحتوي على أحرف كبيرة وصغيرة ", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "الحد الأدنى 6 أحرف", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور الجديدة")]
         public string Password { get; set; }
@@ -358,7 +363,7 @@ namespace MyFood.Models
     {
         //[Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "البريد الإلكتروني")]
         public string Email { get; set; }
     }
 }

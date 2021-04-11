@@ -5,12 +5,14 @@
 }
 
 
-<h2>طلبات قيد التنفيذ</h2>
 
+<br />
+<br />
+<h3 class="font-KhebratMusamim green">طلبات قيد التنفيذ</h3>
 <br />
 
 <table class="table">
-    <tr>
+    <tr class="green-label">
         <th>
             @Html.DisplayName("رقم الطلب")
         </th>
@@ -19,12 +21,13 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr class="gold-label">
             <td>
                 @Html.DisplayFor(modelItem => item.Order.order_id)
             </td>
             <td>
-                @Html.ActionLink("عرض الطلب", "Form3Sec2", new { id = item.f3_id })
+                @Html.ActionLink("عرض الطلب", "Form3Sec2",null,
+               new { id = item.f3_id }, new { @class = "gold-link" })
             </td>
         </tr>
     }

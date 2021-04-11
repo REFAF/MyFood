@@ -6,63 +6,62 @@
 
 <style>
 
-.mBottom {
-    margin-bottom: 100px;
-}
-
-.m-add-Bottom {
-    margin-bottom: 7px;
-}
-
-table tr td {
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 4px;
-}
-
-@@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-        /* Hide table headers (but not display: none;, for accessibility) */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-    td {
-        /* Behave  like a "row" */
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
+    .mBottom {
+        margin-bottom: 100px;
     }
 
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
+    .m-add-Bottom {
+        margin-bottom: 7px;
+    }
+
+    table tr td {
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-top: 4px;
+    }
+
+    @@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display: block;
         }
-}
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+    }
 </style>
 <br />
 <br />
-<h3 class="font-KhebratMusamim green"> تقرير صحة وسلامة استلام الطعام</h3>
 
-@using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
+@using (Html.BeginForm("Form3Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h3 class="green-h"> تقرير صحة وسلامة استلام الطعام</h3>
     <br />
 
-
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.car_num)
@@ -96,14 +95,14 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.Label("صحة وسلامة العاملين:")<br />
                 @Html.CheckBoxFor(m => m.healthy) سليم
                 @Html.CheckBoxFor(m => m.not_healthy) غير سليم
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.Label(" يذكر نوع الحالة:")
                 @Html.TextBoxFor(model => model.NotHealthy.nothealthy_type_name, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.NotHealthy.nothealthy_type_name, "", new { @class = "text-danger" })
@@ -111,7 +110,7 @@ table tr td {
         </div>
         <br />
         <div class="row">
-            <div class="col-sm">
+            <div class="col-sm-4">
                 @Html.Label("في حالة وجود حالة غير صحية يسجل اسم العامل:")
             </div>
             <div class="col-sm-2">
@@ -133,9 +132,9 @@ table tr td {
         }
     </style>
 
-    <div class="container-sm">
+    <div class="form-m-right">
         @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
-
+        <br />
         <table id="dataTable" @*border="0"*@>
 
             @if (Model != null && Model.safetyTool.Count > 0)
@@ -143,7 +142,7 @@ table tr td {
                 int j = 0;
                 foreach (var i in Model.safetyTool)
                 {
-                    <tr class="ml-5">
+                    <tr class="ml-4">
                         <th>@Html.LabelFor(model => model.SafetyToolNav.staff_name)</th>
                         <td>@Html.TextBoxFor(a => a.safetyTool[j].staff_name, new { @class = "form-control" })</td>
 
@@ -182,33 +181,34 @@ table tr td {
                 }
             }
         </table>
-        <div class="m-add-Bottom gold-link"><a href="#" id="addNew">إضافة حقل جديد</a></div>
+        <div class="m-add-Bottom"><a href="#" id="addNew" class="gold-link">إضافة حقل جديد</a></div>
     </div>
 
 
     <hr />
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.exit_time)
-                @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control", @type = "time" })
+                @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control col-sm-2", @type = "time" })
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_exit_time)
                 @Html.TextBoxFor(model => model.kilos_exit_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+    
+    <br />
 
-    <br />
-    <br />
-    <div class="container-sm">
+    <div class=" col-md-offset-5 container-sm btn-loign">
         <div>
-            <input type="submit" class="btn btn-default" value="حفظ" />
+            <input type="submit" class="btn-gold" value="حفظ" />
         </div>
     </div>
+    <br />
 }
 
 

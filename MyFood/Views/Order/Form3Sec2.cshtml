@@ -10,37 +10,36 @@
     }
 
     .marginTop {
-        margin-top:10px;
+        margin-top: 10px;
     }
 </style>
 
-
-
-
 <br />
-<h2> تقرير صحة وسلامة استلام الطعام</h2>
+<br />
 
-@using (Html.BeginForm("Form3Sec2", "Order", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+@using (Html.BeginForm("Form3Sec2", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg-sm", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h3 class="green-h"> تقرير صحة وسلامة استلام الطعام</h3>
     <br />
     @Html.HiddenFor(model => model.f3_id)
 
-    <div>
+    <div class="form-m-right">
         @Html.Label("نوع الطعام")
     </div>
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row marginTop">
             <div class="col-sm-6">
                 @Html.CheckBoxFor(model => model.FoodType.rice)  أرز
                 @Html.CheckBoxFor(model => model.FoodType.water) ماء
                 @Html.CheckBoxFor(model => model.FoodType.chicken)  دجاج
                 @Html.CheckBoxFor(model => model.FoodType.soup) إدام
-                @Html.CheckBoxFor(model => model.FoodType.meat) لحم 
-                @Html.CheckBoxFor(model => model.FoodType.pies) فطائر 
+                @Html.CheckBoxFor(model => model.FoodType.meat) لحم
+                @Html.CheckBoxFor(model => model.FoodType.pies) فطائر
             </div>
         </div>
-        
+
         <div class="row marginTop">
             <div class="col-sm-6">
                 @Html.CheckBoxFor(model => model.FoodType.dates) تمر
@@ -63,7 +62,7 @@
 
     <hr />
 
-    <div class="container-sm marginTop">
+    <div class="form-m-right marginTop">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.cart_num)
@@ -78,7 +77,7 @@
         </div>
     </div>
     <br />
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-3">
                 @Html.Label("تصنيف الطعام:")<br />
@@ -89,14 +88,14 @@
     </div>
 
     <hr />
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.arrival_time)
                 @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_arrival_time)
                 @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
@@ -108,7 +107,7 @@
                 @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_return_time)
                 @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
@@ -117,7 +116,7 @@
     </div>
 
     <br />
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class=" col-sm-2">
                 @Html.Label("ملاحظات")
@@ -130,12 +129,13 @@
     <br />
     <br />
 
-    <div class="container-sm">
+    <div class="col-md-offset-4 container-sm btn-loign">
         <div>
-            <input type="submit" class="btn btn-default space" value="حفظ" />
-            <input name="button" type="submit" class="btn btn-default" value="تسليم التقرير" />
+            <input type="submit" class="btn-gold space" value="حفظ" />
+            <input name="button" type="submit" class="btn-gold" value="تسليم التقرير" />
         </div>
     </div>
+    <br />
 }
 
 

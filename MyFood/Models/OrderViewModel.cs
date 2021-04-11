@@ -12,6 +12,7 @@ namespace MyFood.Models
         public long order_id { get; set; }
 
         [Required(ErrorMessage = "هذا الحقل مطلوب")]
+        [RegularExpression("\\d+", ErrorMessage = "هذا الحقل يتطلب أرقام فقط")]
         [Display(Name = "رقم الجوال")]
         public string phone_number { get; set; }
 

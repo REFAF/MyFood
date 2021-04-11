@@ -6,102 +6,98 @@
 
 <br />
 <br />
-<h2 class="font-KhebratMusamim green">الطلب الوارد</h2>
 
-
-@using (Html.BeginForm("empOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
+@using (Html.BeginForm("empOrderDetails", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg-login", role = "form" }))
 {
     @Html.AntiForgeryToken()
-    <hr />
-    <div class="form-horizontal">
+    <h3 class="green-h">الطلب الوارد</h3>
+    <br />
 
-        <div class="form-group">
-            @Html.Label("رقم الطلب", new { @class = "col-md-2 control-label green-label" })
-            <div class="col-md-10 gold-label">
-                @Html.DisplayFor(model => model.order_id, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.Label("رقم الطلب", new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.order_id, new { @class = "form-control" })
         </div>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.phone_number, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10 gold-label">
-                @Html.DisplayFor(model => model.phone_number, new { @class = "form-control" })
-            </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.phone_number, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.phone_number, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.buffet_type_id, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.BuffetType.buffet_type_name, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.buffet_type_id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.BuffetType.buffet_type_name, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.plate_num, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.plate_num, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.plate_num, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.plate_num, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.persons_num, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.persons_num, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.persons_num, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.persons_num, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.event_date, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.event_date, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_date, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.event_date, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.event_time, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.event_time, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.event_time, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.event_time, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.unit_id, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.Unit.unit_name, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.unit_id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.Unit.unit_name, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.Label("      ", new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.unit_name, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.Label("      ", new { @class = "control-label col-md-4" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.unit_name, new { @class = "form-control" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.emp_id, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.empId.name, new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.emp_id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.empId.name, new { @class = "form-control" })
         </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.sup_id, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-                @Html.DisplayFor(model => model.supId.name, new { @class = "form-control" })
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.sup_id, new { @class = "col-md-4 control-label" })
+        <div class="col-md-7 gold-label">
+            @Html.DisplayFor(model => model.supId.name, new { @class = "form-control" })
         </div>
-        <br />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("البدء بتنفيذ الطلب", "Form3Sec1",
-           new { id = Model.order_id }, new { @class = "btn-gold" })
-            </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-10 btn-loign">
+            @Html.ActionLink("البدء بتنفيذ الطلب", "Form3Sec1",
+       new { id = Model.order_id }, new { @class = "btn-gold" })
         </div>
+    </div>
 
+    <div>
+        @Html.ActionLink("الرجوع إلى القائمة", "AssignedOrder", null, new { @class = "gold-link" })
     </div>
 
 }
-<br />
-<div>
-    @Html.ActionLink("الرجوع إلى القائمة", "AssignedOrder", null, new { @class = "green-link" })
-</div>

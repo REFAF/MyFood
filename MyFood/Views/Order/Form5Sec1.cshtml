@@ -7,61 +7,63 @@
 
 <style>
 
-.mBottom {
-    margin-bottom: 100px;
-}
-
-.m-add-Bottom {
-    margin-bottom: 7px;
-}
-
-table tr td {
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: 4px;
-}
-
-@@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
-    /* Force table to not be like tables anymore */
-    table, thead, tbody, th, td, tr {
-        display: block;
-    }
-        /* Hide table headers (but not display: none;, for accessibility) */
-        thead tr {
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
-
-    td {
-        /* Behave  like a "row" */
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
+    .mBottom {
+        margin-bottom: 100px;
     }
 
-        td:before {
-            /* Now like a table header */
-            position: absolute;
-            /* Top/left values mimic padding */
-            top: 6px;
-            left: 6px;
-            width: 45%;
-            padding-right: 10px;
-            white-space: nowrap;
+    .m-add-Bottom {
+        margin-bottom: 7px;
+    }
+
+    table tr td {
+        padding-left: 7px;
+        padding-right: 7px;
+        padding-top: 4px;
+    }
+
+    @@media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+        /* Force table to not be like tables anymore */
+        table, thead, tbody, th, td, tr {
+            display: block;
         }
-}
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+
+            td:before {
+                /* Now like a table header */
+                position: absolute;
+                /* Top/left values mimic padding */
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+            }
+    }
 </style>
 <br />
-<h2>صحة وسلامة تسليم الطعام</h2>
+<br />
 
-@using (Html.BeginForm("Form5Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label", role = "form" }))
+
+@using (Html.BeginForm("Form5Sec1", "Order", FormMethod.Post, new { @class = "form-horizontal green-label form-bg", role = "form" }))
 {
     @Html.AntiForgeryToken()
+    <h3 class="green-h">صحة وسلامة تسليم الطعام</h3>
     <br />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.car_num)
@@ -75,8 +77,14 @@ table tr td {
             </div>
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.date)
-                @Html.EditorFor(m => m.date, new { htmlAttributes = new { @class = "form-control",
-               placeholder = "01-01-2021" }})
+                @Html.EditorFor(m => m.date, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+               placeholder = "01-01-2021"
+                    }
+                })
                 @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
             </div>
             <div class="col-sm-2">
@@ -89,7 +97,7 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.Label("صحة وسلامة العاملين:")<br />
@@ -120,7 +128,7 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         @Html.Label("مدى تقيد العاملين بلبس ادوات الصحة والسلامة")
         <table id="dataTable" @*border="0"*@>
 
@@ -157,28 +165,28 @@ table tr td {
                         <th>@Html.LabelFor(model => model.SafetyToolNav.note)</th>
                         <td>@Html.TextBoxFor(a => a.safetyTool[j].note, new { @class = "form-control" })</td>
                         @*<td>
-                            @if (j > 0)
-                            {
-                                <a href="#" class="remove">Remove</a>
-                            }
-                        </td>*@
+                                @if (j > 0)
+                                {
+                                    <a href="#" class="remove">Remove</a>
+                                }
+                            </td>*@
 
                     </tr>
                     j++;
                 }
             }
         </table>
-        <div class="m-add-Bottom"><a href="#" id="addNew">إضافة حقل جديد</a></div>
+        <div class="m-add-Bottom"><a href="#" id="addNew" class="gold-link">إضافة حقل جديد</a></div>
 
 
     </div>
 
     <hr />
 
-    <div>
+    <div class="form-m-right">
         @Html.Label("نوع الطعام")
     </div>
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row marginTop">
             <div class="col-sm-6">
                 @Html.CheckBoxFor(model => model.FoodType.rice)  أرز
@@ -212,7 +220,7 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm marginTop">
+    <div class="form-m-right marginTop">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.meal_num)
@@ -229,7 +237,7 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm marginTop">
+    <div class="form-m-right marginTop">
         @Html.Label("المستهدفين في التوزيع")
         <div class="row">
             <div class="col-sm-2">
@@ -253,14 +261,14 @@ table tr td {
 
     <hr />
 
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class="col-sm-2">
                 @Html.LabelFor(model => model.exit_time)
                 @Html.TextBoxFor(model => model.exit_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.exit_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_exit_time)
                 @Html.TextBoxFor(model => model.kilos_exit_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_exit_time, "", new { @class = "text-danger" })
@@ -272,7 +280,7 @@ table tr td {
                 @Html.TextBoxFor(model => model.arrival_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.arrival_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_arrival_time)
                 @Html.TextBoxFor(model => model.kilos_arrival_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_arrival_time, "", new { @class = "text-danger" })
@@ -284,7 +292,7 @@ table tr td {
                 @Html.TextBoxFor(model => model.return_time, new { @class = "form-control", @type = "time" })
                 @Html.ValidationMessageFor(model => model.return_time, "", new { @class = "text-danger" })
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-3">
                 @Html.LabelFor(model => model.kilos_return_time)
                 @Html.TextBoxFor(model => model.kilos_return_time, new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.kilos_return_time, "", new { @class = "text-danger" })
@@ -292,7 +300,7 @@ table tr td {
         </div>
     </div>
     <br />
-    <div class="container-sm">
+    <div class="form-m-right">
         <div class="row">
             <div class=" col-sm-2">
                 @Html.Label("ملاحظات")
@@ -301,16 +309,16 @@ table tr td {
             </div>
         </div>
     </div>
-    <br />
-
 
     <br />
-    <br />
-    <div class="container-sm">
+
+    <div class="col-md-offset-5 container-sm btn-loign">
         <div>
-            <input type="submit" class="btn btn-default" value="حفظ" />
+            <input type="submit" class="btn-gold" value="حفظ" />
         </div>
     </div>
+
+    <br />
 }
 
 
